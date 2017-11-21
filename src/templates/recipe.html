@@ -44,7 +44,7 @@
 		var _chickenStock = '{{token}}';
 		var _clientId = '{{clientId}}';
 		var _play = '{{play}}';
-		labo.cookRecipe({{ recipe|tojson|safe }}, {{ params|tojson|safe }}, '{{user.id}}', 'app');
+		labo.cookRecipe({{ recipe|tojson|safe }}, {{ params|tojson|safe }}, {{user|tojson|safe}}, 'app');
 	</script>
 
 	<script type="text/javascript" src="/static/node_modules/jquery/dist/jquery.min.js"></script>

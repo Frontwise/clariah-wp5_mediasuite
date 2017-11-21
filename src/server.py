@@ -151,11 +151,36 @@ def apis():
 @app.route('/userspace')
 @requires_auth
 def userspace():
+	params = {}
+	for x in dict(request.args).keys():
+		params[x] = request.args.get(x)
+
+	#determine the token (either from the config or the session)
+	token = None
+	if 'OAuthToken' in session:
+		token = session['OAuthToken']
+	elif 'TOKEN' in app.config:
+		token = app.config['TOKEN']
+
+	#get the client id from the config
+	clientId = None
+	if 'CLIENT_ID' in app.config:
+		clientId = app.config['CLIENT_ID']
+
 	return render_template('userspace.html',
-		user=_authenticationHub.getUser(request),
-		version=app.config['APP_VERSION'],
+		recipe=app.config['RECIPES']['user-space'],
+		params=params,
+		instanceId='clariah',
 		searchAPI=app.config['SEARCH_API'],
-		annotationAPI=app.config['ANNOTATION_API']
+		searchAPIPath=app.config['SEARCH_API_PATH'],
+		user=_authenticationHub.getUser(request),
+		userSpaceAPI=app.config['USER_SPACE_API'],
+		version=app.config['APP_VERSION'],
+		annotationAPI=app.config['ANNOTATION_API'],
+		annotationAPIPath=app.config['ANNOTATION_API_PATH'],
+		token=token,
+		clientId=clientId,
+		play=app.config['PLAYOUT_API']
 	)
 
 @app.route('/recipes')
@@ -202,6 +227,7 @@ def recipe(recipeId):
 				searchAPI=app.config['SEARCH_API'],
 				searchAPIPath=app.config['SEARCH_API_PATH'],
 				user=_authenticationHub.getUser(request),
+				userSpaceAPI=app.config['USER_SPACE_API'],
 				version=app.config['APP_VERSION'],
 				annotationAPI=app.config['ANNOTATION_API'],
 				annotationAPIPath=app.config['ANNOTATION_API_PATH'],

@@ -1,12 +1,9 @@
-<!doctype HTML>
-
-<html>
-
 <head>
-	<title>CLARIAH - Your private lab</title>
+	<title>CLARIAH Media Suite - Recipe: {{recipe.id}}</title>
+	{% with pageType='app' %}
     {% include '%s/head.html' % headDir %}
+    {% endwith %}
 </head>
-
 
 <body>
 
@@ -14,20 +11,43 @@
 {% include '%s/nav.html' % navbarDir %}
 {% endwith %}
 
-<div class="container">
-
-	<div class="page-header">
-		<h1>Welcome to your user space, {{user.name}}</h1>
+	<div class="container">
+		<div class="page-header">
+			<h1>User space</h1>
+			{{recipe.recipeDescription | safe}}
+	    </div>
+		<!-- instead of listing the one recipe, make sure to list a bunch of recipes-->
+		<div id="app"/>
 	</div>
 
-	<div class="alert alert-danger">
-		This is your personal and collaborative “work space,” where you can keep track of your (re)search projects, store your bookmarks (selected corpus) or codes (tags), and other annotations you performed while searching and browsing. You can also perform analytical tasks with your corpus and annotations, and export your data. THIS SPACE IS UNDER CONSTRUCTION.
+	<!-- for the linechart & histogram component -->
+	<script type="text/javascript" src="/static/node_modules/d3/build/d3.min.js"></script>
 
-	</div>
-	{{user.attributes}}
+	<!-- for TimeSlider.jsx -->
+    <script type="text/javascript" src="/static/node_modules/nouislider/distribute/nouislider.min.js"></script>
 
-</div>
+	<!-- for the player components-->
+	<script type="text/javascript" src="/static/node_modules/@vimeo/player/dist/player.min.js"></script>
+	<script type="text/javascript" src="/static/vendor/jwplayer-7.5.0/jwplayer.js"></script>
+
+	<!-- for the image viewer -->
+	<script type="text/javascript" src="/static/node_modules/openseadragon/build/openseadragon/openseadragon.min.js"></script>
+	<script type="text/javascript" src="/static/vendor/openseadragonselection-master/dist/openseadragonselection.js"></script>
+
+	<!-- React is required for the entire library-->
+	<script type="text/javascript" src="/static/node_modules/react/dist/react.min.js"></script>
+    <script type="text/javascript" src="/static/node_modules/react-dom/dist/react-dom.min.js"></script>
+
+	<!-- The component library -->
+	<script type="text/javascript" src="/static/node_modules/labo-components/dist/labo-components.js"></script>
+	<script>
+		var _chickenStock = '{{token}}';
+		var _clientId = '{{clientId}}';
+		var _play = '{{play}}';
+		labo.cookRecipe({{ recipe|tojson|safe }}, {{ params|tojson|safe }}, {{user|tojson|safe}}, 'app');
+	</script>
+
+	<script type="text/javascript" src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
 
 </body>
-
-</html>

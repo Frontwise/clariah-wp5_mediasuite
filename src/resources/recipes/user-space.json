@@ -1,0 +1,13 @@
+{
+	"id" : "user-space",
+	"name" : "User space",
+	"type" : "user-space",
+	"phase" : "analysis",
+	"description" : "Examine your corpus, annotations, queries and analyse them",
+	"recipeDescription" : "<p>Manage your personal corpus: bookmarks, queries, annotations</p>",
+	"inRecipeList" : false,
+	"useCustomTemplate" : false,
+	"ingredients" : {
+
+	}
+}
