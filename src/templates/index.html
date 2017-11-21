@@ -13,7 +13,7 @@
 {% with page='home' %}
 {% include '%s/nav.html' % navbarDir %}
 {% endwith %}
-
+{% include '%s/banner.html' % bannerDir %}
 <div class="container">
 
 	<br>
@@ -65,7 +65,7 @@
 	</div>
 
 </div>
-
+{% include '%s/footer.html' % footerDir %}
 </body>
 
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
