@@ -1,15 +1,6 @@
-body{
-  padding:0;
-  margin:0;
-  font-family: $fontBody;
-  font-size: 13.5px;  
-}
-
-
 /**
 * Content
 */
-
 h1,h2,h3,h4,h5{
  font-family: $fontHeading;
  font-weight: 500;
@@ -24,7 +15,6 @@ p{
 /**
 * Links
 */
-
 .link, .link:visited{
    color: $clPrimary;
 }
@@ -41,7 +31,6 @@ p{
 /**
 * Buttons
 */
-
 .btn{
   border-radius: 2px;
   cursor: pointer;
@@ -75,12 +64,12 @@ p{
 
     &:hover{
       background-color: lighten($clPrimary, 5);
-    }  
+    }
 
     &.plus{
-      background-image: $iconPlusUrl;    
+      background-image: $iconPlusUrl;
     }
-  
+
   }
 
   &.white{
@@ -90,7 +79,7 @@ p{
       opacity: 0.9;
     }
   }
-  
+
   &.blank{
     box-shadow: none;
     background-color: transparent;
@@ -100,13 +89,13 @@ p{
     &:hover{
       background-color: transparent;
       opacity: 0.9;
-    } 
+    }
 
     &.warning:hover{
       color: $clSecondary;
       opacity: 1;
     }
-  }  
+  }
 }
 
 /**
