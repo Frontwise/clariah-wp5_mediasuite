@@ -32,7 +32,7 @@ p{
 * Buttons
 */
 // Wrapping btn to avoid overwriting bootstrap stylings
-.banner {
+.banner,  .cards {
   .btn{
     border-radius: 2px;
     cursor: pointer;
@@ -42,7 +42,7 @@ p{
     text-transform: uppercase;
     text-decoration: none;
     height: 35px;
-    padding: 0 45px 0 30px;
+    padding: 0 40px 0 30px;
     box-sizing: border-box;
     line-height: 35px;
     box-shadow: 0 2px 2px rgba(0,0,0,0.1);
@@ -151,7 +151,4 @@ textarea{
       max-width: 500px;
     }  
   }
-  
 }
-
-
