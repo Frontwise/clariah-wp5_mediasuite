@@ -326,6 +326,7 @@ $accountWidth: 220px;
       border-bottom: 1px solid darken($clGreyTint, 10);
       cursor: pointer;
       height: 45px;
+      padding: 10px;
 
       > a {
         color: lighten($clDark, 10);
@@ -334,7 +335,6 @@ $accountWidth: 220px;
         &.userLink {
           padding: 10px 95px 10px 15px;
           position: relative;
-          top: 10px;
         }
       }
       &:hover{
