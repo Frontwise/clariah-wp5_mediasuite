@@ -105,16 +105,21 @@ $accountWidth: 220px;
       }
 
       @media screen and (max-width: $break-medium) {
-        padding: 5px 10px;
+        padding: 0;
         line-height: 1.25em;
         display: block;
-        height: 30px;
+        height: 27px;
         text-align: right;
         border-right: 5px solid transparent;
 
         &.active{
           border: none;
           border-right: 5px solid $clPrimary;
+        }
+        > a {
+          padding: 5px 10px;
+          top: 5px;
+          display: block;
         }
       }
 
@@ -329,6 +334,7 @@ $accountWidth: 220px;
         &.userLink {
           padding: 10px 95px 10px 15px;
           position: relative;
+          top: 10px;
         }
       }
       &:hover{
