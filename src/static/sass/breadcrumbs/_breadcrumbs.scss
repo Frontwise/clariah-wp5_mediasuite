@@ -1,0 +1,32 @@
+.BreadCrumbs{
+  display: inline-block;
+  box-sizing: border-box;
+  list-style:none;
+  font-weight: normal;
+  font-family: $fontBody;
+  font-size: 13px;
+  line-height: 15px;
+  position: fixed;
+  top: 125px;
+  width: calc(100% - 60px);
+
+  li{
+    display: inline-block;
+    color: $clGreyTint;
+
+    a{
+      color: $clPrimary;
+      padding: 0 5px;
+
+      &.home{
+        background-image: $iconHomeUrl;
+        background-repeat: no-repeat;
+        background-position: center center;
+        display: inline-block;
+        vertical-align: top;
+        width: 17px;
+        height: 15px;
+      }
+    }
+  }
+}
