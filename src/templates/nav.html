@@ -1,79 +1,69 @@
-<nav class="navbar navbar-default navbar-static-top">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/">CLARIAH Media Suite</a>
-		</div>
+<div class="header transparent">
+	<a class="logo" href="/"></a>
+	<ul class="menu main">
+		{% if page=='data-sources' %}
+		<li class="active"><a href="/datasources">Data</a></li><li><a href="/recipes">Tools</a></li>
+		{% elif page=='recipes' %}
+		<li><a href="/datasources">Data</a></li><li class="active"><a href="/recipes">Tools</a></li>
+		{% else %}
+		<li><a href="/datasources">Data </a></li><li><a href="/recipes">Tools</a></li>
+		{% endif %}
+	</ul>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	{% if user != None %}
+	<div class="workspace ">
+		<i class="icon-workspace"></i>Workspace
+		<ul class="dropdown">
+			<li><a class="" href="#userProjects">User Projects<span class="count">0</span>
+				</a>
+			</li>
+			<!--<li class="projects">-->
+				<!--<div class="projects"><input placeholder="Search project">-->
+					<!--<ul>-->
+						<!--<li>Watersnoodramp</li>-->
+						<!--<li>Pim Fortuyn</li>-->
+						<!--<li>Immigratie</li>-->
+						<!--<li>Paars kabinet</li>-->
+						<!--<li>Nationale rampen</li>-->
+						<!--<li>Rol van Radio bij nationale rampen gedurende de nadagen van de Tweede Wereldoorlog</li>-->
+					<!--</ul>-->
+				<!--</div>-->
+			<!--</li>-->
+			<li class="new-project">
+				<p>You don't have any projects yet.</p>
+				<a href="#newProject" class="button-holder">
+					<div class="btn primary plus">Create User Project</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	{% endif %}
 
-			<ul class="nav navbar-nav">
-				{% if page=='recipes' %}
-				<li><a href="/datasources">Data sources</a></li>
-				<li><a href="/apis">APIs</a></li>
-				<li><a href="/components">Components</a></li>
-				<li class="active"><a href="/recipes">Recipes <span class="sr-only">(current)</span></a></li>
-				<li><a href="/help-feedback">Help &amp; Feedback</a></li>
-				<li><a href="/userspace">{{'User space' if user != None else 'Login'}}</a></li>
-				{% elif page=='data-sources' %}
-				<li class="active"><a href="/datasources">Data sources <span class="sr-only">(current)</span></a></li>
-				<li><a href="/apis">APIs</a></li>
-				<li><a href="/components">Components</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-				<li><a href="/help-feedback">Help &amp; Feedback</a></li>
-				<li><a href="/userspace">{{'User space' if user != None else 'Login'}}</a></li>
-				{% elif page=='apis' %}
-				<li><a href="/datasources">Data sources</a></li>
-				<li class="active"><a href="/apis">APIs <span class="sr-only">(current)</span></a></li>
-				<li><a href="/components">Components</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-				<li><a href="/help-feedback">Help &amp; Feedback</a></li>
-				<li><a href="/userspace">{{'User space' if user != None else 'Login'}}</a></li>
-				{% elif page=='components' %}
-				<li><a href="/datasources">Data sources</a></li>
-				<li><a href="/apis">APIs</a></li>
-				<li class="active"><a href="/components">Components <span class="sr-only">(current)</span></a></li>
-				<li><a href="/recipes">Recipes</a></li>
-				<li><a href="/help-feedback">Help &amp; Feedback</a></li>
-				<li><a href="/userspace">{{'User space' if user != None else 'Login'}}</a></li>
-				{% elif page=='userspace' %}
-				<li><a href="/datasources">Data sources</a></li>
-				<li><a href="/apis">APIs</a></li>
-				<li><a href="/components">Components</a></li>
-				<li><a href="/recipes">Recipes <span class="sr-only">(current)</span></a></li>
-				<li><a href="/help-feedback">Help &amp; Feedback</a></li>
-				<li class="active"><a href="/userspace">{{'User space' if user != None else 'Login'}}</a></li>
-				{% elif page=='help-feedback' %}
-				<li><a href="/datasources">Data sources</a></li>
-				<li><a href="/apis">APIs</a></li>
-				<li><a href="/components">Components</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-				<li class="active"><a href="/help-feedback">Help &amp; Feedback <span class="sr-only">(current)</span></a></li>
-				<li><a href="/userspace">{{'User space' if user != None else 'Login'}}</a></li>
-				{% else %}
-				<li><a href="/datasources">Data sources</a></li>
-				<li><a href="/apis">APIs</a></li>
-				<li><a href="/components">Components</a></li>
-				<li><a href="/recipes">Recipes</a></li>
-				<li><a href="/help-feedback">Help &amp; Feedback</a></li>
-				<li><a href="/userspace">{{'User space' if user != None else 'Login'}}</a></li>
-				{% endif %}
+	<div class="right">
+		<ul class="menu sub">
+			{% if page=='about' %}
+			<li class="active"><a href="/">About</a></li><li><a href="/help-feedback">Documentation</a></li><li><a href="/contact">Contact</a></li>
+			{% elif page=='help-feedback' %}
+			<li><a href="/about">About</a></li><li class="active"><a href="/">Documentation</a></li><li><a href="/contact">Contact</a></li>
+			{% elif page=='contact' %}
+			<li><a href="/about">About</a></li><li><a href="/help-feedback">Documentation</a></li><li class="active"><a
+			href="/">Contact</a></li>
+			{% else %}
+			<li><a href="/about">About</a></li><li><a href="/help-feedback">Documentation</a></li><li><a href="/contact">Contact</a></li>
+			{% endif %}
+		</ul>
+
+		{% if user != None %}
+		<div class="account loggedin "><i class="icon-person"></i>Account <span class="username">{{user.name}}</span>
+			<ul class="dropdown">
+				<li><a class="userLink" href="/userspace">My profile</a></li>
+				<li><a class="userLink" href="/logout" title="Logout {{user.name}}">Logout</a></li>
 			</ul>
-			<div class="app-version">
-				Version: {{version}}
-				{% if user != None %}
-				<span class="logout">
-					&nbsp;|&nbsp;
-					<a href="/logout" title="Logout {{user.name}}">Logout</a>
-				</span>
-				{% endif %}
-			</div>
-		</div><!-- /.navbar-collapse -->
-	</div><!-- /.container-fluid -->
-</nav>
+		</div>
+		{% else %}
+		<div class="account login ">
+			<a href="/userspace"><i class="icon-person"></i>Login</a>
+		</div>
+		{% endif %}
+	</div>
+</div>

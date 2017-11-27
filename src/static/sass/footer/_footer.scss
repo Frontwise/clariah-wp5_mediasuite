@@ -1,0 +1,49 @@
+$logoWidth: 295px;
+
+.Footer {
+  background-color: $clDark;
+  margin-top: 20px;
+  padding-top: 10px;
+
+  ul {
+    list-style: none;
+    margin-right: 10px;
+    min-width: 20%;
+    padding: 0;
+  }
+
+  ul:first-child {
+    border-right: 2px solid $clGreyTint;
+    margin-right: 40px;
+    padding-right: 40px;
+  }
+
+  a {
+    color: $clWhite;
+    font-family: $fontHeading;
+    font-size: 15px;
+    line-height: 2.5em;
+    text-decoration: none;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: $contentPadding;
+    padding-top: 30px;
+
+    .logo {
+      background-image: $logoUrl;
+      background-size: 207px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 56px;
+      margin-top: -5px;
+      width: 207px;
+    }
+
+    h5 {
+      color: $clDarkGrey;
+    }
+  }
+}

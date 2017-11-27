@@ -1,74 +1,61 @@
 <!doctype HTML>
-
 <html>
-
 <head>
-	<title>CLARIAH Media Suite</title>
-	{% include '%s/head.html' % headDir %}
+  <title>CLARIAH Media Suite</title>
+  {% include '%s/head.html' % headDir %}
 </head>
-
-
 <body>
 
 {% with page='home' %}
 {% include '%s/nav.html' % navbarDir %}
 {% endwith %}
-
-<div class="container">
-
-	<br>
-
-	<div class="row">
-		<div class="col-md-6">
-			<img src="/static/images/logo.png" alt="CLARIAH media suite" class="img-responsive">
-		</div>
-		<div class="col-md-6">
-			<h3>What is the Media Suite?</h3>
-			<p>The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (<a href="http://clariah.nl" target="_clariah">CLARIAH</a>) which aims to serve the needs of <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies">media scholars</a> (and other scholars who use audiovisual media) by providing access to audiovisual collections and their contextual data. Here you can enter the Media Suite services. To read more about the <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies" target="_focus">CLARIAH Media Studies focus</a>, go to the CLARIAH website, or to our <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" target="_msblog">Media Suite blog and documentation pages</a>.
-</p>
-		</div>
-	</div>
-
-	<br><hr><br>
-
-	<div class="row">
-		<div class="col-md-3">
-			<div class="text-center labs-goto" onclick="gotoPage('datasources')">
-				<i class="fa fa-database fa-4x fa-border text-muted"></i>
-				<h3>Data Sources</h3>
-				<p>Collections are registered in a common inventory which describes their metadata and are available in Elasticsearch and RDF format.</p>
-				<br>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="text-center labs-goto" onclick="gotoPage('apis')">
-				<i class="fa fa-plug fa-4x fa-border text-muted"></i>
-				<h3>APIs</h3>
-				<p>The foundation of the Media Suite is built on our APIs. They facilitate the interaction with data from various collections.</p><br>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="text-center labs-goto" onclick="gotoPage('components')">
-				<i class="fa fa-cogs fa-flip-horizontal fa-4x fa-border text-muted"></i>
-				<h3>Components</h3>
-				<p>Each component performs a single, well-defined task. Modules can interoperate to construct more sophisticated functionality.</p><br>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="text-center labs-goto" onclick="gotoPage('recipes')">
-				<i class="fa fa-pencil fa-4x fa-border text-muted"></i>
-				<h3>Recipes</h3>
-				<p>Recipes are built based on the knowledge and experience of the scholarly community. They integrate components into tools for media studies research.</p>
-				<br>
-			</div>
-		</div>
-	</div>
+{% include '%s/banner.html' % bannerDir %}
+<div class="container home_clariah">
+  <div class="row">
+    <ul class="cards offer">
+      <li>
+        <img src="../static/images/bigicon-data.png" alt="Media Suite Data">
+        <h1>Data</h1>
+        <p>Collections are registered in a common inventory which describes their metadata and are available in
+          Elasticsearch and RDF format.</p>
+        <a href="/datasources" class="btn primary">Check out the data</a>
+      </li>
+      <li>
+        <img src="../static/images/bigicon-tools.png" alt="Media Suite Tools">
+        <h1>Tools</h1>
+        <p>Recipes are built based on the knowledge and experience of the scholarly community. They integrate components
+          into tools for media studies research.</p>
+        <a href="/recipes" class="btn primary">Discover the tools</a>
+      </li>
+    </ul>
+  </div>
 
 </div>
-
-</body>
-
+<div class="row">
+  <ul class="cards workspace" style="background-image: url('../static/images/banner-mask1.jpg');">
+    <li>
+      <img src="../static/images/bigicon-workspace.png" alt="Media Suite Workspace">
+      <h1>Workspace</h1>
+      <p>In the workspace, you can create and share projects that store research projects. Use your university account
+        to login the Clariah User Space and unlock the full potential of the Media Suite!</p>
+      <div class="workspaceInfo">
+        <a href="/components" class="btn white">More Information</a>
+        <a href="/userspace" class="btn primary">Login</a>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="row">
+  <ul class="cards context">
+    <li>
+      <img src="data:image/png;base64,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" alt="Clariah logo">
+      <p>The Media Suite is part of CLARIAH Work Package 5. CLARIAH is a project funded by the NWO and KNAW that aims at the realisation of a distributed infrastructure for the humanities and social sciences.</p>
+      <a href="/components" class="btn default">More Information</a>
+    </li>
+  </ul>
+</div>
+{% include '%s/footer.html' % footerDir %}
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/static/js/labo.js"></script>
-
+</body>
 </html>

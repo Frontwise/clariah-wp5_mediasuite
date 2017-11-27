@@ -134,6 +134,14 @@ def favicon():
 def helpfeedback():
 	return render_template('help-feedback.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
+@app.route('/about')
+def about():
+	return render_template('about.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+
+@app.route('/contact')
+def contact():
+	return render_template('contact.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+
 @app.route('/datasources')
 def datasources():
 	return render_template('data-sources.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
