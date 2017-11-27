@@ -1,0 +1,86 @@
+.page.About {
+  $margin: 20px;
+  margin-top: 125px;
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 800px;
+    padding: 0;
+    overflow: hidden;
+    img {
+      width: 176px;
+      margin: 30px;
+    }
+    .info {
+      margin: 30px;
+      flex: 1 1;
+      min-width: 250px;
+      max-width: 100vw;
+    }
+
+    .actions {
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .description {
+      font-size: 13.5px;
+    }
+  }
+  .text {
+    max-width: $maxTextBodyWidth;
+    padding: 0 $margin;
+    margin: 60px auto;
+    font-size: 13.5px;
+
+    @media (min-width: 550px) {
+      column-count: 2
+    }
+
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+
+  .suite {
+    text-align: center;
+    max-width: $maxTextBodyWidth;
+    margin: 100px auto;
+
+    h2 {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    h3{
+      font-size: 20px;
+      text-transform: none;
+    }
+
+    .block {
+      border: 1px solid $clDarkGrey;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      > div {
+        max-width: 176px;
+        margin: $margin;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .Footer {
+    margin-top: 100px;
+  }
+}
