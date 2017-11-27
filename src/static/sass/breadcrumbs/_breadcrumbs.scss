@@ -1,14 +1,18 @@
 .BreadCrumbs{
   display: inline-block;
+  background-color: $clWhite;
   box-sizing: border-box;
   list-style:none;
   font-weight: normal;
   font-family: $fontBody;
   font-size: 13px;
   line-height: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   position: fixed;
-  top: 125px;
+  top: 115px;
   width: calc(100% - 60px);
+  z-index: 10;
 
   li{
     display: inline-block;
