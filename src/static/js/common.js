@@ -21,7 +21,7 @@ function breadcrumb(link, text) {
       breadcrumb += '<li><a href="/' + url.slice(0, -1) + '">' + tmp + '</a> /</li>';
     })
   }
-console.log('url', url);
-  $('.BreadCrumbs').html(breadcrumb);
+
+  $('.BreadCrumbs').removeClass('hidden').html(breadcrumb);
 }
 
