@@ -1,1 +1,6 @@
-Placeholder for the github pages
+## Placeholder for the github pages ##
+
+
+In the words of Abraham Lincoln:
+
+> Pardon my French
