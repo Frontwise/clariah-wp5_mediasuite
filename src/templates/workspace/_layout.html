@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>  
+  <title>CLARIAH Media Suite - {% block subtitle %}{% endblock %}</title>
+
+  {% with pageType='app' %}
+    {% include '%s/head.html' % headDir %}
+  {% endwith %}
+  
+</head>
+
+<body>
+
+  {% with page='workspace' %}
+  {% include '%s/nav.html' % navbarDir %}
+  {% endwith %}
+
+  <div class="container">
+    <div class="bg__workpace">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+
+  {% block scripts %}
+  {% endblock %}
+
+</body>
+</html>
