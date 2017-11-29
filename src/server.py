@@ -201,6 +201,107 @@ def recipes():
 			version=app.config['APP_VERSION']
 	)
 
+
+
+"""------------------------------------------------------------------------------
+WORKSPACE UTILS
+------------------------------------------------------------------------------"""
+
+#determine the token (either from the config or the session)
+def getToken():
+	if 'OAuthToken' in session:
+		return session['OAuthToken']
+	elif 'TOKEN' in app.config:
+		return app.config['TOKEN']
+	return None
+
+#flatten the params and put them in a normal dict
+def getParams():
+	params = {}
+	for x in dict(request.args).keys():
+		params[x] = request.args.get(x)
+
+#get the client id from the config
+def getClientId():
+	return app.config['CLIENT_ID'] if 'CLIENT_ID' in app.config else None
+
+
+"""------------------------------------------------------------------------------
+WORKSPACE PAGES
+------------------------------------------------------------------------------"""
+
+@app.route('/workspace/projects')
+@requires_auth
+def wsProjects():
+	
+	params = getParams()
+	token = getToken()
+	clientId = getClientId()	
+
+	return render_template('workspace/projects.html',
+		# annotationAPI=app.config['ANNOTATION_API'],
+		# annotationAPIPath=app.config['ANNOTATION_API_PATH'],
+		# clientId=clientId,
+		# instanceId='clariah',
+		# play=app.config['PLAYOUT_API'],
+		# searchAPI=app.config['SEARCH_API'],
+		# searchAPIPath=app.config['SEARCH_API_PATH'],
+		# token=token,
+		# userSpaceAPI=app.config['USER_SPACE_API'],
+		# version=app.config['APP_VERSION'],
+		params=params,
+		recipe=app.config['RECIPES']['ws-projects'],
+		user=_authenticationHub.getUser(request),
+	)
+
+@app.route('/workspace/projects/<int:projectId>')
+@app.route('/workspace/projects/<int:projectId>/bookmarks')
+@requires_auth
+def wsProjectsBookmarks(projectId):
+	
+	params = getParams()
+	token = getToken()
+	clientId = getClientId()	
+
+	return render_template('workspace/projectBookmarks.html',
+		params=params,
+		projectId=projectId,
+		recipe=app.config['RECIPES']['ws-project-bookmarks'],
+		user=_authenticationHub.getUser(request),
+	)
+
+@app.route('/workspace/projects/<int:projectId>/details')
+@requires_auth
+def wsProjectsDetails(projectId):
+	
+	params = getParams()
+	token = getToken()
+	clientId = getClientId()	
+
+	return render_template('workspace/projectDetails.html',
+		params=params,
+		projectId=projectId,		
+		user=_authenticationHub.getUser(request),
+	)
+
+@app.route('/workspace/projects/<int:projectId>/sessions')
+@requires_auth
+def wsProjectsSessions(projectId):
+	
+	params = getParams()
+	token = getToken()
+	clientId = getClientId()	
+
+	return render_template('workspace/projectSessions.html',
+		params=params,
+		recipe=app.config['RECIPES']['ws-project-sessions'],
+		projectId=projectId,		
+		user=_authenticationHub.getUser(request),
+	)
+
+
+
+
 """------------------------------------------------------------------------------
 PAGES THAT DO USE THE COMPONENT LIBRARY
 ------------------------------------------------------------------------------"""
