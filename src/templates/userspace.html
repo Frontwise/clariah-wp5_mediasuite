@@ -41,9 +41,6 @@
 	<!-- The component library -->
 	<script type="text/javascript" src="/static/node_modules/labo-components/dist/labo-components.js"></script>
 	<script>
-		var _chickenStock = '{{token}}';
-		var _clientId = '{{clientId}}';
-		var _play = '{{play}}';
 		labo.cookRecipe({{ recipe|tojson|safe }}, {{ params|tojson|safe }}, {{user|tojson|safe}}, 'app');
 	</script>
 
