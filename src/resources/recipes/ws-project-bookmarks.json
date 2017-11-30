@@ -1,0 +1,13 @@
+{
+  "id" : "ws-project-bookmarks",
+  "name" : "Bookmarks & Annotations",
+  "type" : "ws-project-bookmarks",
+  "phase" : "corpus building",
+  "description" : "Store and annotate documents, fragments and entities",
+  "recipeDescription" : "<p>Store and annotate documents, fragments and entities</p>",
+  "inRecipeList" : false,
+  "useCustomTemplate" : true,
+  "ingredients" : {
+
+  }
+}

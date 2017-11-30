@@ -21,7 +21,7 @@
     "dev": "webpack --env=dev",
     "prod": "webpack --env=prod",
     "watch": "webpack --watch",
-    "postinstall" : "npm run prod"
+    "postinstall": "npm run prod"
   },
   "dependencies": {
     "@vimeo/player": "^2.1.0",

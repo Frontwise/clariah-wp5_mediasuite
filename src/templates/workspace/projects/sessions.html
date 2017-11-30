@@ -1,0 +1,12 @@
+{% extends "./workspace/projects/_layout.html" %} 
+
+{% block content %}
+
+<div class="page-header">
+  <h1>{{ recipe.name }}</h1>
+  {{recipe.recipeDescription | safe}}
+</div>
+
+<div id="app"/>
+
+{% endblock %}
