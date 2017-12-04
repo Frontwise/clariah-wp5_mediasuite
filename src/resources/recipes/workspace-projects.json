@@ -1,0 +1,13 @@
+{
+  "id" : "workspace-projects",
+  "name" : "Workspace Projects",
+  "type" : "workspace-projects",
+  "phase" : "multiple",
+  "description" : "Manage projects in your workspace",
+  "recipeDescription" : "<p>Manage projects in your workspace</p>",
+  "inRecipeList" : false,
+  "useCustomTemplate" : true,
+  "ingredients" : {
+
+  }
+}

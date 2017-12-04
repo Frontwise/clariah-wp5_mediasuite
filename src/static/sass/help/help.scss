@@ -1,0 +1,22 @@
+@media all and (max-width: 960px) {
+  .cl_help {
+    top: 234px;
+  }
+  .cl_container-help {
+    &.cl_active {
+      width: 100%;
+    }
+  }
+}
+
+@media all and (max-width: 608px) {
+  .cl_help {
+    top: 348px;
+  }
+  .cl_main-content {
+    margin-top: 395px;
+  }
+  .cl_img-left {
+    max-width: 30%;
+  }
+}
