@@ -1,0 +1,58 @@
+.cl_list {
+  padding-top: 3rem;
+
+  .cl_no_padd_right {
+    padding-right: 0;
+  }
+  .cl_no_padd_left {
+    padding-left: 0;
+  }
+
+  .cl_margin-botton {
+    margin-bottom: 3rem;
+  }
+  .tool {
+    h3 {
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .actions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .image-wrap {
+      img {
+        width: 100%;
+      }
+    }
+
+    .description {
+      font-size: 13.5px;
+    }
+  }
+}
+
+.cl_development {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+
+  h2 {
+    font-size: 25px;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+    img {
+      max-width: 22%;
+    }
+  }
+
+  .cl_description {
+    column-count: 2;
+    margin: 2rem 0;
+  }
+
+}
+
