@@ -412,9 +412,10 @@ $dropdownWidth: $accountWidth;
       background-image: $iconMenuUrl;
       background-position: center;
       background-repeat: no-repeat;
+
     }
-    &:hover{
-      .menu.main, .right,  .menu.sub{
+    &:hover {
+      .menu.main, .right, .menu.sub {
         display: block !important;
       }
       .workspace, .right .account.loggedin {
@@ -429,9 +430,44 @@ $dropdownWidth: $accountWidth;
     .workspace {
       display: none;
       height: 50px;
-      padding: 0 0 0 3rem;
+      padding: 0;
       font-size: 15px;
       width: 100vh;
+      a {
+        display: block;
+        height: auto;
+        background-position: top 20px right 20px;
+        line-height: 50px;
+        padding: 0 20px 0 3rem;
+        color: $clWhite;
+      }
+
+      &:hover {
+        .dropdown {
+          width: 100%;
+          position: relative;
+          top: 0;
+          left: 0;
+          li {
+            padding: 0;
+
+            a {
+              padding: 10px 15px 10px 3rem;
+              line-height: 20px;
+            }
+          }
+          .new-project {
+            p {
+              padding-left: 3rem;
+            }
+            a.button-holder {
+              background: none;
+              padding-top: 0;
+              text-align: center;
+            }
+          }
+        }
+      }
     }
     .right {
       border-top: 1px solid lighten($clDark, 10);
