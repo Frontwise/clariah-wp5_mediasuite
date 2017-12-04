@@ -231,9 +231,17 @@ WORKSPACE PAGES
 ------------------------------------------------------------------------------"""
 
 
-# Project overview
+# Show Workspace Projects recipe
+# The React router will show the requested url
 
+@app.route('/workspace/projects/create')
 @app.route('/workspace/projects')
+@app.route('/workspace/projects/<int:projectId>')
+@app.route('/workspace/projects/<int:projectId>/bookmarks')
+@app.route('/workspace/projects/<int:projectId>/details')
+@app.route('/workspace/projects/<int:projectId>/sessions')
+@app.route('/workspace/projects/<int:projectId>/edit')
+
 @requires_auth
 def wsProjects():
 
@@ -241,113 +249,10 @@ def wsProjects():
 	token = getToken()
 	clientId = getClientId()
 
-	return render_template('workspace/projects/overview.html',
+	return render_template('workspace/projects.html',
 		params=params,
 		userSpaceAPI=app.config['USER_SPACE_API'],
-		recipe=app.config['RECIPES']['ws-projects'],
-		user=_authenticationHub.getUser(request),
-		token=token,
-		clientId=clientId
-	)
-
-# Show project's bookmarks & annotations
-# This is also the default page
-
-@app.route('/workspace/projects/<int:projectId>')
-@app.route('/workspace/projects/<int:projectId>/bookmarks')
-@requires_auth
-def wsProjectBookmarks(projectId):
-
-	params = getParams()
-	token = getToken()
-	clientId = getClientId()
-
-	return render_template('workspace/projects/bookmarks.html',
-		params=params,
-		userSpaceAPI=app.config['USER_SPACE_API'],
-		projectId=projectId,
-		recipe=app.config['RECIPES']['ws-project-bookmarks'],
-		user=_authenticationHub.getUser(request),
-		token=token,
-		clientId=clientId
-	)
-
-# Show project's details
-
-@app.route('/workspace/projects/<int:projectId>/details')
-@requires_auth
-def wsProjectDetails(projectId):
-
-	params = getParams()
-	token = getToken()
-	clientId = getClientId()
-
-	return render_template('workspace/projects/details.html',
-		params=params,
-		userSpaceAPI=app.config['USER_SPACE_API'],
-		projectId=projectId,
-		user=_authenticationHub.getUser(request),
-		token=token,
-		clientId=clientId
-	)
-
-# Show project's tool sessions
-
-@app.route('/workspace/projects/<int:projectId>/sessions')
-@requires_auth
-def wsProjectSessions(projectId):
-
-	params = getParams()
-	token = getToken()
-	clientId = getClientId()
-
-	return render_template('workspace/projects/sessions.html',
-		params=params,
-		recipe=app.config['RECIPES']['ws-project-sessions'],
-		userSpaceAPI=app.config['USER_SPACE_API'],
-		projectId=projectId,
-		user=_authenticationHub.getUser(request),
-		token=token,
-		clientId=clientId
-	)
-
-# Create a new project
-
-@app.route('/workspace/projects/create', methods=['GET', 'POST'])
-@requires_auth
-def wsProjectCreate():
-
-	#todo: handle post
-
-	params = getParams()
-	token = getToken()
-	clientId = getClientId()
-
-	return render_template('workspace/projects/create.html',
-		params=params,
-		user=_authenticationHub.getUser(request),
-		token=token,
-		clientId=clientId
-	)
-
-
-# Edit a project
-
-@app.route('/workspace/projects/<int:projectId>/edit', methods=['GET', 'POST'])
-@requires_auth
-def wsProjectEdit(projectId):
-
-	#todo: handle post
-	#
-	params = getParams()
-	token = getToken()
-	clientId = getClientId()
-
-	return render_template('workspace/projects/edit.html',
-		params=params,
-		projectId=projectId,
-		# todo: project entity
-		# project=project
+		recipe=app.config['RECIPES']['workspace-projects'],
 		user=_authenticationHub.getUser(request),
 		token=token,
 		clientId=clientId
