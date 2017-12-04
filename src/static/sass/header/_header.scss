@@ -6,8 +6,8 @@ $logoWidth: 295px;
 $accountWidth: 220px;
 $dropdownWidth: $accountWidth;
 
-.header{
-  background-color:  $clDark;
+.header {
+  background-color: $clDark;
   color: $clWhite;
   height: $headerHeight;
   font-family: $fontHeading;
@@ -22,11 +22,11 @@ $dropdownWidth: $accountWidth;
     min-height: $headerHeight;
   }
 
-  &.transparent{
+  &.transparent {
     background-color: rgba($clDark, 0.8);
   }
 
-  .logo{
+  .logo {
     display: inline-block;
     background-image: $logoUrl;
     background-size: 207px;
@@ -41,12 +41,12 @@ $dropdownWidth: $accountWidth;
       width: $logoWidth * 0.9;
     }
 
-    &:hover{
+    &:hover {
       opacity: 0.75;
     }
   }
 
-  .menu{
+  .menu {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -54,7 +54,7 @@ $dropdownWidth: $accountWidth;
     vertical-align: top;
     cursor: pointer;
 
-    & > li{
+    & > li {
       display: inline-block;
       line-height: $headerHeight;
       margin: 0;
@@ -66,18 +66,18 @@ $dropdownWidth: $accountWidth;
         text-decoration: none;
       }
 
-      &.active{
+      &.active {
         border-bottom: 6px solid $clPrimary;
         background-color: lighten($clDark, 5);
       }
 
-      &:hover{
+      &:hover {
         background-color: lighten($clDark, 2);
       }
     }
   }
 
-  .main{
+  .main {
     font-size: 1.55em;
 
     li > a {
@@ -85,7 +85,7 @@ $dropdownWidth: $accountWidth;
     }
   }
 
-  .sub{
+  .sub {
     margin-right: 10px;
     font-size: 1.25em;
     color: lighten($clDark, 40);
@@ -95,7 +95,7 @@ $dropdownWidth: $accountWidth;
       font-size: 1.1em;
       padding-top: 13px;
     }
-    & > li{
+    & > li {
       > a {
         color: lighten($clDark, 40);
       }
@@ -108,7 +108,7 @@ $dropdownWidth: $accountWidth;
         text-align: right;
         border-right: 5px solid transparent;
 
-        &.active{
+        &.active {
           border: none;
           border-right: 5px solid $clPrimary;
         }
@@ -119,27 +119,27 @@ $dropdownWidth: $accountWidth;
         }
       }
 
-      &:hover{
+      &:hover {
         color: lighten($clDark, 40);
       }
 
-      &.active{
+      &.active {
         color: lighten($clDark, 60);
       }
     }
   }
 
-  .right{
+  .right {
     display: inline-block;
     float: right;
 
     @media screen and (max-width: $break-small) {
       display: block;
-      float:none;
+      float: none;
     }
   }
 
-  .workspace{
+  .workspace {
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -154,16 +154,16 @@ $dropdownWidth: $accountWidth;
     // active border will cause 'center' background image to move, so absolute pixels
     background-position: top 56px right 20px;
 
-    &.active{
+    &.active {
       border-bottom: 6px solid $clSecondary;
       background-color: lighten($clDark, 2);
     }
 
-    &:hover{
+    &:hover {
       background-color: lighten($clDark, 5);
     }
 
-    .icon-workspace{
+    .icon-workspace {
       display: inline-block;
       width: 30px;
       height: 30px;
@@ -179,19 +179,19 @@ $dropdownWidth: $accountWidth;
       }
     }
 
-    &:hover{
-      .dropdown{
+    &:hover {
+      .dropdown {
         display: block;
       }
     }
 
-    .dropdown .projects{
+    .dropdown .projects {
       margin: 0;
-      padding:0;
+      padding: 0;
       background-color: $clWhite;
       background-image: none;
 
-      input{
+      input {
         width: 100%;
         box-sizing: border-box;
         border: 0;
@@ -203,19 +203,19 @@ $dropdownWidth: $accountWidth;
         background-repeat: no-repeat;
       }
 
-      ul{
+      ul {
         list-style: none;
         margin: 0;
-        padding:0;
+        padding: 0;
         font-family: $fontBody;
         font-size: 0.84em;
-        li{
+        li {
           padding: 8px 10px;
           border-bottom: 1px solid $clGreyTint;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          &:hover{
+          &:hover {
             background-color: $clGreyTint;
           }
         }
@@ -223,7 +223,7 @@ $dropdownWidth: $accountWidth;
     }
   }
 
-  .account{
+  .account {
     display: inline-block;
     position: relative;
     height: $headerHeight;
@@ -242,22 +242,22 @@ $dropdownWidth: $accountWidth;
       padding: 45px 30px 0 15px;
     }
 
-    &.login{
+    &.login {
       cursor: pointer;
     }
 
-    &.active{
+    &.active {
       border-bottom: 6px solid $clSecondary;
       background-color: lighten($clDark, 2);
     }
 
-    &:hover{
+    &:hover {
       background-color: lighten($clDark, 5);
     }
 
-    .icon-person{
+    .icon-person {
       display: inline-block;
-      float:left;
+      float: left;
       width: 30px;
       height: 28px;
       background-image: $iconPersonUrl;
@@ -268,11 +268,11 @@ $dropdownWidth: $accountWidth;
       margin-top: -2px;
     }
 
-    &.loggedin{
+    &.loggedin {
       padding-top: 35px;
 
-      .username{
-        display:block;
+      .username {
+        display: block;
         margin-top: 5px;
         font-size: 0.7em;
         margin-left: 40px;
@@ -283,7 +283,7 @@ $dropdownWidth: $accountWidth;
         }
       }
 
-      .icon-person{
+      .icon-person {
         height: 50px;
 
         @media screen and (max-width: $break-medium) {
@@ -292,15 +292,15 @@ $dropdownWidth: $accountWidth;
       }
     }
 
-    &:hover{
-      .dropdown{
+    &:hover {
+      .dropdown {
         display: block;
       }
     }
 
   }
 
-  .dropdown{
+  .dropdown {
     display: none;
     position: absolute;
     top: $headerHeight;
@@ -309,13 +309,13 @@ $dropdownWidth: $accountWidth;
     box-sizing: border-box;
     color: $clDark;
     background-color: $clGreyTint;
-    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
     list-style: none;
     margin: 0;
     padding: 0;
     width: $dropdownWidth * 1.2;
 
-    .new-project{
+    .new-project {
       background-image: none;
       p {
         color: $clDark;
@@ -325,15 +325,15 @@ $dropdownWidth: $accountWidth;
         margin: 0;
       }
 
-      .button-holder{
-        .btn{
+      .button-holder {
+        .btn {
           margin: 0;
           color: $clWhite;
         }
       }
     }
 
-    & > li{
+    & > li {
       background-image: $arrowRightDarkUrl;
       background-repeat: no-repeat;
       background-position: center right 10px;
@@ -350,17 +350,17 @@ $dropdownWidth: $accountWidth;
           position: relative;
         }
       }
-      &:hover{
+      &:hover {
         background-color: darken($clGreyTint, 2)
       }
 
-      &.active{
+      &.active {
         background-color: darken($clGreyTint, 5)
       }
 
-      .count{
+      .count {
         display: inline-block;
-        float:right;
+        float: right;
         margin-right: 15px;
         background-color: $clOrange;
         color: $clWhite;
@@ -369,6 +369,119 @@ $dropdownWidth: $accountWidth;
         font-weight: bold;
         padding: 2px 4px 2px 4px;
       }
+    }
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+// phone
+@media screen and (max-width: $break-small) {
+  .cl_flex-main .BreadCrumbs {
+    top: 130px;
+  }
+
+  .header {
+    .menu.main {
+      display: none;
+      border-top: 1px solid lighten($clDark, 10);
+      li {
+        display: block;
+        line-height: 50px;
+        height: 50px;
+        border-bottom: 1px solid lighten($clDark, 10);
+        a {
+          font-size: 15px;
+          display: table-cell;
+          vertical-align: middle;
+          width: 100vh;
+          padding: 0 0 0 3rem;
+        }
+      }
+    }
+
+    .hamburger {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 20%;
+      height: $headerHeight;
+      background-image: $iconMenuUrl;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    &:hover{
+      .menu.main, .right,  .menu.sub{
+        display: block !important;
+      }
+      .workspace, .right .account.loggedin {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .BreadCrumbs {
+        display: none;
+      }
+    }
+
+    .workspace {
+      display: none;
+      height: 50px;
+      padding: 0 0 0 3rem;
+      font-size: 15px;
+      width: 100vh;
+    }
+    .right {
+      border-top: 1px solid lighten($clDark, 10);
+      .menu.sub {
+        display: none;
+        padding-top: 0;
+
+        li {
+          text-align: left;
+          padding: 0 0 0 3rem;
+          line-height: 50px;
+          height: 50px;
+          border-bottom: 1px solid lighten($clDark, 10);
+          a {
+            color: $clWhite;
+            font-size: 15px;
+            padding: 0;
+          }
+        }
+      }
+
+      .account {
+        height: 50px;
+
+        &.loggedin {
+          display: none;
+          padding-top: 0;
+          padding-left: 3rem;
+          font-size: 15px;
+          width: 100vh;
+
+          .username {
+            display: inline-block;
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+
+    .account > a.loggedin .username {
+      display: inline-block;
+      margin-left: 15px;
+      line-height: 1em;
+      margin-top: 0;
+    }
+
+    .cl_help {
+      position: absolute;
+      right: 0;
+      top: auto;
     }
   }
 }
