@@ -199,7 +199,7 @@ WORKSPACE PAGES
 ------------------------------------------------------------------------------"""
 
 # Show Workspace Projects recipe
-# The React router will show the requested url
+# The React router will show the correct page based on the url
 
 @app.route('/workspace/projects/create')
 @app.route('/workspace/projects')
