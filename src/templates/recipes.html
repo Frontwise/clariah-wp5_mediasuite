@@ -1,102 +1,188 @@
+<!doctype HTML>
+<html>
 <head>
-	<title>CLARIAH Media Suite - Recipes</title>
-    {% include '%s/head.html' % headDir %}
+  <title>CLARIAH Media Suite - Recipes</title>
+  {% include '%s/head.html' % headDir %}
 </head>
-
-<body>
-
+<body class="cl_flex-main">
 {% with page='recipes' %}
 {% include '%s/nav.html' % navbarDir %}
 {% endwith %}
 
-	<div class="container">
+{% with page='data-sources' %}
+{% include '%s/help.html' % helpDir %}
+{% endwith %}
 
-		<div class="page-header">
-			<h1>Recipes</h1>
-		</div>
+<div class="tools container cl_row cl_main-content cl_container-800">
 
-		<p>The ingredients of our recipes are components, which offer the core functionalities we've developed in prior projects, such as AVResearcherXL, Comerda, DIVE and TROVE. Each recipe can be assembled using one or more of these component and can be optimised for a certain phase in your research. Depending on your technical expertise, the creation of recipes can be more exactly tailored for your needs.</p>
+  <div class="cl_col cl_col-span-4">
+    <img class="cl_img-left cl_img-max-width-75" src="../static/images/bigicon-tools.833a4532.png"
+         alt="Media Suite Tools">
+  </div>
+  <div class="cl_col cl_col-span-8">
+    <div class="info">
+      <div class="description">
+        <p>
+          The ingredients of our recipes are components,
+          which offer the core functionalities we've developed in prior projects, such as AVResearcherXL, Comerda,
+          DIVE and TROVE. Each recipe can be assembled using one or more of these component and can be optimised for
+          a certain phase in your research.
+          Depending on your technical expertise, the creation of recipes can be more exactly tailored for your needs.
+        </p>
+      </div>
+      <div class="actions cl_center">
+        <a class="btn blank">Hide</a>
+        <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" class="btn" target="_blank" rel="noopener noreferrer">
+          View tutorials
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="cl_row cl_list">
+    <div class="tool cl_col cl_col-span-6 cl_no_padd_left cl_margin-botton">
+      <div class="image-wrap"><img src="../static/images/placeholder.2b77091b.svg"
+                                   alt="Collection inspector"></div>
+      <h3>Collection inspector</h3>
+      <div class="description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
+        fuit in disserendo pertinacior.
+      </div>
+      <div class="actions">
+        <a href="#toolDetails" class="btn blank">Details</a>
+        <a href="{{recipes['collection-inspector'].url}}" class="btn">Open</a></div>
+    </div>
+    <div class="tool cl_col cl_col-span-6 cl_no_padd_right cl_margin-botton">
+      <div class="image-wrap">
+        <img src="../static/images/placeholder.2b77091b.svg" alt="Exploratory browser">
+      </div>
+      <h3>Exploratory browser</h3>
+      <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
+        fuit in disserendo pertinacior.
+      </div>
+      <div class="actions">
+        <a href="#" class="btn blank">Details</a>
+        <a href="{{recipes['lod-collection-browser'].url}}" class="btn">Open</a></div>
+    </div>
+    <div class="tool cl_col cl_col-span-6 cl_no_padd_left">
+      <div class="image-wrap">
+        <img src="../static/images/placeholder.2b77091b.svg" alt="Basic faceted search">
+      </div>
+      <h3>Basic faceted search</h3>
+      <div class="description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
+        fuit in disserendo pertinacior.
+      </div>
+      <div class="actions">
+        <a href="#" class="btn blank">Details</a>
+        <a href="{{recipes['single-search'].url}}" class="btn">Open</a>
+      </div>
+    </div>
+    <div class="tool cl_col cl_col-span-6 cl_no_padd_right">
+      <div class="image-wrap">
+        <img src="../static/images/placeholder.2b77091b.svg" alt="Comparative search">
+      </div>
+      <h3>Comparative search</h3>
+      <div class="description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
+        fuit in disserendo pertinacior.
+      </div>
+      <div class="actions">
+        <a href="#" class="btn blank">Details</a>
+        <a href="{{recipes['comparative-search'].url}}" class="btn">Open</a>
+      </div>
+    </div>
+  </div>
 
-		<br><br>
+  <div class="cl_development">
+    <p><img src="../static/images/bigicon-development.a7d70511.png" alt="Tool development"></p>
+    <h2>Tool development</h2>
+    <div class="cl_description">Lorem ipsum dolor sit amet, nec te atqui scribentur. Diam molestie posidonium te sit, ea
+      sea expetenda suscipiantur contentiones, vix ex maiorum denique. Quo detracto recusabo lobortis ei, ne labores
+      sapientem pri, ex zril option aperiri mea. Ad magna utamur molestiae cum. Et dicam antiopam vel, ludus graeco
+      recusabo quo in, per in quod soleat. Cetero praesent recteque vim te, ut vix decore partem appellantur, et vim
+      dico ancillae. Idque deleniti maluisset eu per.
+    </div>
+    <div class="actions cl_center"><a href="" class="btn primary">More information</a></div>
+  </div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<h3>Collection exploration</h3>
-				<br/>
-			</div>
-		</div>
+  <!--<div class="row">-->
+  <!--<div class="col-md-12">-->
+  <!--<h3>Collection exploration</h3>-->
+  <!--<br/>-->
+  <!--</div>-->
+  <!--</div>-->
 
-		<div class="row">
-				<!-- COLLECTION INSPECTOR -->
-				<div id="{{recipes['collection-inspector'].id}}" class="col-sm-6 col-md-4">
+  <!--<div class="row">-->
+  <!--&lt;!&ndash; COLLECTION INSPECTOR &ndash;&gt;-->
+  <!--<div id="{{recipes['collection-inspector'].id}}" class="col-sm-6 col-md-4">-->
 
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['collection-inspector'].name}}</h3>
-						</div>
-						<div class="panel-body">
-							{{recipes['collection-inspector'].description}}
-						</div>
-						<div class="panel-footer text-right"><a href="{{recipes['collection-inspector'].url}}">View recipe</a></div>
-					</div>
-				</div>
+  <!--<div class="panel panel-default">-->
+  <!--<div class="panel-heading">-->
+  <!--<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['collection-inspector'].name}}</h3>-->
+  <!--</div>-->
+  <!--<div class="panel-body">-->
+  <!--{{recipes['collection-inspector'].description}}-->
+  <!--</div>-->
+  <!--<div class="panel-footer text-right"><a href="{{recipes['collection-inspector'].url}}">View recipe</a></div>-->
+  <!--</div>-->
+  <!--</div>-->
 
-				<!-- DIVE  -->
-				<div id="{{recipes['lod-collection-browser'].id}}" class="col-sm-6 col-md-4">
+  <!--&lt;!&ndash; DIVE  &ndash;&gt;-->
+  <!--<div id="{{recipes['lod-collection-browser'].id}}" class="col-sm-6 col-md-4">-->
 
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['lod-collection-browser'].name}}</h3>
-						</div>
-						<div class="panel-body">
-							{{recipes['lod-collection-browser'].description}}
-						</div>
-						<div class="panel-footer text-right"><a href="{{recipes['lod-collection-browser'].url}}">View recipe</a></div>
-					</div>
-				</div>
+  <!--<div class="panel panel-default">-->
+  <!--<div class="panel-heading">-->
+  <!--<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['lod-collection-browser'].name}}</h3>-->
+  <!--</div>-->
+  <!--<div class="panel-body">-->
+  <!--{{recipes['lod-collection-browser'].description}}-->
+  <!--</div>-->
+  <!--<div class="panel-footer text-right"><a href="{{recipes['lod-collection-browser'].url}}">View recipe</a></div>-->
+  <!--</div>-->
+  <!--</div>-->
 
-		</div>
+  <!--</div>-->
 
-		<div className="separator"/>
+  <!--<div class="row">-->
+  <!--<div class="col-md-12">-->
+  <!--<h3>Search</h3>-->
+  <!--<br/>-->
+  <!--</div>-->
+  <!--</div>-->
 
-		<div class="row">
-			<div class="col-md-12">
-				<h3>Search</h3>
-				<br/>
-			</div>
-		</div>
+  <!--<div class="row">-->
+  <!--&lt;!&ndash; COLLECTION INSPECTOR &ndash;&gt;-->
+  <!--<div id="{{recipes['comparative-search'].id}}" class="col-sm-6 col-md-4">-->
 
-		<div class="row">
-				<!-- COLLECTION INSPECTOR -->
-				<div id="{{recipes['comparative-search'].id}}" class="col-sm-6 col-md-4">
+  <!--<div class="panel panel-default">-->
+  <!--<div class="panel-heading">-->
+  <!--<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['comparative-search'].name}}</h3>-->
+  <!--</div>-->
+  <!--<div class="panel-body">-->
+  <!--{{recipes['comparative-search'].description}}-->
+  <!--</div>-->
+  <!--<div class="panel-footer text-right"><a href="{{recipes['comparative-search'].url}}">View recipe</a></div>-->
+  <!--</div>-->
+  <!--</div>-->
 
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['comparative-search'].name}}</h3>
-						</div>
-						<div class="panel-body">
-							{{recipes['comparative-search'].description}}
-						</div>
-						<div class="panel-footer text-right"><a href="{{recipes['comparative-search'].url}}">View recipe</a></div>
-					</div>
-				</div>
+  <!--&lt;!&ndash; DIVE  &ndash;&gt;-->
+  <!--<div id="{{recipes['single-search'].id}}" class="col-sm-6 col-md-4">-->
 
-				<!-- DIVE  -->
-				<div id="{{recipes['single-search'].id}}" class="col-sm-6 col-md-4">
+  <!--<div class="panel panel-default">-->
+  <!--<div class="panel-heading">-->
+  <!--<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['single-search'].name}}</h3>-->
+  <!--</div>-->
+  <!--<div class="panel-body">-->
+  <!--{{recipes['single-search'].description}}-->
+  <!--</div>-->
+  <!--<div class="panel-footer text-right"><a href="{{recipes['single-search'].url}}">View recipe</a></div>-->
+  <!--</div>-->
+  <!--</div>-->
 
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-rocket"></i>&nbsp; {{recipes['single-search'].name}}</h3>
-						</div>
-						<div class="panel-body">
-							{{recipes['single-search'].description}}
-						</div>
-						<div class="panel-footer text-right"><a href="{{recipes['single-search'].url}}">View recipe</a></div>
-					</div>
-				</div>
-
-		</div>
-	</div>
+  <!--</div>-->
+</div>
+{% include '%s/footer.html' % footerDir %}
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/static/js/common.js"></script>
 </body>
+</html>

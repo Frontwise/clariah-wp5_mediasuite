@@ -5,16 +5,17 @@
     margin-top: 0;
   }
 }
+
 /**
 * Content
 */
-h1,h2,h3,h4,h5{
- font-family: $fontHeading;
- font-weight: 500;
- line-height: 1.1em;
+h1, h2, h3, h4, h5 {
+  font-family: $fontHeading;
+  font-weight: 500;
+  line-height: 1.1em;
 }
 
-p{
+p {
   line-height: 1.5em;
   margin: 15px 0;
 }
@@ -22,25 +23,24 @@ p{
 /**
 * Links
 */
-.link, .link:visited{
-   color: $clPrimary;
+.link, .link:visited {
+  color: $clPrimary;
 }
 
-.link:hover{
+.link:hover {
   color: lighten($clPrimary, 10);
 }
 
-.link:active{
-   color: $clPrimaryAlt;
+.link:active {
+  color: $clPrimaryAlt;
 }
-
 
 /**
 * Buttons
 */
 // Wrapping btn to avoid overwriting bootstrap stylings
-.banner,  .cards, .button-holder, .actions {
-  .btn{
+.banner, .cards, .button-holder, .actions {
+  .btn {
     border-radius: 2px;
     cursor: pointer;
     display: inline-block;
@@ -52,7 +52,7 @@ p{
     padding: 0 40px 0 30px;
     box-sizing: border-box;
     line-height: 35px;
-    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     background-image: $arrowRightDarkUrl;
     background-position: center right 10px;
     background-repeat: no-repeat;
@@ -60,47 +60,46 @@ p{
     background-color: $clGrey;
     color: $clDark;
 
-    &:hover{
+    &:hover {
       background-color: lighten($clGrey, 5);
-      box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
     }
 
-    &.primary{
+    &.primary {
       background-color: $clPrimary;
       color: $clWhite;
       background-image: $arrowRightWhite40Url;
-      box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 
-      &:hover{
+      &:hover {
         background-color: lighten($clPrimary, 5);
       }
 
-      &.plus{
+      &.plus {
         background-image: $iconPlusUrl;
       }
-
     }
 
-    &.white{
+    &.white {
       background-color: $clWhite;
-      &:hover{
+      &:hover {
         background-color: $clWhite;
         opacity: 0.9;
       }
     }
 
-    &.blank{
+    &.blank {
       box-shadow: none;
       background-color: transparent;
       background-image: none;
       padding: 0 30px;
 
-      &:hover{
+      &:hover {
         background-color: transparent;
         opacity: 0.9;
       }
 
-      &.warning:hover{
+      &.warning:hover {
         color: $clSecondary;
         opacity: 1;
       }
@@ -111,17 +110,17 @@ p{
 /**
 * Forms
 */
-.label{
+.label {
   color: $clPrimary;
   text-transform: uppercase;
   display: block;
   font-size: 0.96em;
   font-family: $fontHeading;
-  font-weight: 500;  
+  font-weight: 500;
   margin-bottom: 10px;
 }
 
-input[type=text], textarea{
+input[type=text], textarea {
   border: 1px solid $clGreyTint;
   border-left-width: 2px;
   outline: 0;
@@ -132,30 +131,263 @@ input[type=text], textarea{
   margin-bottom: 15px;
   transition: border $transition;
 
-  &:focus{
+  &:focus {
     border-left: 2px solid $clPrimary;
   }
 }
 
-textarea{
+textarea {
   min-width: 400px;
   min-height: 200px;
 }
 
 /* Page layout */
-.content{
+.content {
   position: relative;
   max-width: $maxPageWidth;
   margin: auto;
   padding: $contentPadding;
   box-sizing: border-box;
 
-  .text-body{
+  .text-body {
     max-width: $maxTextBodyWidth;
     margin: auto;
-    
-    p{
+
+    p {
       max-width: 500px;
-    }  
+    }
+  }
+}
+
+// Flexbox grid and common styles for imgs
+.cl_help {
+  float: right;
+  display: inline-block;
+  position: fixed;
+  top: 115px;
+  right: 0;
+  z-index: 1111;
+
+  .cl_button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: $clPrimary;
+    background-image: $iconHelpUrl;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    float: right;
+
+    &:hover {
+      background-color: lighten($clPrimary, 10);
+    }
+  }
+
+  .cl_container-help {
+    position: fixed;
+    display: none;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 600px;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: $clWhite;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    max-width: 100%;
+    transition: all .6s linear 0s;
+    z-index: 1;
+
+    &.cl_active {
+      display: block;
+    }
+
+    .cl_header {
+      background-color: $clPrimary;
+      height: 50px;
+      line-height: 50px;
+      color: $clWhite;
+      padding-left: 25px;
+      font-size: 20px;
+      font-family: $fontHeading;
+
+      .cl_close {
+        background-image: $iconCrossUrl;
+        background-size: 13px;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+
+    .cl_scroll {
+      padding: 20px 25px;
+      overflow-y: auto;
+      position: absolute;
+      height: calc(100% - 50px);
+      box-sizing: border-box;
+
+      p {
+        margin-top: 0;
+      }
+
+    }
+  }
+}
+
+.cl_row {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cl_col {
+  flex: 1 1 8%;
+  margin: 0 0 0.5rem 0;
+  padding: 0.5em 10px;
+}
+
+/* nested grids */
+.cl_row .cl_row, .cl_row.cl_nested {
+  flex: 1 1 auto;
+  margin-top: -0.5em;
+}
+
+/* full width grids */
+.cl_row.cl_wide-fit {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+/* center grids */
+.cl_row.cl_center {
+  justify-content: center;
+}
+
+.cl_center .cl_col {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* columns widths */
+.cl_col-span-1 {
+  flex-basis: 8.3333%;
+}
+
+.cl_col-span-2 {
+  flex-basis: 16.6666%;
+}
+
+.cl_col-span-3 {
+  flex-basis: 25%;
+}
+
+.cl_col-span-4 {
+  flex-basis: 33.3333%;
+}
+
+.cl_col-span-5 {
+  flex-basis: 41.6666%;
+}
+
+.cl_col-span-6 {
+  flex-basis: 50%;
+}
+
+.cl_col-span-7 {
+  flex-basis: 58.3333%;
+}
+
+.cl_col-span-8 {
+  flex-basis: 66.6666%;
+}
+
+.cl_col-span-9 {
+  flex-basis: 75%;
+}
+
+.cl_col-span-10 {
+  flex-basis: 83.3333%;
+}
+
+.cl_col-span-11 {
+  flex-basis: 91.6666%;
+}
+
+.cl_col-span-12 {
+  flex-basis: 100%;
+}
+
+@media all and (max-width: 568px) {
+  .cl_col-span-1,
+  .cl_col-span-2,
+  .cl_col-span-3,
+  .cl_col-span-4,
+  .cl_col-span-5 {
+    flex-basis: 50%;
+  }
+
+  .cl_col-span-6,
+  .cl_col-span-7,
+  .cl_col-span-8,
+  .cl_col-span-9,
+  .cl_col-span-10,
+  .cl_col-span-11 {
+    flex-basis: 100%;
+  }
+
+  .cl_nested .cl_col {
+    flex-basis: 100%;
+  }
+}
+
+// Main flex elements to keep footer at bottom of page even when the content
+// is not long enough to push it down.
+.cl_flex-main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.cl_main-content {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.cl_center {
+  text-align: center;
+}
+
+.cl_img-left {
+  float: left;
+  margin: 0 8rem 5rem 0;
+  max-width: 60%;
+  height: auto;
+}
+
+.cl_container-800 {
+  max-width: 800px;
+}
+
+.cl_img-max-width-75 {
+  max-width: 75%;
+}
+
+@media all and (max-width: 960px) {
+  .cl_main-content {
+    margin-top: 250px;
   }
 }
