@@ -15,6 +15,8 @@ from components.external.wikidata.WikiData import WikiData
 from components.external.europeana.Europeana import Europeana
 from components.external.unesco.Unesco import Unesco
 
+from components.workspace.Workspace import Workspace
+
 #exporting / generating indices for certain instances of LABO
 from components.export.AnnotationExporter import AnnotationExporter
 
@@ -43,6 +45,7 @@ AUTHENTICATION FUNCTIONS
 
 #this object is used for everything related to authentication/authorization
 _authenticationHub = AuthenticationHub(app)
+_workspace = Workspace(app.config)
 
 #decorator that makes sure to check whether the user is authorized based on the configured authorization method
 def requires_auth(f):
@@ -156,41 +159,6 @@ def apis():
 		annotationAPI=app.config['ANNOTATION_API']
 	)
 
-@app.route('/userspace')
-@requires_auth
-def userspace():
-	params = {}
-	for x in dict(request.args).keys():
-		params[x] = request.args.get(x)
-
-	#determine the token (either from the config or the session)
-	token = None
-	if 'OAuthToken' in session:
-		token = session['OAuthToken']
-	elif 'TOKEN' in app.config:
-		token = app.config['TOKEN']
-
-	#get the client id from the config
-	clientId = None
-	if 'CLIENT_ID' in app.config:
-		clientId = app.config['CLIENT_ID']
-
-	return render_template('userspace.html',
-		recipe=app.config['RECIPES']['user-space'],
-		params=params,
-		instanceId='clariah',
-		searchAPI=app.config['SEARCH_API'],
-		searchAPIPath=app.config['SEARCH_API_PATH'],
-		user=_authenticationHub.getUser(request),
-		userSpaceAPI=app.config['USER_SPACE_API'],
-		version=app.config['APP_VERSION'],
-		annotationAPI=app.config['ANNOTATION_API'],
-		annotationAPIPath=app.config['ANNOTATION_API_PATH'],
-		token=token,
-		clientId=clientId,
-		play=app.config['PLAYOUT_API']
-	)
-
 @app.route('/recipes')
 @requires_auth
 def recipes():
@@ -230,7 +198,6 @@ def getClientId():
 WORKSPACE PAGES
 ------------------------------------------------------------------------------"""
 
-
 # Show Workspace Projects recipe
 # The React router will show the requested url
 
@@ -251,13 +218,37 @@ def wsProjects():
 
 	return render_template('workspace/projects.html',
 		params=params,
-		userSpaceAPI=app.config['USER_SPACE_API'],
 		recipe=app.config['RECIPES']['workspace-projects'],
 		user=_authenticationHub.getUser(request),
-		token=token,
-		clientId=clientId
+		token=getToken(),
+		clientId=getClientId()
 	)
 
+"""------------------------------------------------------------------------------
+NEW INTEGRATED PROJECT-API
+------------------------------------------------------------------------------"""
+
+@app.route('/project-api/<userId>/projects', methods=['GET', 'POST'])
+@app.route('/project-api/<userId>/projects/<projectId>', methods=['GET', 'PUT', 'DELETE'])
+@requires_auth
+def projectAPI(userId, projectId=None):
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	print postData
+	print request.method
+	resp = _workspace.processProjectAPIRequest(
+		getClientId(),
+		getToken(),
+		request.method,
+		userId,
+		postData,
+		projectId
+	)
+	print resp
+	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------
 PAGES THAT DO USE THE COMPONENT LIBRARY
@@ -266,29 +257,13 @@ PAGES THAT DO USE THE COMPONENT LIBRARY
 @app.route('/recipe/<recipeId>')
 @requires_auth
 def recipe(recipeId):
-	#flatten the params and put them in a normal dict
-	params = {}
-	for x in dict(request.args).keys():
-		params[x] = request.args.get(x)
-
 	if app.config['RECIPES'].has_key(recipeId):
 		recipe = app.config['RECIPES'][recipeId]
 
-		#determine the token (either from the config or the session)
-		token = None
-		if 'OAuthToken' in session:
-			token = session['OAuthToken']
-		elif 'TOKEN' in app.config:
-			token = app.config['TOKEN']
-
-		#get the client id from the config
-		clientId = None
-		if 'CLIENT_ID' in app.config:
-			clientId = app.config['CLIENT_ID']
 		return render_template(
 			'recipe.html',
 				recipe=recipe,
-				params=params,
+				params=getParams(),
 				instanceId='clariah',
 				searchAPI=app.config['SEARCH_API'],
 				searchAPIPath=app.config['SEARCH_API_PATH'],
@@ -297,8 +272,8 @@ def recipe(recipeId):
 				version=app.config['APP_VERSION'],
 				annotationAPI=app.config['ANNOTATION_API'],
 				annotationAPIPath=app.config['ANNOTATION_API_PATH'],
-				token=token,
-				clientId=clientId,
+				token=getToken(),
+				clientId=getClientId(),
 				play=app.config['PLAYOUT_API']
 		), 200, {'Access-Control-Allow-Credentials' : 'true'}
 
