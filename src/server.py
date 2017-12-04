@@ -201,16 +201,11 @@ WORKSPACE PAGES
 # Show Workspace Projects recipe
 # The React router will show the correct page based on the url
 
-@app.route('/workspace/projects/create')
-@app.route('/workspace/projects')
-@app.route('/workspace/projects/<int:projectId>')
-@app.route('/workspace/projects/<int:projectId>/bookmarks')
-@app.route('/workspace/projects/<int:projectId>/details')
-@app.route('/workspace/projects/<int:projectId>/sessions')
-@app.route('/workspace/projects/<int:projectId>/edit')
+@app.route('/workspace/projects', defaults={'path': ''})
+@app.route('/workspace/<path:path>')
 
 @requires_auth
-def wsProjects():
+def wsProjects(path):
 
 	params = getParams()
 	token = getToken()
