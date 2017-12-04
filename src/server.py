@@ -215,6 +215,7 @@ def wsProjects(path):
 		params=params,
 		recipe=app.config['RECIPES']['workspace-projects'],
 		user=_authenticationHub.getUser(request),
+		userSpaceAPI=app.config['USER_SPACE_API'],
 		token=getToken(),
 		clientId=getClientId()
 	)
@@ -227,10 +228,11 @@ NEW INTEGRATED PROJECT-API
 @app.route('/project-api/<userId>/projects/<projectId>', methods=['GET', 'PUT', 'DELETE'])
 @requires_auth
 def projectAPI(userId, projectId=None):
-	postData = None
+	postData = None	
+	print request
 	try:
 		postData = request.get_json(force=True)
-	except Exception, e:
+	except Exception, e:		
 		print e
 	print postData
 	print request.method
@@ -242,7 +244,7 @@ def projectAPI(userId, projectId=None):
 		postData,
 		projectId
 	)
-	print resp
+	print resp	
 	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------
@@ -263,7 +265,6 @@ def recipe(recipeId):
 				searchAPI=app.config['SEARCH_API'],
 				searchAPIPath=app.config['SEARCH_API_PATH'],
 				user=_authenticationHub.getUser(request),
-				userSpaceAPI=app.config['USER_SPACE_API'],
 				version=app.config['APP_VERSION'],
 				annotationAPI=app.config['ANNOTATION_API'],
 				annotationAPIPath=app.config['ANNOTATION_API_PATH'],
