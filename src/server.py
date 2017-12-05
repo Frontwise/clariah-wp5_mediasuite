@@ -199,80 +199,19 @@ def getClientId():
 WORKSPACE PAGES
 ------------------------------------------------------------------------------"""
 
-# Project overview
-@app.route('/workspace/projects')
-@requires_auth
-def wsProjects():
-	return render_template('workspace/projects/overview.html',
-		params=getParams(request),
-		recipe=app.config['RECIPES']['ws-projects'],
-		user=_authenticationHub.getUser(request),
-		token=getToken(),
-		clientId=getClientId()
-	)
+# Show Workspace Projects recipe
+# The React router will show the correct page based on the url
 
-# Show project's bookmarks & annotations
-# This is also the default page
-@app.route('/workspace/projects/<int:projectId>')
-@app.route('/workspace/projects/<int:projectId>/bookmarks')
+@app.route('/workspace/projects', defaults={'path': ''})
+@app.route('/workspace/projects/<path:path>')
 @requires_auth
-def wsProjectBookmarks(projectId):
-	return render_template('workspace/projects/bookmarks.html',
-		params=getParams(request),
-		projectId=projectId,
-		recipe=app.config['RECIPES']['ws-project-bookmarks'],
-		user=_authenticationHub.getUser(request),
-		token=getToken(),
-		clientId=getClientId()
-	)
+def wsProjects(path):
 
-# Show project's details
-@app.route('/workspace/projects/<int:projectId>/details')
-@requires_auth
-def wsProjectDetails(projectId):
-	return render_template('workspace/projects/details.html',
+	return render_template('workspace/projects.html',
 		params=getParams(request),
-		projectId=projectId,
+		recipe=app.config['RECIPES']['workspace-projects'],
 		user=_authenticationHub.getUser(request),
-		token=getToken(),
-		clientId=getClientId()
-	)
-
-# Show project's tool sessions
-@app.route('/workspace/projects/<int:projectId>/sessions')
-@requires_auth
-def wsProjectSessions(projectId):
-	return render_template('workspace/projects/sessions.html',
-		params=getParams(request),
-		recipe=app.config['RECIPES']['ws-project-sessions'],
-		projectId=projectId,
-		user=_authenticationHub.getUser(request),
-		token=getToken(),
-		clientId=getClientId()
-	)
-
-# Create a new project
-@app.route('/workspace/projects/create', methods=['GET', 'POST'])
-@requires_auth
-def wsProjectCreate():
-	return render_template('workspace/projects/create.html',
-		params=getParams(request),
-		user=_authenticationHub.getUser(request),
-		token=getToken(),
-		clientId=getClientId()
-	)
-
-
-# Edit a project
-@app.route('/workspace/projects/<int:projectId>/edit', methods=['GET', 'POST'])
-@requires_auth
-def wsProjectEdit(projectId):
-	return render_template('workspace/projects/edit.html',
-		params=getParams(request),
-		projectId=projectId,
-		# todo: project entity
-		# project=project
-		user=_authenticationHub.getUser(request),
+		userSpaceAPI=app.config['USER_SPACE_API'],
 		token=getToken(),
 		clientId=getClientId()
 	)
@@ -285,10 +224,11 @@ NEWLY INTEGRATED PROJECT API
 @app.route('/project-api/<userId>/projects/<projectId>', methods=['GET', 'PUT', 'DELETE'])
 @requires_auth
 def projectAPI(userId, projectId=None):
-	postData = None
+	postData = None	
+	print request
 	try:
 		postData = request.get_json(force=True)
-	except Exception, e:
+	except Exception, e:		
 		print e
 	resp = _workspace.processProjectAPIRequest(
 		getClientId(),
@@ -298,7 +238,7 @@ def projectAPI(userId, projectId=None):
 		postData,
 		projectId
 	)
-	print resp
+	print resp	
 	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------
@@ -351,7 +291,6 @@ def recipe(recipeId):
 				searchAPI=app.config['SEARCH_API'],
 				searchAPIPath=app.config['SEARCH_API_PATH'],
 				user=_authenticationHub.getUser(request),
-				userSpaceAPI=app.config['USER_SPACE_API'],
 				version=app.config['APP_VERSION'],
 				annotationAPI=app.config['ANNOTATION_API'],
 				token=getToken(),
