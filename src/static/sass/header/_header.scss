@@ -154,6 +154,13 @@ $dropdownWidth: $accountWidth;
     // active border will cause 'center' background image to move, so absolute pixels
     background-position: top 56px right 20px;
 
+    a {
+      color: $clWhite;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
     &.active {
       border-bottom: 6px solid $clSecondary;
       background-color: lighten($clDark, 2);
@@ -162,7 +169,11 @@ $dropdownWidth: $accountWidth;
     &:hover {
       background-color: lighten($clDark, 5);
     }
-
+    &:hover {
+      .dropdown {
+        display: block;
+      }
+    }
     .icon-workspace {
       display: inline-block;
       width: 30px;
@@ -176,12 +187,6 @@ $dropdownWidth: $accountWidth;
 
       @media screen and (max-width: $break-medium) {
         display: none;
-      }
-    }
-
-    &:hover {
-      .dropdown {
-        display: block;
       }
     }
 
