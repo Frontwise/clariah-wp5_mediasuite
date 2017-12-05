@@ -184,10 +184,11 @@ def getToken():
 	return None
 
 # flatten the params and put them in a normal dict
-def getParams():
+def getParams(request):
 	params = {}
 	for x in dict(request.args).keys():
 		params[x] = request.args.get(x)
+	return params
 
 # get the client id from the config
 def getClientId():
@@ -202,38 +203,33 @@ WORKSPACE PAGES
 # The React router will show the correct page based on the url
 
 @app.route('/workspace/projects', defaults={'path': ''})
-@app.route('/workspace/<path:path>')
-
+@app.route('/workspace/projects/<path:path>')
 @requires_auth
 def wsProjects(path):
 
-	params = getParams()
-	token = getToken()
-	clientId = getClientId()
-
 	return render_template('workspace/projects.html',
-		params=params,
+		params=getParams(request),
 		recipe=app.config['RECIPES']['workspace-projects'],
 		user=_authenticationHub.getUser(request),
+		userSpaceAPI=app.config['USER_SPACE_API'],
 		token=getToken(),
 		clientId=getClientId()
 	)
 
 """------------------------------------------------------------------------------
-NEW INTEGRATED PROJECT-API
+NEWLY INTEGRATED PROJECT API
 ------------------------------------------------------------------------------"""
 
 @app.route('/project-api/<userId>/projects', methods=['GET', 'POST'])
 @app.route('/project-api/<userId>/projects/<projectId>', methods=['GET', 'PUT', 'DELETE'])
 @requires_auth
 def projectAPI(userId, projectId=None):
-	postData = None
+	postData = None	
+	print request
 	try:
 		postData = request.get_json(force=True)
-	except Exception, e:
+	except Exception, e:		
 		print e
-	print postData
-	print request.method
 	resp = _workspace.processProjectAPIRequest(
 		getClientId(),
 		getToken(),
@@ -242,6 +238,38 @@ def projectAPI(userId, projectId=None):
 		postData,
 		projectId
 	)
+	print resp	
+	return Response(resp, mimetype='application/json')
+
+"""------------------------------------------------------------------------------
+NEWLY INTEGRATED ANNOTATION API
+------------------------------------------------------------------------------"""
+
+@app.route('/annotation-api/annotation', methods=['POST'])
+@app.route('/annotation-api/annotation/<annotationId>', methods=['GET', 'PUT', 'DELETE'])
+@requires_auth
+def annotationAPI(annotationId = None):
+	postData = None
+	print annotationId
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = _workspace.processAnnotationAPIRequest(
+		getClientId(),
+		getToken(),
+		request.method,
+		postData,
+		annotationId
+	)
+	print resp
+	return Response(resp, mimetype='application/json')
+
+
+@app.route('/annotation-api/annotations/filter', methods=['GET'])
+@requires_auth
+def annotationSearchAPI():
+	resp = _workspace.searchAnnotations(getClientId(), getToken(), getParams(request))
 	print resp
 	return Response(resp, mimetype='application/json')
 
@@ -258,15 +286,13 @@ def recipe(recipeId):
 		return render_template(
 			'recipe.html',
 				recipe=recipe,
-				params=getParams(),
+				params=getParams(request),
 				instanceId='clariah',
 				searchAPI=app.config['SEARCH_API'],
 				searchAPIPath=app.config['SEARCH_API_PATH'],
 				user=_authenticationHub.getUser(request),
-				userSpaceAPI=app.config['USER_SPACE_API'],
 				version=app.config['APP_VERSION'],
 				annotationAPI=app.config['ANNOTATION_API'],
-				annotationAPIPath=app.config['ANNOTATION_API_PATH'],
 				token=getToken(),
 				clientId=getClientId(),
 				play=app.config['PLAYOUT_API']
@@ -283,8 +309,7 @@ def components():
 		instanceId='clariah',
 		searchAPI=app.config['SEARCH_API'],
 		searchAPIPath=app.config['SEARCH_API_PATH'],
-		annotationAPI=app.config['ANNOTATION_API'],
-		annotationAPIPath=app.config['ANNOTATION_API_PATH']
+		annotationAPI=app.config['ANNOTATION_API']
 	)
 
 """------------------------------------------------------------------------------
