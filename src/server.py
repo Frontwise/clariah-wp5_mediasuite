@@ -89,7 +89,7 @@ def loadRecipes():
 
 				#add the standard URL for recipes that have no URL defined.
 				if not 'url' in recipe:
-					recipe['url'] = '/recipe/%s' % recipe['id'];
+					recipe['url'] = '/tool/%s' % recipe['id'];
 
 				recipes[fn.replace('.json', '')] = recipe
 	app.config['RECIPES'] = recipes
@@ -159,7 +159,7 @@ def apis():
 		annotationAPI=app.config['ANNOTATION_API']
 	)
 
-@app.route('/recipes')
+@app.route('/tools')
 @requires_auth
 def recipes():
 	return render_template(
@@ -277,7 +277,7 @@ def annotationSearchAPI():
 PAGES THAT DO USE THE COMPONENT LIBRARY
 ------------------------------------------------------------------------------"""
 
-@app.route('/recipe/<recipeId>')
+@app.route('/tool/<recipeId>')
 @requires_auth
 def recipe(recipeId):
 	if app.config['RECIPES'].has_key(recipeId):

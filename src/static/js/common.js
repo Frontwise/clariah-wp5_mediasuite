@@ -17,10 +17,10 @@ function breadcrumb() {
     arrayOfStrings.forEach(function (el, index) {
       let tmp = el.charAt(0).toUpperCase() + el.slice(1);
       tmp = tmp.replace("-", " ");
-      url += (el === 'recipe' && parseInt(index) === 0) ? 'recipes/' : el + '/';
+      url += (el === 'tool' && parseInt(index) === 0) ? 'tools/' : el + '/';
       // To deal with recipe(s) case.
       if (index > 0) {
-        url = url.replace('recipes', 'recipe');
+        url = url.replace('tools', 'tool');
       }
       breadcrumb += '<li><a href="/' + url.slice(0, -1) + '">' + tmp + '</a> /</li>';
     });
