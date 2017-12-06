@@ -8,6 +8,7 @@
   .cl_container-help {
     &.cl_active {
       width: 100%;
+      z-index: 1100;
     }
   }
 }

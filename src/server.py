@@ -145,8 +145,8 @@ def about():
 def contact():
 	return render_template('contact.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
-@app.route('/datasources')
-def datasources():
+@app.route('/data')
+def data():
 	return render_template('data-sources.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/apis')
