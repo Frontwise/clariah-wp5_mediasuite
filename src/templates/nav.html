@@ -3,11 +3,11 @@
 	<div class="hamburger"></div>
 	<ul class="menu main">
 		{% if page=='data-sources' %}
-		<li class="active"><a href="/data">Data</a></li><li><a href="/recipes">Tools</a></li>
-		{% elif page=='recipes' %}
-		<li><a href="/data">Data</a></li><li class="active"><a href="/recipes">Tools</a></li>
+		<li class="active"><a href="/data">Data</a></li><li><a href="/tools">Tools</a></li>
+		{% elif page=='tools' %}
+		<li><a href="/data">Data</a></li><li class="active"><a href="/tools">Tools</a></li>
 		{% else %}
-		<li><a href="/data">Data </a></li><li><a href="/recipes">Tools</a></li>
+		<li><a href="/data">Data </a></li><li><a href="/tools">Tools</a></li>
 		{% endif %}
 	</ul>
 
@@ -69,7 +69,7 @@
 		{% with page='data-sources' %}
 		{% include '%s/help.html' % helpDir %}
 		{% endwith %}
-	{% elif page=='recipes' %}
+	{% elif page=='tools' %}
 		{% with page='data-sources' %}
 		{% include '%s/help.html' % helpDir %}
 		{% endwith %}

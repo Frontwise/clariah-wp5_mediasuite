@@ -7,7 +7,7 @@
 	"inRecipeList" : true,
 	"ingredients" : {
 		"collections": [],
-		"itemDetailsPath" : "recipe/default-item-details"
+		"itemDetailsPath" : "tool/default-item-details"
 	},
 	"url" : "http://diveplus.frontwise.com/"
 }
