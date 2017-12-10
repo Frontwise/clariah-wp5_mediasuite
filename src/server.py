@@ -159,7 +159,7 @@ def contact():
 
 @app.route('/data')
 def data():
-	return render_template('data-sources.html', recipes=app.config['RECIPES'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+	return render_template('data-sources.html', data_static=app.config['RECIPES']['pages']['data-page'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/apis')
 @requires_auth

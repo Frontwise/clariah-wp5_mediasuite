@@ -1,8 +1,8 @@
 <!doctype HTML>
 <html>
 <head>
-  <title>CLARIAH Media Suite - Data sources</title>
-  {% include '%s/head.html' % headDir %}
+    <title>CLARIAH Media Suite - Data sources</title>
+    {% include '%s/head.html' % headDir %}
 </head>
 <body class="cl_flex-main">
 {% with page='data-sources' %}
@@ -10,22 +10,18 @@
 {% endwith %}
 
 <div class="cl_row cl_main-content">
-  <div class="cl_col cl_col-span-12">
-    <div class="info">
-      <div class="description">
-        <img class="cl_img-left" src="../static/images/bigicon-data.d7e8ae27.png" alt="Media Suite Data">
-        <p>
-          The CLARIAH Media Suite provides access to "established" collections from different institutions (e.g., television broadcasts from The Netherlands Institute for Sound and Vision, selected sub-collections from EYE Film Museum, newspapers from the National Library (KB), thematic oral history collections from DANS, among others). All collections (and sub-collections) are registered in a common inventory built in CKAN. CKAN is an open source platform for collection registration, it is a software solution that provides the tools to "streamline publishing, sharing, finding and using data", making it accessible. CKAN aims to making collections all over the world easily discovered and accessed.
-        </p><p>
-          In the CLARIAH Media Suite´s instance of CKAN you can find the metadata about the collections, and the metadata (i.e., the data) of the collections. Most collections are available both in Elasticsearch and RDF formats, and some in either of the two. Access to the media objects (i.e., to the content itself) depends on the policies of each data provider. The data that is "registered" in CKAN is used by the tools in the Media Suite.
-        </p>
-      </div>
-      <div class="actions cl_center">
-        <!--<a class="btn blank">Hide</a>-->
-        <a href="http://mediasuitedata.clariah.nl/" class="btn" rel="noopener noreferrer">Visit CKAN</a>
-      </div>
+    <div class="cl_col cl_col-span-12">
+        <div class="info">
+            <div class="description">
+                <img class="cl_img-left" src="../static/images/bigicon-data.d7e8ae27.png" alt="Media Suite Data">
+                {{data_static.data_intro.intro|safe}}
+            </div>
+            <div class="actions cl_center">
+                <!--<a class="btn blank">Hide</a>-->
+                <a href="{{data_static.data_intro.link_intro.link_url}}" class="btn" rel="noopener noreferrer">{{data_static.data_intro.link_intro.link_value}}</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% include '%s/footer.html' % footerDir %}
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
