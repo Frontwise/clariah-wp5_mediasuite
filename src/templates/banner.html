@@ -1,12 +1,16 @@
 <div>
-  <div class="banner" style="background-image: url(../static/images/mediasuite-banner1.jpg);">
+    <div class="banner" style="background-image: url(../static/images/mediasuite-banner1.jpg);">
 
-    <div class="content">
-      <div class="intro">
-        <p>The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of media scholars (and other scholars who use audiovisual media) by providing access to audiovisual collections and their contextual data.</p>
-        <a href="" class="btn primary">Read more</a>
-      </div>
+        <div class="content">
+            <div class="intro">
+                <p>
+                    {{home_static.home_info.text}}
+                </p>
+                <a href="{{home_static.home_info.links.link_url}}" class="btn primary">
+                    {{home_static.home_info.links.link_value}}
+                </a>
+            </div>
+        </div>
+        <div class="author">Photo by William Bout on Unsplash</div>
     </div>
-    <div class="author">Photo by William Bout on Unsplash</div>
-  </div>
 </div>
