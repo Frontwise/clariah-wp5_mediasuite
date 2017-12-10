@@ -151,7 +151,7 @@ def helpfeedback():
 
 @app.route('/about')
 def about():
-	return render_template('about.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+	return render_template('about.html', about_static=app.config['RECIPES']['pages']['about-page'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/contact')
 def contact():
