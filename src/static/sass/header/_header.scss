@@ -24,8 +24,8 @@ $dropdownWidth: $accountWidth;
 
   &.transparent {
     background-color: rgba($clDark, 0.8);
-    &.menu > li:hover {
-        background-color: rgba($clDark, 0.2);
+    .menu > li:hover, .workspace:hover, .account:hover {
+        background-color: rgba($clDark, 0.5);
     }
   }
 
@@ -172,6 +172,7 @@ $dropdownWidth: $accountWidth;
     &:hover {
       background-color: lighten($clDark, 5);
     }
+
     &:hover {
       .dropdown {
         display: block;
@@ -244,6 +245,13 @@ $dropdownWidth: $accountWidth;
 
     // active border will cause 'center' background image to move, so absolute pixels
     background-position: top 52px right 20px;
+
+    a{
+      text-decoration: none;
+      &:hover{
+        text-decoration: none;
+      }
+    }
 
     @media screen and (max-width: $break-medium) {
       width: $accountWidth * 0.75;
@@ -451,6 +459,10 @@ $dropdownWidth: $accountWidth;
         line-height: 50px;
         padding: 0 20px 0 3rem;
         color: $clWhite;
+        text-decoration: none;
+        &:hover{
+          text-decoration: none;
+        }
       }
 
       &:hover {
