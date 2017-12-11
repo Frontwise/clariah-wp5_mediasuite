@@ -4,7 +4,6 @@
 	"type" : "comparative-search",
 	"phase" : "search",
 	"description" : "Supports comparative (re)search based on multiple queries on the same or different collections.",
-	"recipeDescription" : "<p>Supports comparative (re)search based on multiple queries on the same or different collections of choice. </p>",
 	"inRecipeList" : true,
 	"useCustomTemplate" : false,
 	"ingredients" : {
