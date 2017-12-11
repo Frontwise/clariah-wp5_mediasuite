@@ -1,6 +1,6 @@
 {
 	"id" : "comparative-search",
-	"name" : "Compare queries",
+	"name" : "Compare queries <a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-tools-compare\">?</a>",
 	"type" : "comparative-search",
 	"phase" : "search",
 	"description" : "Supports comparative (re)search based on multiple queries on the same or different collections.",

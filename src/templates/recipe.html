@@ -13,7 +13,7 @@
 
 	<div class="container">
 		<div class="page-header">
-			<h1>{{recipe.name}}</h1>
+			<h1>{{recipe.name | safe}}</h1>
 			{{recipe.recipeDescription | safe}}
 	    </div>
 		<!-- instead of listing the one recipe, make sure to list a bunch of recipes-->
