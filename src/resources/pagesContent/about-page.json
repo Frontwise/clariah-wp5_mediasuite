@@ -1,15 +1,19 @@
 {
-  "about_intro": "<p>The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of media scholars (and other scholars who use audiovisual media) by providing access to audiovisual collections and their contextual data.</p>",
-  "about_body1": "<p>The CLARIAH Media Suite is a research environment or high-level tool that works as a data aggregator where the metadata and the media content can be explored, browsed, analyzed, stored in personal collections, annotated manually, enriched automatically, and visualized, and where the user annotations can be exported. The main building blocks are: Data, Tools, and Work space.</p>",
+  "about_intro": "<p> The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of media scholars (and other scholars who use audiovisual media) by providing access to audiovisual collections and their contextual data.</p>",
+  "about_body1": "<p> The CLARIAH Media Suite is a research environment or high-level tool that works as a data aggregator where the metadata and the media content can be explored, browsed, analyzed, stored in personal collections, annotated manually, enriched automatically, and visualized, and where the user annotations can be exported. The main building blocks are: Data, Tools, and Work space.</p>",
   "about_body2": "<p>The ultimate goal of the CLARIAH Media Suite is to: (i) enable distant reading (Schulz, 2011), that is, identifying patterns or new research questions in all aggregated collections which could be of interest for a given research question; (ii) facilitate close reading: the detailed examination of individual items (e.g., videos) in a collection or parts of these items (e.g., video segments) during search and scholarly interpretation, and (iii) make sure that the \"scholarly primitives\" (Unsworth, 2000, also described as an infrastructure framework in Blanke and Hedges, 2013) are well supported.</p>",
   "links":{
     "showcases":{
-      "value":"View showcases",
-      "url":"https://clariah.github.io/mediasuite-info/"
+      "value":"Read more about the CLARIAH project",
+      "url":"https://clariah.nl/en/work-packages/focus-areas/media-studies"
+    },
+    "documentation":{
+      "value":"Read the Media Suite Documentation",
+      "url":"https://github.com/CLARIAH/mediasuite-info"
     },
     "blog":{
       "value":"Visit our blog",
-      "url":"https://clariah.github.io/mediasuite-info/"
+      "url":"https://clariah.github.io/mediasuite-blog/"
     }
   }
 }

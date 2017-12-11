@@ -64,11 +64,8 @@
 		</div>
 		{% endif %}
 	</div>
-
-	{% if page=='data-sources' %}
-		{% with page='data-sources' %}
-		{% include '%s/help.html' % helpDir %}
-		{% endwith %}
+	{% if (page=='data-sources' or page=='tools') %}
+	{% include '%s/help.html' % helpDir %}
 	{% endif %}
 
 </div>
