@@ -155,7 +155,7 @@ def about():
 
 @app.route('/contact')
 def contact():
-	return render_template('contact.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+	return render_template('contact.html', contact_static=app.config['RECIPES']['pages']['contact-page'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/data')
 def data():

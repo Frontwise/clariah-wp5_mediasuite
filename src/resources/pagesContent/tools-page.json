@@ -1,4 +1,6 @@
 {
+  "documentation_question-mark_tools_page":"<p>For researchers/end users of the Data services of the CLARIAH Media Suite:</p><ul><li>Select the tool of your choice (each tool helps you to perform different tasks).</li><li>Go to the \"Details\" button of each tools to learn about each specific tool. There you will also find a link to the \"User manuals\" of each tool.</li><li>Click on the \"Open\" button of the tool if you are ready to use it.",
+  "help_header":"Tools info",
   "tools_intro": {
     "text":"The Media Suite tools offer the core functionalities needed for performing scholarly research tasks with audio-visual media and contextual collections. These tools have been co-developed with media scholars, oral historians, and other scholars who use audio-visual media intensively. They are also inspired in in prior projects, such as AVResearcherXL, Comerda, DIVE and TROVE. Each tool has been assembled using one or more components.",
     "links": {
