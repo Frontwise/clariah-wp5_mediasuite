@@ -1,27 +1,27 @@
 {
   "home_info": {
-    "text":"The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of media scholars and other scholars who use audiovisual media by providing access to audiovisual collections and their contextual data.",
+    "text":"The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of scholars who use audiovisual media by providing access to audiovisual collections and their contextual data.",
     "links": {
       "link_value":"Read more",
       "link_url":"/about"
     }
   },
   "home_data":{
-    "text":"Collections are registered in a common inventory which describes their metadata and are available in Elasticsearch and RDF format.",
+    "text":"All available collections and their data are registered in a common inventory.",
     "links": {
       "link_value":"Checkout the data",
       "link_url":"/data"
     }
   },
   "home_tools":{
-    "text":"Tools are built based on the knowledge and experience of the scholarly community. They integrate modular components into larger tools that facilitate research.",
+    "text":"Tools allow researchers to perform tasks with the available data.",
     "links": {
-      "link_value":"Discover the tools",
+      "link_value":"Use the tools",
       "link_url":"/tools"
     }
   },
   "home_workspace":{
-    "text":"Personal or collaborative work space that stores user projects, which consists of bookmakrs, annotations, and search sessions. Use your university account to login the Clariah User Space and unlock the full potential of the Media Suite!",
+    "text":"Personal and collaborative workspace that stores user data such as bookmakrs, annotations, and search sessions. Use your (SURF) university account to login the Clariah Workspace and unlock the full potential of the Media Suite!",
     "links": {
       "link_more_info":{
         "link_value":"More information",
@@ -35,13 +35,10 @@
     }
   },
   "home_clariah":{
-    "text":"The Media Suite is part of CLARIAH Work Package 5. CLARIAH is a project funded by the NWO and KNAW that aims at the realisation of a distributed infrastructure for the humanities and social sciences.",
+    "text":"The Media Suite is one of the CLARIAH research environments. CLARIAH is a project funded by the NWO that aims at the realisation of a common infrastructure for the humanities and social sciences.",
     "links": {
-        "link_value":"More information",
-        "link_url":"https://clariah.nl"
+      "link_value":"More information",
+      "link_url":"https://clariah.nl"
     }
   }
-
-
-
 }

@@ -2,19 +2,19 @@
   "documentation_question-mark_tools_page":"<p>For researchers/end users of the Data services of the CLARIAH Media Suite:</p><ul><li>Select the tool of your choice (each tool helps you to perform different tasks).</li><li>Go to the \"Details\" button of each tools to learn about each specific tool. There you will also find a link to the \"User manuals\" of each tool.</li><li>Click on the \"Open\" button of the tool if you are ready to use it.",
   "help_header":"Tools info",
   "tools_intro": {
-    "text":"The Media Suite tools offer the core functionalities needed for performing scholarly research tasks with audio-visual media and contextual collections. These tools have been co-developed with media scholars, oral historians, and other scholars who use audio-visual media intensively. They are also inspired in in prior projects, such as AVResearcherXL, Comerda, DIVE and TROVE. Each tool has been assembled using one or more components.",
+    "text":"The Media Suite tools offer the core functionalities needed for performing scholarly research tasks with audio-visual media and contextual collections. Tools available in this version of the Media Suite enable metadata inspection, exploratory browsing, search, visualization, and analysis (annotation support).",
     "links": {
       "link_value":"View tutorials",
-      "link_url":"https://clariah.github.io/mediasuite-info/"
+      "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools"
     }
   },
   "tools_collection-inspector":{
-    "header":"Collection inspector",
-    "text":"With this recipe it is possible to: 1) select collections, 2) inspect their metadata, 3) perform data analytics tasks on their metadata (e.g., detect incomplete data, observe value distributions along date fields), and 4) send them to the other browsing and search recipes.",
+    "header":"Inspect metadata",
+    "text":"This tool supports scholarly tasks of \"Data critique\"",
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"https://clariah.github.io/mediasuite-info/"
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-inspect-metadata"
       },
       "link_open":{
         "link_value":"Open",
@@ -23,12 +23,12 @@
     }
   },
   "tools_lod-collection-browser":{
-    "header":"Exploratory browser",
-    "text":"DIVE+ browser is a linked-data, event-based browser, based on the simple event data model, where you can browse and search in an ”infinite” fashion in different heritage collections at the same time. It supports the creation of browsing narratives.",
+    "header":"Browse & Explore",
+    "text":"This tool supports serendipitous discoveries",
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"http://diveplus.frontwise.com/"
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-browse-explore"
       },
       "link_open":{
         "link_value":"Open",
@@ -37,26 +37,26 @@
     }
   },
   "tools_comparative-search":{
-    "header":"Comparative search",
-    "text":"Supports comparative (re)search based on multiple queries on the same or different collections.",
+    "header":"Compare queries",
+    "text":"This tool supports comparative analyses",
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"https://clariah.github.io/mediasuite-info/"
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-compare"
       },
       "link_open":{
         "link_value":"Open",
-        "link_url":"/tool/comparative-search"
+        "link_url":"/tool/comparative-search/"
       }
     }
   },
   "tools_single-search":{
-    "header":"Basic faceted search",
-    "text":"Dedicated tool for searching/exploring through a single collection and all available annotation layers for that collection (e.g., automatically-generated, user-generated, archival generated).",
+    "header":"Search",
+    "text":"Tool for searching/exploring through a single collection.",
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"https://clariah.github.io/mediasuite-info"
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-search"
       },
       "link_open":{
         "link_value":"Open",
@@ -66,7 +66,7 @@
   },
   "tools_tool-development":{
     "header":"Tool development",
-    "text":"The CLARIAH Media Suite is an open source project. We also have public APIs that allows access to data, search, annotations, and enrichments.",
+    "text":"QUITAR ESTE BLOQUE",
     "links": {
       "link_value":"More informations",
       "link_url":"https://clariah.github.io/mediasuite-info/"

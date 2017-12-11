@@ -4,11 +4,11 @@
   "about_body2": "<p>The ultimate goal of the CLARIAH Media Suite is to: (i) enable distant reading (Schulz, 2011), that is, identifying patterns or new research questions in all aggregated collections which could be of interest for a given research question; (ii) facilitate close reading: the detailed examination of individual items (e.g., videos) in a collection or parts of these items (e.g., video segments) during search and scholarly interpretation, and (iii) make sure that the \"scholarly primitives\" (Unsworth, 2000, also described as an infrastructure framework in Blanke and Hedges, 2013) are well supported.</p>",
   "links":{
     "showcases":{
-      "value":"Read more about the CLARIAH project",
+      "value":"CLARIAH project",
       "url":"https://clariah.nl/en/work-packages/focus-areas/media-studies"
     },
     "documentation":{
-      "value":"Read the Media Suite Documentation",
+      "value":"Media Suite Documentation",
       "url":"https://github.com/CLARIAH/mediasuite-info"
     },
     "blog":{
