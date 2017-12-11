@@ -216,6 +216,13 @@ def wsProjects(path):
 		clientId=getClientId()
 	)
 
+
+# Make Projects the default workspace recipe
+# In the future this may be an overview page for workspace related information
+@app.route('/workspace')
+def wsRoot():
+    return redirect("/workspace/projects", code=302)
+
 """------------------------------------------------------------------------------
 NEWLY INTEGRATED PROJECT API
 ------------------------------------------------------------------------------"""
