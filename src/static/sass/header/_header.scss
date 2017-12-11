@@ -24,6 +24,9 @@ $dropdownWidth: $accountWidth;
 
   &.transparent {
     background-color: rgba($clDark, 0.8);
+    &.menu > li:hover {
+        background-color: rgba($clDark, 0.2);
+    }
   }
 
   .logo {
@@ -78,7 +81,7 @@ $dropdownWidth: $accountWidth;
   }
 
   .main {
-    font-size: 1.55em;
+    font-size: 20px;
 
     li > a {
       color: $clWhite;
@@ -145,7 +148,7 @@ $dropdownWidth: $accountWidth;
     vertical-align: top;
     height: $headerHeight;
     padding: 45px 50px 0 15px;
-    font-size: 1.55em;
+    font-size: 20px;
     box-sizing: border-box;
 
     background-image: $arrowDownUrl;
@@ -234,7 +237,7 @@ $dropdownWidth: $accountWidth;
     height: $headerHeight;
     padding: 45px 40px 0 15px;
     width: $accountWidth;
-    font-size: 1.55em;
+    font-size: 20px;
     box-sizing: border-box;
     background-image: $arrowRightUrl;
     background-repeat: no-repeat;
