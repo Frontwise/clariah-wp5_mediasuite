@@ -4,7 +4,7 @@
   "tools_intro": {
     "text":"The Media Suite tools offer the core functionalities needed for performing scholarly research tasks with audio-visual media and contextual collections. Tools available in this version of the Media Suite enable metadata inspection, exploratory browsing, search, visualization, and analysis (annotation support).",
     "links": {
-      "link_value":"View tutorials",
+      "link_value":"View documentation",
       "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools"
     }
   },
