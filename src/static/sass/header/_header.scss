@@ -252,6 +252,9 @@ $dropdownWidth: $accountWidth;
 
     &.login {
       cursor: pointer;
+      a{
+        color: $clWhite;
+      }
     }
 
     &.active {
