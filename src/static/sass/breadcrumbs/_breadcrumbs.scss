@@ -21,7 +21,8 @@
     a{
       color: $clPrimary;
       padding: 0 5px;
-
+      text-transform: capitalize;;
+      
       &.home{
         background-image: $iconHomeUrl;
         background-position: center center;

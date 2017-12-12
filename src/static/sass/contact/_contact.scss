@@ -3,21 +3,11 @@
   padding: 0 4rem;
 }
 
-@media all and (max-width: 960px) {
-  .BreadCrumbs {
-    top: 240px;
-  }
-}
-
 @media all and (max-width: 608px) {
   .container {
     top: 355px;
   }
   .cl_main-content {
     margin-top: 395px;
-  }
-
-  .BreadCrumbs {
-    top: 355px;
   }
 }

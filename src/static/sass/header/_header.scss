@@ -24,6 +24,13 @@ $dropdownWidth: $accountWidth;
     min-height: $headerHeight;
   }
 
+  &.transparent {
+    background-color: rgba($clDark, 0.8);
+    .menu > li:hover, .workspace:hover, .account:hover {
+        background-color: rgba($clDark, 0.5);
+    }
+  }
+
   .logo {
     background-image: $logoUrl;
     background-position: center center;
@@ -37,6 +44,11 @@ $dropdownWidth: $accountWidth;
 
     @media screen and (max-width: $break-medium) {
       width: $logoWidth * 0.9;
+      height: 115px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      height: 110px;
     }
 
     &:hover {
@@ -76,7 +88,7 @@ $dropdownWidth: $accountWidth;
   }
 
   .main {
-    font-size: 1.55em;
+    font-size: 20px;
 
     li > a {
       color: $clWhite;
@@ -143,9 +155,12 @@ $dropdownWidth: $accountWidth;
     background-repeat: no-repeat;
     box-sizing: border-box;
     display: inline-block;
-    font-size: 1.55em;
+    position: relative;
+    vertical-align: top;
     height: $headerHeight;
-
+    padding: 45px 50px 0 15px;
+    font-size: 20px;
+    box-sizing: border-box;
     padding: 45px 50px 0 15px;
     position: relative;
 
@@ -167,6 +182,7 @@ $dropdownWidth: $accountWidth;
     &:hover {
       background-color: lighten($clDark, 5);
     }
+
     &:hover {
       .dropdown {
         display: block;
@@ -188,38 +204,42 @@ $dropdownWidth: $accountWidth;
       }
     }
 
-    .dropdown .projects {
-      background-color: $clWhite;
-      background-image: none;
-      margin: 0;
-      padding: 0;
-
-      input {
-        background-image: $iconSearchUrl;
-        background-position: center right 10px;
-        background-repeat: no-repeat;
-        border: 0;
-        border-bottom: 1px solid $clGreyTint;
-        box-sizing: border-box;
-        font-family: $fontBody;
-        padding: 8px 10px;
-        width: 100%;
-      }
-
-      ul {
-        font-family: $fontBody;
-        font-size: 0.84em;
-        list-style: none;
+    .dropdown {
+      width: $dropdownWidth * 1.2;
+      .projects {
         margin: 0;
         padding: 0;
-        li {
+        background-color: $clWhite;
+        background-image: none;
+
+
+        input {
+          width: 100%;
+          box-sizing: border-box;
+          border: 0;
           border-bottom: 1px solid $clGreyTint;
-          overflow: hidden;
           padding: 8px 10px;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          &:hover {
-            background-color: $clGreyTint;
+          font-family: $fontBody;
+          background-image: $iconSearchUrl;
+          background-position: center right 10px;
+          background-repeat: no-repeat;
+        }
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          font-family: $fontBody;
+          font-size: 0.84em;
+          li {
+            padding: 8px 10px;
+            border-bottom: 1px solid $clGreyTint;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            &:hover {
+              background-color: $clGreyTint;
+            }
           }
         }
       }
@@ -235,18 +255,35 @@ $dropdownWidth: $accountWidth;
     font-size: 1.55em;
     height: $headerHeight;
     padding: 45px 40px 0 15px;
-    position: relative;
+    width: $accountWidth;
+    font-size: 20px;
+    box-sizing: border-box;
+    background-image: $arrowRightUrl;
+    background-repeat: no-repeat;
 
     // active border will cause 'center' background image to move, so absolute pixels
     width: $accountWidth;
 
+    a{
+      text-decoration: none;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+
     @media screen and (max-width: $break-medium) {
       width: $accountWidth * 0.75;
       padding: 45px 30px 0 15px;
+      .dropdown{
+        width: $accountWidth * 0.75;
+      }
     }
 
     &.login {
       cursor: pointer;
+      a{
+        color: $clWhite;
+      }
     }
 
     &.active {
@@ -314,13 +351,12 @@ $dropdownWidth: $accountWidth;
     list-style: none;
     margin: 0;
     padding: 0;
-    position: absolute;
-    top: $headerHeight;
-    width: $dropdownWidth * 1.2;
+    width: $dropdownWidth;
+    z-index: 1112; // ?
 
-    .new-project {
-      background-image: none;
-      p {
+    .new-project{
+      padding: 0;
+      p{
         color: $clDark;
         font-family: $fontBody;
         font-size: 13px;
@@ -328,49 +364,63 @@ $dropdownWidth: $accountWidth;
         padding: 10px 15px;
       }
 
-      .button-holder {
-        .btn {
-          color: $clWhite;
+
+      .button-holder{
+        background: none;
+        padding-top: 0;
+        text-align: center;
+        .btn{
           margin: 0;
+          color: $clWhite;
+          background-size: 13px;
         }
       }
     }
 
-    & > li {
+   a{
+      color: $clDark;
       background-image: $arrowRightDarkUrl;
       background-position: center right 10px;
       background-repeat: no-repeat;
       border-bottom: 1px solid darken($clGreyTint, 10);
       cursor: pointer;
-      padding: 10px;
+      line-height: 1.5em;
+      padding: 10px 15px;
+      display: block;
 
-      > a {
-        color: lighten($clDark, 10);
-        text-decoration: none;
-
-        &.userLink {
-          padding: 10px 95px 10px 15px;
-          position: relative;
-        }
+      // tablet and phone
+      @media screen and (max-width: $break-medium) {
+        font-size: 13px;
       }
-      &:hover {
+      
+      // phone
+      @media screen and (max-width: $break-small) {
+        background-position: center right 20px;
+        padding-right: 25px;
+      }
+
+      &:hover{
         background-color: darken($clGreyTint, 2)
       }
 
-      &.active {
+      &.active{
         background-color: darken($clGreyTint, 5)
       }
 
-      .count {
-        background-color: $clOrange;
+      .count{
+        display: inline-block;
+        float:right;
+        margin-right: 15px;
+        background-color: $clSecondary;
+        color: $clWhite;
         border-radius: 25px;
         color: $clWhite;
         display: inline-block;
         float: right;
         font-size: 0.8em;
         font-weight: bold;
-        margin-right: 15px;
-        padding: 2px 4px 2px 4px;
+        padding: 2px 4px;
+        line-height: 15px;
       }
     }
   }
@@ -445,6 +495,10 @@ $dropdownWidth: $accountWidth;
         line-height: 50px;
         padding: 0 20px 0 3rem;
         color: $clWhite;
+        text-decoration: none;
+        &:hover{
+          text-decoration: none;
+        }
       }
 
       &:hover {

@@ -1,4 +1,4 @@
-<div class="header transparent">
+<div class="header {{ extraClass}}">
 	<a class="logo" href="/"></a>
 	<div class="hamburger"></div>
 	<ul class="menu main">
@@ -12,8 +12,8 @@
 	</ul>
 
 	{% if user != None %}
-	<div class="workspace ">
-		<a href="/workspace/projects" class=""><i class="icon-workspace"></i>Workspace</a>
+	<div class="workspace {% if page=='workspace' %}active{% endif %}">
+		<a href="/workspace/projects"><i class="icon-workspace"></i>Workspace</a>
 		<ul class="dropdown">
 			<li><a class="" href="/workspace/projects">User Projects<span id="project_count" class="count">0</span>
 				</a>
@@ -69,7 +69,8 @@
 	{% endif %}
 
 </div>
-<ul class="BreadCrumbs hidden"></ul>
+<ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>
+
 
 <script>
 	try {
@@ -82,4 +83,3 @@
 
 	}
 </script>
-
