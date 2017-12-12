@@ -41,24 +41,24 @@ p {
 // Wrapping btn to avoid overwriting bootstrap stylings
 .banner, .cards, .button-holder, .actions {
   .btn {
+    background-color: $clGrey;
+    background-image: $arrowRightDarkUrl;
+    background-position: center right 10px;
+    background-repeat: no-repeat;
     border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    color: $clDark;
     cursor: pointer;
     display: inline-block;
     font-family: $fontHeading;
     font-size: 0.96em;
-    text-transform: uppercase;
-    text-decoration: none;
     height: 35px;
-    padding: 0 40px 0 30px;
-    box-sizing: border-box;
     line-height: 35px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    background-image: $arrowRightDarkUrl;
-    background-position: center right 10px;
-    background-repeat: no-repeat;
     margin: 10px;
-    background-color: $clGrey;
-    color: $clDark;
+    padding: 0 40px 0 30px;
+    text-decoration: none;
+    text-transform: uppercase;
 
     &:hover {
       background-color: lighten($clGrey, 5);
@@ -67,9 +67,9 @@ p {
 
     &.primary {
       background-color: $clPrimary;
-      color: $clWhite;
       background-image: $arrowRightWhite40Url;
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+      color: $clWhite;
 
       &:hover {
         background-color: lighten($clPrimary, 5);
@@ -89,9 +89,9 @@ p {
     }
 
     &.blank {
-      box-shadow: none;
       background-color: transparent;
       background-image: none;
+      box-shadow: none;
       padding: 0 30px;
 
       &:hover {
@@ -112,23 +112,23 @@ p {
 */
 .label {
   color: $clPrimary;
-  text-transform: uppercase;
   display: block;
-  font-size: 0.96em;
   font-family: $fontHeading;
+  font-size: 0.96em;
   font-weight: 500;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 input[type=text], textarea {
   border: 1px solid $clGreyTint;
   border-left-width: 2px;
-  outline: 0;
-  padding: 6px 10px;
   border-radius: 2px;
   font-family: $fontBody;
-  min-width: 200px;
   margin-bottom: 15px;
+  min-width: 200px;
+  outline: 0;
+  padding: 6px 10px;
   transition: border $transition;
 
   &:focus {
@@ -137,21 +137,21 @@ input[type=text], textarea {
 }
 
 textarea {
-  min-width: 400px;
   min-height: 200px;
+  min-width: 400px;
 }
 
 /* Page layout */
 .content {
-  position: relative;
-  max-width: $maxPageWidth;
-  margin: auto;
-  padding: $contentPadding;
   box-sizing: border-box;
+  margin: auto;
+  max-width: $maxPageWidth;
+  padding: $contentPadding;
+  position: relative;
 
   .text-body {
-    max-width: $maxTextBodyWidth;
     margin: auto;
+    max-width: $maxTextBodyWidth;
 
     p {
       max-width: 500px;
@@ -161,23 +161,23 @@ textarea {
 
 // Flexbox grid and common styles for imgs
 .cl_help {
-  float: right;
   display: inline-block;
+  float: right;
   position: fixed;
-  top: 115px;
   right: 0;
+  top: 115px;
   z-index: 1111;
 
   .cl_button {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
     background-color: $clPrimary;
     background-image: $iconHelpUrl;
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    display: inline-block;
     float: right;
+    height: 50px;
+    width: 50px;
 
     &:hover {
       background-color: lighten($clPrimary, 10);
@@ -185,18 +185,18 @@ textarea {
   }
 
   .cl_container-help {
-    position: fixed;
-    display: none;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 600px;
-    box-sizing: border-box;
-    padding: 0;
     background-color: $clWhite;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    display: none;
+    height: 100%;
     max-width: 100%;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
     transition: all .6s linear 0s;
+    width: 600px;
     z-index: 1;
     font-family: $fontBody;
 
@@ -206,24 +206,24 @@ textarea {
 
     .cl_header {
       background-color: $clPrimary;
+      color: $clWhite;
+      font-family: $fontHeading;
+      font-size: 20px;
       height: 50px;
       line-height: 50px;
-      color: $clWhite;
       padding-left: 25px;
-      font-size: 20px;
-      font-family: $fontHeading;
 
       .cl_close {
         background-image: $iconCrossUrl;
-        background-size: 13px;
         background-position: center;
         background-repeat: no-repeat;
-        width: 50px;
+        background-size: 13px;
+        cursor: pointer;
         height: 50px;
         position: absolute;
         right: 0;
         top: 0;
-        cursor: pointer;
+        width: 50px;
 
         &:hover {
           background-color: rgba(255, 255, 255, 0.1);
@@ -232,11 +232,11 @@ textarea {
     }
 
     .cl_scroll {
-      padding: 20px 25px;
-      overflow-y: auto;
-      position: absolute;
-      height: calc(100% - 50px);
       box-sizing: border-box;
+      height: calc(100% - 50px);
+      overflow-y: auto;
+      padding: 20px 25px;
+      position: absolute;
 
       p {
         margin-top: 0;
@@ -247,10 +247,10 @@ textarea {
 }
 
 .cl_row {
-  margin-top: 0.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
 
 .cl_col {
@@ -357,15 +357,15 @@ textarea {
 // is not long enough to push it down.
 .cl_flex-main {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .cl_main-content {
   flex: 1;
-  max-width: 1200px;
   margin: 0 auto;
   margin-top: 150px;
+  max-width: 1200px;
 }
 
 .cl_center {
@@ -374,9 +374,9 @@ textarea {
 
 .cl_img-left {
   float: left;
+  height: auto;
   margin: 0 8rem 5rem 0;
   max-width: 60%;
-  height: auto;
 }
 
 .cl_container-800 {
