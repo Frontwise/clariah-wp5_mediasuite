@@ -15,7 +15,7 @@
 	<div class="workspace ">
 		<a href="/workspace/projects" class=""><i class="icon-workspace"></i>Workspace</a>
 		<ul class="dropdown">
-			<li><a class="" href="/workspace/projects">User Projects<span class="count">0</span>
+			<li><a class="" href="/workspace/projects">User Projects<span id="project_count" class="count">0</span>
 				</a>
 			</li>
 			<!--<li class="projects">-->
@@ -31,7 +31,7 @@
 				<!--</div>-->
 			<!--</li>-->
 			<li class="new-project">
-				<p>You don't have any projects yet.</p>
+				<p>Create a new project</p>
 				<a href="/workspace/projects/create" class="button-holder">
 					<div class="btn primary plus">Create User Project</div>
 				</a>
@@ -54,13 +54,13 @@
 		{% if user != None %}
 		<div class="account loggedin "><i class="icon-person"></i>Account <span class="username">{{user.name}}</span>
 			<ul class="dropdown">
-				<li><a class="userLink" href="/userspace">My profile</a></li>
+				<li><a class="userLink" href="/workspace/projects">My profile</a></li>
 				<li><a class="userLink" href="/logout" title="Logout {{user.name}}">Logout</a></li>
 			</ul>
 		</div>
 		{% else %}
 		<div class="account login ">
-			<a href="/userspace"><i class="icon-person"></i>Login</a>
+			<a href="/workspace/projects"><i class="icon-person"></i>Login</a>
 		</div>
 		{% endif %}
 	</div>
@@ -70,4 +70,16 @@
 
 </div>
 <ul class="BreadCrumbs hidden"></ul>
+
+<script>
+	try {
+		if('localStorage' in window && window['localStorage'] !== null) {
+			if('myProjects' in localStorage) {
+				document.getElementById('project_count').innerHTML = JSON.parse(localStorage['myProjects']).length;
+			}
+		}
+	} catch (e) {
+
+	}
+</script>
 
