@@ -1,10 +1,9 @@
 {
 	"id" : "single-search",
-	"name" : "Single Collection Search",
+	"name" : "Single Collection Search <a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-tools-search\">?</a>",
 	"type" : "single-search",
 	"phase" : "search",
 	"description" : "Dedicated recipe for searching/exploring through a single collection and all available annotation layers for that collection (e.g., automatically-generated, user-generated, archival generated).",
-	"recipeDescription" : "<p>Dedicated recipe for searching/exploring through a single collection of choice by using facets and other filters.</p> ",
 	"inRecipeList" : true,
 	"ingredients" : {
 		"collectionSelector" : true,

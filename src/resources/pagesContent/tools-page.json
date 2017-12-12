@@ -1,0 +1,75 @@
+{
+  "documentation_question-mark_tools_page":"<p>For researchers/end users of the Data services of the CLARIAH Media Suite:</p><ul><li>Select the tool of your choice (each tool helps you to perform different tasks).</li><li>Go to the \"Details\" button of each tools to learn about each specific tool. There you will also find a link to the \"User manuals\" of each tool.</li><li>Click on the \"Open\" button of the tool if you are ready to use it.",
+  "help_header":"Tools info",
+  "tools_intro": {
+    "text":"The Media Suite tools offer the core functionalities needed for performing scholarly research tasks with audio-visual media and contextual collections. Tools available in this version of the Media Suite enable metadata inspection, exploratory browsing, search, visualization, and analysis (annotation support).",
+    "links": {
+      "link_value":"View documentation",
+      "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools"
+    }
+  },
+  "tools_collection-inspector":{
+    "header":"Inspect metadata",
+    "text":"This tool supports scholarly tasks of \"Data critique\"",
+    "links": {
+      "link_details":{
+        "link_value":"Details",
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-inspect-metadata"
+      },
+      "link_open":{
+        "link_value":"Open",
+        "link_url":"/tool/collection-inspector"
+      }
+    }
+  },
+  "tools_lod-collection-browser":{
+    "header":"Browse & Explore",
+    "text":"This tool supports serendipitous discoveries",
+    "links": {
+      "link_details":{
+        "link_value":"Details",
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-browse-explore"
+      },
+      "link_open":{
+        "link_value":"Open",
+        "link_url":"http://diveplus.frontwise.com/"
+      }
+    }
+  },
+  "tools_comparative-search":{
+    "header":"Compare queries",
+    "text":"This tool supports comparative analyses",
+    "links": {
+      "link_details":{
+        "link_value":"Details",
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-compare"
+      },
+      "link_open":{
+        "link_value":"Open",
+        "link_url":"/tool/comparative-search"
+      }
+    }
+  },
+  "tools_single-search":{
+    "header":"Search",
+    "text":"Tool for searching/exploring through a single collection.",
+    "links": {
+      "link_details":{
+        "link_value":"Details",
+        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-search"
+      },
+      "link_open":{
+        "link_value":"Open",
+        "link_url":"/tool/single-search"
+      }
+    }
+  },
+  "tools_tool-development":{
+    "header":"Tool development",
+    "text":"QUITAR ESTE BLOQUE",
+    "links": {
+      "link_value":"More informations",
+      "link_url":"https://clariah.github.io/mediasuite-info/"
+    }
+  }
+}

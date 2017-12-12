@@ -2,29 +2,29 @@
   $margin: 20px;
 
   .content {
+    align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
     max-width: 800px;
-    padding: 0;
     overflow: hidden;
+    padding: 0;
     img {
-      width: 176px;
       margin: 30px;
+      width: 176px;
     }
     .info {
-      margin: 30px;
       flex: 1 1;
-      min-width: 250px;
+      margin: 30px;
       max-width: 100vw;
+      min-width: 250px;
     }
 
     .actions {
       display: -ms-flexbox;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .description {
@@ -32,10 +32,10 @@
     }
   }
   .text {
+    font-size: 13.5px;
+    margin: 60px auto;
     max-width: $maxTextBodyWidth;
     padding: 0 $margin;
-    margin: 60px auto;
-    font-size: 13.5px;
 
     @media (min-width: 550px) {
       column-count: 2
@@ -47,16 +47,16 @@
   }
 
   .suite {
-    text-align: center;
-    max-width: $maxTextBodyWidth;
     margin: 100px auto;
+    max-width: $maxTextBodyWidth;
+    text-align: center;
 
     h2 {
       font-size: 20px;
       text-transform: uppercase;
     }
 
-    h3{
+    h3 {
       font-size: 20px;
       text-transform: none;
     }
@@ -69,8 +69,8 @@
       justify-content: space-around;
 
       > div {
-        max-width: 176px;
         margin: $margin;
+        max-width: 176px;
       }
 
       img {

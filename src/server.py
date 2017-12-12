@@ -92,7 +92,19 @@ def loadRecipes():
 					recipe['url'] = '/tool/%s' % recipe['id'];
 
 				recipes[fn.replace('.json', '')] = recipe
+				recipes['pages'] = loadStaticContent()
 	app.config['RECIPES'] = recipes
+
+def loadStaticContent():
+	pages = {}
+	recipeDir = 'default'
+	for root, directories, files in os.walk(os.path.join(app.root_path, 'resources', 'pagesContent')):
+		for fn in files:
+			if fn.find('.json') != -1:
+				path = os.path.join(root, fn)
+				page = json.load(open(path, 'r'))
+				pages[fn.replace('.json', '')] = page
+	return pages
 
 """------------------------------------------------------------------------------
 UNIFIED DEFAULT SUCCESS & ERROR RESPONSE FUNCTIONS
@@ -122,7 +134,7 @@ def home():
 	#check logged in
 	for c in request.cookies:
 		print c
-	return render_template('index.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+	return render_template('index.html', home_static=app.config['RECIPES']['pages']['home-page'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/robots.txt')
 @app.route('/sitemap.xml')
@@ -139,15 +151,15 @@ def helpfeedback():
 
 @app.route('/about')
 def about():
-	return render_template('about.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+	return render_template('about.html', about_static=app.config['RECIPES']['pages']['about-page'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/contact')
 def contact():
-	return render_template('contact.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+	return render_template('contact.html', contact_static=app.config['RECIPES']['pages']['contact-page'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/data')
 def data():
-	return render_template('data-sources.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
+	return render_template('data-sources.html', data_static=app.config['RECIPES']['pages']['data-page'], user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/apis')
 @requires_auth

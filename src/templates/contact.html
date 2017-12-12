@@ -10,37 +10,9 @@
 {% endwith %}
 <div class="cl_row cl_main-content">
   <div class="cl_container">
-    <h1>Contact information</h1>
+    {{contact_static.header|safe}}
 
-    <h2>To stay informed</h2>
-    <p>
-      Stay informed about the CLARIAH project and our activities via de CLARIAH <a
-      href="http://www.clariah.nl/evenementen/agenda" target="_events">agenda</a>, <a
-      href="http://www.clariah.nl/nieuw/nieuws" target="_news">nieuwspagina</a> and <a
-      href="http://www.clariah.nl/nieuw/nieuwsbrieven" target="_newsletter">nieuwsbrief</a>. CLARIAH is also on <a
-      href="https://twitter.com/CLARIAH2013" target="_tw">Twitter</a> and <a
-      href="https://www.facebook.com/clariahinfra" target="_fb">Facebook</a>. Follow also the <a
-      href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" target="_rdlabs">CLARIAH Media Studies blog</a>, where media
-      scholars write about different research topics.
-    </p>
-
-    <h2>Feedback & issue tracker</h2>
-    <p>
-      If you have questions about the CLARIAH Media Suite or the services for media scholars,
-      please find us in the
-      <a href="https://gitter.im/CLARIAH-media-studies/Lobby" target="_gitter">Gitter lobby</a>.
-      Anyone can use this lobby, and developers with a GitHub account can link to the
-      <a href="https://github.com/CLARIAH/wp5-mediasuite" target="_gh">GitHub</a> issue tracker.</p>
-
-    <h2>Contact us</h2>
-    <p>
-      For specific questions about the CLARIAH Media Studies project you can contact us via e-mail:
-      <a href="mailto:mediastudies@clariah.nl">mediastudies@clariah.nl</a>.
-    </p>
-    <p>
-      For questions about the Media Suite, visit our Knowledge Base,
-      or Use our Feedback and issue tracker pages
-    </p>
+    {{contact_static.contact_contactinfo|safe}}
   </div>
 </div>
 {% include '%s/footer.html' % footerDir %}

@@ -1,0 +1,11 @@
+{
+  "data_intro": {
+    "intro": "<p>The CLARIAH Media Suite provides access to \"established\" collections maintained at different institutions (e.g., television broadcasts at The Netherlands Institute for Sound and Vision, film collections from EYE Film Museum, newspapers from the National Library (KB), and oral history collections from DANS, among others). Collections are registered in a common inventory built in CKAN. CKAN is an open source data management platform. <p>In the CLARIAH Media Suite's instance of CKAN you can find the metadata about the collections and the metadata of the collection objects itself. Most collections are available either in ElasticSearch and RDF formats, and some in both. Access to the media objects (i.e., to the content itself) in the Media Suite depends on the policies of each data provider. The data that are \"registered\" in CKAN are accessible via the tools in the Media Suite. In version 2, the tools are fully compatible with ElasticSearch indexes, and partially compatible with linked data formats (the Exploratory browser uses these sets).</p>",
+    "link_intro": {
+      "link_value": "visit ckan",
+      "link_url": "http://mediasuitedata.clariah.nl/"
+    }
+  },
+  "help_header":"Data info",
+  "documentation_question-mark_data_page":"<p>This is an information page. The \"Visit CKAN\" link will redirect you to an external service, which is the CLARIAH Media Suite's instance of CKAN, built using the CKAN registration software. For more information, you can read the (<a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-data\">Media Suite Data Documentation</a>).</p>"
+}

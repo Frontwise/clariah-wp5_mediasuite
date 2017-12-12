@@ -1,22 +1,22 @@
 .BreadCrumbs{
-  display: inline-block;
   background-color: $clWhite;
   box-sizing: border-box;
-  list-style:none;
-  font-weight: normal;
+  display: inline-block;
   font-family: $fontBody;
   font-size: 13px;
+  font-weight: normal;
   line-height: 15px;
-  padding-top: 10px;
+  list-style:none;
   padding-bottom: 10px;
+  padding-top: 10px;
   position: fixed;
   top: 115px;
   width: calc(100% - 60px);
   z-index: 10;
 
   li{
-    display: inline-block;
     color: $clGreyTint;
+    display: inline-block;
 
     a{
       color: $clPrimary;
@@ -24,12 +24,12 @@
 
       &.home{
         background-image: $iconHomeUrl;
-        background-repeat: no-repeat;
         background-position: center center;
+        background-repeat: no-repeat;
         display: inline-block;
+        height: 15px;
         vertical-align: top;
         width: 17px;
-        height: 15px;
       }
     }
   }

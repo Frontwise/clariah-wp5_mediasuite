@@ -1,17 +1,17 @@
-.cards{
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-  li{
-    padding: 20px;
-    text-align: center;
+  li {
     max-width: 400px;
+    padding: 20px;
     padding: 0 20px;
-    img{
+    text-align: center;
+    img {
       width: 176px;
     }
     @media screen and (max-width: $break-small) {
@@ -20,30 +20,30 @@
     }
   }
 
-  &.offer{
+  &.offer {
     padding: 50px 0;
     @media screen and (max-width: $break-small) {
       justify-content: center;
     }
   }
 
-  &.workspace{
-    justify-content: center;
-    padding: 120px 0;
+  &.workspace {
     background-color: $clGrey;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    img{
+    justify-content: center;
+    padding: 120px 0;
+    img {
       border-radius: 176px;
-      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     }
   }
 
-  &.context{
+  &.context {
     justify-content: center;
     padding: 120px 0;
-    li img{
+    li img {
       width: 215px;
     }
   }
