@@ -6,6 +6,8 @@
                 {{data_static['help_header']}}
             {% elif page=='tools' %}
                 {{recipes['pages']['tools-page'].help_header}}
+            {% elif page=='tool' %}
+                {{recipe.name | safe}}
             {% endif %}
             <div class="cl_close"></div>
         </div>
@@ -14,6 +16,8 @@
                 {{data_static['documentation_question-mark_data_page'] | safe}}
             {% elif page=='tools' %}
                 {{recipes['pages']['tools-page']['documentation_question-mark_tools_page']|safe}}
+            {% elif page=='tool' %}
+                {{recipe.recipeDescription | safe}}
             {% endif %}
         </div>
     </div>
