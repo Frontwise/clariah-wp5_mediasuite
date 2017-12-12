@@ -1,9 +1,10 @@
 {
 	"id" : "comparative-search",
-	"name" : "Compare queries <a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-tools-compare\">?</a>",
+	"name" : "Compare queries",
 	"type" : "comparative-search",
 	"phase" : "search",
 	"description" : "Supports comparative (re)search based on multiple queries on the same or different collections.",
+	"recipeDescription" : "<p>Supports comparative (re)search based on multiple queries on the same or different collections of choice. </p></br></br><a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-tools-compare\">More info</a>",
 	"inRecipeList" : true,
 	"useCustomTemplate" : false,
 	"ingredients" : {
