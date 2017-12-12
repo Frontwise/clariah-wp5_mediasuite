@@ -199,38 +199,42 @@ $dropdownWidth: $accountWidth;
       }
     }
 
-    .dropdown .projects {
-      margin: 0;
-      padding: 0;
-      background-color: $clWhite;
-      background-image: none;
-
-      input {
-        width: 100%;
-        box-sizing: border-box;
-        border: 0;
-        border-bottom: 1px solid $clGreyTint;
-        padding: 8px 10px;
-        font-family: $fontBody;
-        background-image: $iconSearchUrl;
-        background-position: center right 10px;
-        background-repeat: no-repeat;
-      }
-
-      ul {
-        list-style: none;
+    .dropdown {
+      width: $dropdownWidth * 1.2;
+      .projects {
         margin: 0;
         padding: 0;
-        font-family: $fontBody;
-        font-size: 0.84em;
-        li {
-          padding: 8px 10px;
+        background-color: $clWhite;
+        background-image: none;
+
+
+        input {
+          width: 100%;
+          box-sizing: border-box;
+          border: 0;
           border-bottom: 1px solid $clGreyTint;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          &:hover {
-            background-color: $clGreyTint;
+          padding: 8px 10px;
+          font-family: $fontBody;
+          background-image: $iconSearchUrl;
+          background-position: center right 10px;
+          background-repeat: no-repeat;
+        }
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          font-family: $fontBody;
+          font-size: 0.84em;
+          li {
+            padding: 8px 10px;
+            border-bottom: 1px solid $clGreyTint;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            &:hover {
+              background-color: $clGreyTint;
+            }
           }
         }
       }
@@ -261,6 +265,9 @@ $dropdownWidth: $accountWidth;
     @media screen and (max-width: $break-medium) {
       width: $accountWidth * 0.75;
       padding: 45px 30px 0 15px;
+      .dropdown{
+        width: $accountWidth * 0.75;
+      }
     }
 
     &.login {
@@ -337,7 +344,8 @@ $dropdownWidth: $accountWidth;
     list-style: none;
     margin: 0;
     padding: 0;
-    width: $dropdownWidth * 1.2;
+    width: $dropdownWidth;
+    z-index: 1112; // ?
 
     .new-project{
       padding: 0;
