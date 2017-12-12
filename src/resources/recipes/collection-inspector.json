@@ -17,12 +17,12 @@
 			{
 				"id" : "comparative-search",
 				"label" : "Comparative Search",
-				"path": "recipe/comparative-search"
+				"path": "tool/comparative-search"
 			},
 			{
 				"id" : "single-search",
 				"label" : "Single Search",
-				"path": "recipe/single-search"
+				"path": "tool/single-search"
 			}
 		]
 	}

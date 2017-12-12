@@ -89,7 +89,7 @@ def loadRecipes():
 
 				#add the standard URL for recipes that have no URL defined.
 				if not 'url' in recipe:
-					recipe['url'] = '/recipe/%s' % recipe['id'];
+					recipe['url'] = '/tool/%s' % recipe['id'];
 
 				recipes[fn.replace('.json', '')] = recipe
 	app.config['RECIPES'] = recipes
@@ -145,8 +145,8 @@ def about():
 def contact():
 	return render_template('contact.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
-@app.route('/datasources')
-def datasources():
+@app.route('/data')
+def data():
 	return render_template('data-sources.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION'])
 
 @app.route('/apis')
@@ -159,7 +159,7 @@ def apis():
 		annotationAPI=app.config['ANNOTATION_API']
 	)
 
-@app.route('/recipes')
+@app.route('/tools')
 @requires_auth
 def recipes():
 	return render_template(
@@ -215,6 +215,13 @@ def wsProjects(path):
 		token=getToken(),
 		clientId=getClientId()
 	)
+
+
+# Make Projects the default workspace recipe
+# In the future this may be an overview page for workspace related information
+@app.route('/workspace')
+def wsRoot():
+    return redirect("/workspace/projects", code=302)
 
 """------------------------------------------------------------------------------
 NEWLY INTEGRATED PROJECT API
@@ -277,7 +284,7 @@ def annotationSearchAPI():
 PAGES THAT DO USE THE COMPONENT LIBRARY
 ------------------------------------------------------------------------------"""
 
-@app.route('/recipe/<recipeId>')
+@app.route('/tool/<recipeId>')
 @requires_auth
 def recipe(recipeId):
 	if app.config['RECIPES'].has_key(recipeId):

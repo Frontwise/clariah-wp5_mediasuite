@@ -1,18 +1,19 @@
-<div class="header transparent">
+<div class="header {{ extraClass}}">
 	<a class="logo" href="/"></a>
+	<div class="hamburger"></div>
 	<ul class="menu main">
 		{% if page=='data-sources' %}
-		<li class="active"><a href="/datasources">Data</a></li><li><a href="/recipes">Tools</a></li>
-		{% elif page=='recipes' %}
-		<li><a href="/datasources">Data</a></li><li class="active"><a href="/recipes">Tools</a></li>
+		<li class="active"><a href="/data">Data</a></li><li><a href="/tools">Tools</a></li>
+		{% elif page=='tools' %}
+		<li><a href="/data">Data</a></li><li class="active"><a href="/tools">Tools</a></li>
 		{% else %}
-		<li><a href="/datasources">Data </a></li><li><a href="/recipes">Tools</a></li>
+		<li><a href="/data">Data </a></li><li><a href="/tools">Tools</a></li>
 		{% endif %}
 	</ul>
 
 	{% if user != None %}
-	<div class="workspace ">
-		<i class="icon-workspace"></i>Workspace
+	<div class="workspace {% if page=='workspace' %}active{% endif %}">
+		<a href="/workspace/projects"><i class="icon-workspace"></i>Workspace</a>
 		<ul class="dropdown">
 			<li><a class="" href="/workspace/projects">User Projects<span class="count">0</span>
 				</a>
@@ -41,15 +42,12 @@
 
 	<div class="right">
 		<ul class="menu sub">
-			{% if page=='about' %}
-			<li class="active"><a href="/">About</a></li><li><a href="/help-feedback">Documentation</a></li><li><a href="/contact">Contact</a></li>
-			{% elif page=='help-feedback' %}
-			<li><a href="/about">About</a></li><li class="active"><a href="/">Documentation</a></li><li><a href="/contact">Contact</a></li>
-			{% elif page=='contact' %}
-			<li><a href="/about">About</a></li><li><a href="/help-feedback">Documentation</a></li><li class="active"><a
-			href="/">Contact</a></li>
+			{% if page=='contact' %}
+			<li><a href="/about">About</a></li><li><a  href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li class="active"><a href="/contact">Contact</a></li>
+			{% elif page=='about' %}
+			<li class="active"><a href="/about">About</a></li><li><a href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li><a href="/contact">Contact</a></li>
 			{% else %}
-			<li><a href="/about">About</a></li><li><a href="/help-feedback">Documentation</a></li><li><a href="/contact">Contact</a></li>
+			<li><a href="/about">About</a></li><li><a href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li><a href="/contact">Contact</a></li>
 			{% endif %}
 		</ul>
 
@@ -66,5 +64,16 @@
 		</div>
 		{% endif %}
 	</div>
+
+	{% if page=='data-sources' %}
+		{% with page='data-sources' %}
+		{% include '%s/help.html' % helpDir %}
+		{% endwith %}
+	{% elif page=='tools' %}
+		{% with page='data-sources' %}
+		{% include '%s/help.html' % helpDir %}
+		{% endwith %}
+	{% endif %}
+
 </div>
-<ul class="BreadCrumbs hidden"></ul>
+<ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>

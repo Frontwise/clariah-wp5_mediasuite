@@ -12,6 +12,6 @@
 		"output" : "lineChart",
 		"aggregationView" : "box",
 		"dateRangeSelector" : "date-picker",
-		"itemDetailsPath" : "recipe/default-item-details"
+		"itemDetailsPath" : "tool/default-item-details"
 	}
 }

@@ -1,3 +1,6 @@
+.cl_help {
+  color: $clDark;
+}
 @media all and (max-width: 960px) {
   .cl_help {
     top: 234px;
@@ -5,6 +8,7 @@
   .cl_container-help {
     &.cl_active {
       width: 100%;
+      z-index: 1100;
     }
   }
 }

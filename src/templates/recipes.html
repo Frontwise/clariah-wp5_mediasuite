@@ -1,38 +1,30 @@
 <!doctype HTML>
 <html>
 <head>
-  <title>CLARIAH Media Suite - Recipes</title>
+  <title>CLARIAH Media Suite - Tools</title>
   {% include '%s/head.html' % headDir %}
 </head>
 <body class="cl_flex-main">
-{% with page='recipes' %}
+{% with page='tools' %}
 {% include '%s/nav.html' % navbarDir %}
-{% endwith %}
-
-{% with page='data-sources' %}
-{% include '%s/help.html' % helpDir %}
 {% endwith %}
 
 <div class="tools container cl_row cl_main-content cl_container-800">
 
-  <div class="cl_col cl_col-span-4">
-    <img class="cl_img-left cl_img-max-width-75" src="../static/images/bigicon-tools.833a4532.png"
+  <div class="cl_col cl_col-span-4" style="text-align: center;">
+    <img style="max-width: 176px; display:inline-block;" src="../static/images/bigicon-tools.833a4532.png"
          alt="Media Suite Tools">
   </div>
   <div class="cl_col cl_col-span-8">
     <div class="info">
       <div class="description">
         <p>
-          The ingredients of our recipes are components,
-          which offer the core functionalities we've developed in prior projects, such as AVResearcherXL, Comerda,
-          DIVE and TROVE. Each recipe can be assembled using one or more of these component and can be optimised for
-          a certain phase in your research.
-          Depending on your technical expertise, the creation of recipes can be more exactly tailored for your needs.
+          The Media Suite tools offer the core functionalities needed for performing scholarly research tasks with audio-visual media and contextual collections. These tools have been co-developed with media scholars, oral historians, and other scholars who use audio-visual media intensively. They are also inspired in in prior projects, such as AVResearcherXL, Comerda, DIVE and TROVE. Each tool has been assembled using one or more components.
         </p>
       </div>
       <div class="actions cl_center">
-        <a class="btn blank">Hide</a>
-        <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" class="btn" target="_blank" rel="noopener noreferrer">
+        <!--<a class="btn blank">Hide</a>-->
+        <a href="https://clariah.github.io/mediasuite-info/" class="btn" rel="noopener noreferrer">
           View tutorials
         </a>
       </div>
@@ -44,11 +36,10 @@
                                    alt="Collection inspector"></div>
       <h3>Collection inspector</h3>
       <div class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
-        fuit in disserendo pertinacior.
+        With this recipe it is possible to: 1) select collections, 2) inspect their metadata, 3) perform data analytics tasks on their metadata (e.g., detect incomplete data, observe value distributions along date fields), and 4) send them to the other browsing and search recipes.
       </div>
       <div class="actions">
-        <a href="#toolDetails" class="btn blank">Details</a>
+        <a href="https://clariah.github.io/mediasuite-info/" class="btn blank">Details</a>
         <a href="{{recipes['collection-inspector'].url}}" class="btn">Open</a></div>
     </div>
     <div class="tool cl_col cl_col-span-6 cl_no_padd_right cl_margin-botton">
@@ -56,11 +47,11 @@
         <img src="../static/images/placeholder.2b77091b.svg" alt="Exploratory browser">
       </div>
       <h3>Exploratory browser</h3>
-      <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
-        fuit in disserendo pertinacior.
+      <div class="description">
+        DIVE+ browser is a linked-data, event-based browser, based on the simple event data model, where you can browse and search in an ”infinite” fashion in different heritage collections at the same time. It supports the creation of browsing narratives.
       </div>
       <div class="actions">
-        <a href="#" class="btn blank">Details</a>
+        <a href="https://clariah.github.io/mediasuite-info/" class="btn blank">Details</a>
         <a href="{{recipes['lod-collection-browser'].url}}" class="btn">Open</a></div>
     </div>
     <div class="tool cl_col cl_col-span-6 cl_no_padd_left">
@@ -69,11 +60,10 @@
       </div>
       <h3>Basic faceted search</h3>
       <div class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
-        fuit in disserendo pertinacior.
+        Dedicated tool for searching/exploring through a single collection and all available annotation layers for that collection (e.g., automatically-generated, user-generated, archival generated).
       </div>
       <div class="actions">
-        <a href="#" class="btn blank">Details</a>
+        <a href="https://clariah.github.io/mediasuite-info/" class="btn blank">Details</a>
         <a href="{{recipes['single-search'].url}}" class="btn">Open</a>
       </div>
     </div>
@@ -83,27 +73,23 @@
       </div>
       <h3>Comparative search</h3>
       <div class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi
-        fuit in disserendo pertinacior.
+        Supports comparative (re)search based on multiple queries on the same or different collections.
       </div>
       <div class="actions">
-        <a href="#" class="btn blank">Details</a>
+        <a href="https://clariah.github.io/mediasuite-info/" class="btn blank">Details</a>
         <a href="{{recipes['comparative-search'].url}}" class="btn">Open</a>
       </div>
     </div>
   </div>
 
-  <div class="cl_development">
+  <!---<div class="cl_development">
     <p><img src="../static/images/bigicon-development.a7d70511.png" alt="Tool development"></p>
     <h2>Tool development</h2>
-    <div class="cl_description">Lorem ipsum dolor sit amet, nec te atqui scribentur. Diam molestie posidonium te sit, ea
-      sea expetenda suscipiantur contentiones, vix ex maiorum denique. Quo detracto recusabo lobortis ei, ne labores
-      sapientem pri, ex zril option aperiri mea. Ad magna utamur molestiae cum. Et dicam antiopam vel, ludus graeco
-      recusabo quo in, per in quod soleat. Cetero praesent recteque vim te, ut vix decore partem appellantur, et vim
-      dico ancillae. Idque deleniti maluisset eu per.
+    <div class="cl_description">The CLARIAH Media Suite is an open source project. We also have public APIs that allows access to data, search, annotations, and enrichments.
     </div>
-    <div class="actions cl_center"><a href="" class="btn primary">More information</a></div>
+    <div class="actions cl_center"><a href="https://clariah.github.io/mediasuite-info/" class="btn primary">More information</a></div>
   </div>
+  -->
 
   <!--<div class="row">-->
   <!--<div class="col-md-12">-->

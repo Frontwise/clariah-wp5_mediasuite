@@ -6,7 +6,7 @@
 </head>
 <body class="cl_flex-main">
 
-{% with page='home' %}
+{% with page='home', extraClass='transparent' %}
 {% include '%s/nav.html' % navbarDir %}
 {% endwith %}
 {% include '%s/banner.html' % bannerDir %}
@@ -18,7 +18,7 @@
         <h1>Data</h1>
         <p>Collections are registered in a common inventory which describes their metadata and are available in
           Elasticsearch and RDF format.</p>
-        <a href="/datasources" class="btn primary">Check out the data</a>
+        <a href="/data" class="btn primary">Check out the data</a>
       </li>
       <li>
         <img src="../static/images/bigicon-tools.png" alt="Media Suite Tools">
@@ -26,7 +26,7 @@
         <p>
           Recipes are built based on the knowledge and experience of the scholarly community.
           They integrate components into tools for media studies research.</p>
-        <a href="/recipes" class="btn primary">Discover the tools</a>
+        <a href="/tools" class="btn primary">Discover the tools</a>
       </li>
     </ul>
   </div>
@@ -42,7 +42,7 @@
         Use your university account to login the Clariah User Space and unlock the full potential of the Media Suite!
       </p>
       <div class="workspaceInfo">
-        <a href="/components" class="btn white">More Information</a>
+        <a href="https://clariah.github.io/mediasuite-info/" target="_blank" class="btn white">More Information</a>
         <a href="/userspace" class="btn primary">Login</a>
       </div>
     </li>
@@ -56,7 +56,7 @@
         CLARIAH is a project funded by the NWO and KNAW that aims at the realisation of a distributed infrastructure
         for the humanities and social sciences.
       </p>
-      <a href="/components" class="btn default">More Information</a>
+      <a href="https://clariah.nl" target="_blank" class="btn default">More Information</a>
     </li>
   </ul>
 </div>
