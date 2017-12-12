@@ -339,9 +339,9 @@ $dropdownWidth: $accountWidth;
     padding: 0;
     width: $dropdownWidth * 1.2;
 
-    .new-project {
-      background-image: none;
-      p {
+    .new-project{
+      padding: 0;
+      p{
         color: $clDark;
         padding: 10px 15px;
         font-size: 13px;
@@ -349,53 +349,59 @@ $dropdownWidth: $accountWidth;
         margin: 0;
       }
 
-      .button-holder {
+      .button-holder{
+        background: none;
+        padding-top: 0;
         text-align: center;
-        display: block;
-        .btn {
+        .btn{
           margin: 0;
           color: $clWhite;
-          background-size: 15px;
-          display: inline-block;
+          background-size: 13px;
         }
       }
     }
 
-    & > li {
+   a{
+      color: $clDark;
       background-image: $arrowRightDarkUrl;
       background-repeat: no-repeat;
       background-position: center right 10px;
       border-bottom: 1px solid darken($clGreyTint, 10);
       cursor: pointer;
-      padding: 10px;
+      line-height: 1.5em;
+      padding: 10px 15px;
+      display: block;
 
-      > a {
-        color: lighten($clDark, 10);
-        text-decoration: none;
-
-        &.userLink {
-          padding: 10px 95px 10px 15px;
-          position: relative;
-        }
+      // tablet and phone
+      @media screen and (max-width: $break-medium) {
+        font-size: 13px;
       }
-      &:hover {
+      
+      // phone
+      @media screen and (max-width: $break-small) {
+        background-position: center right 20px;
+        padding-right: 25px;
+      }
+
+      &:hover{
         background-color: darken($clGreyTint, 2)
       }
 
-      &.active {
+      &.active{
         background-color: darken($clGreyTint, 5)
       }
 
-      .count {
+      .count{
         display: inline-block;
-        float: right;
+        float:right;
         margin-right: 15px;
-        background-color: $clOrange;
+        background-color: $clSecondary;
         color: $clWhite;
         border-radius: 25px;
         font-size: 0.8em;
         font-weight: bold;
-        padding: 2px 4px 2px 4px;
+        padding: 2px 4px;
+        line-height: 15px;
       }
     }
   }
