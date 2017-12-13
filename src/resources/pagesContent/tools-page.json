@@ -9,7 +9,7 @@
     }
   },
   "tools_collection-inspector":{
-    "header":"Inspect metadata",
+    "header":"Inspect",
     "text":"This tool supports scholarly tasks of \"Data critique\"",
     "links": {
       "link_details":{
@@ -23,7 +23,7 @@
     }
   },
   "tools_lod-collection-browser":{
-    "header":"Browse & Explore",
+    "header":"Explore",
     "text":"This tool supports serendipitous discoveries",
     "links": {
       "link_details":{
@@ -37,7 +37,7 @@
     }
   },
   "tools_comparative-search":{
-    "header":"Compare queries",
+    "header":"Compare",
     "text":"This tool supports comparative analyses",
     "links": {
       "link_details":{
