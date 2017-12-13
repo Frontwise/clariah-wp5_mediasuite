@@ -224,6 +224,8 @@ def wsProjects(path):
 		recipe=app.config['RECIPES']['workspace-projects'],
 		user=_authenticationHub.getUser(request),
 		userSpaceAPI=app.config['USER_SPACE_API'],
+		searchAPI=app.config['SEARCH_API'],
+		searchAPIPath=app.config['SEARCH_API_PATH'],
 		token=getToken(),
 		clientId=getClientId()
 	)
@@ -243,11 +245,11 @@ NEWLY INTEGRATED PROJECT API
 @app.route('/project-api/<userId>/projects/<projectId>', methods=['GET', 'PUT', 'DELETE'])
 @requires_auth
 def projectAPI(userId, projectId=None):
-	postData = None	
+	postData = None
 	print request
 	try:
 		postData = request.get_json(force=True)
-	except Exception, e:		
+	except Exception, e:
 		print e
 	resp = _workspace.processProjectAPIRequest(
 		getClientId(),
@@ -257,7 +259,7 @@ def projectAPI(userId, projectId=None):
 		postData,
 		projectId
 	)
-	print resp	
+	print resp
 	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------
@@ -269,7 +271,7 @@ NEWLY INTEGRATED ANNOTATION API
 @requires_auth
 def annotationAPI(annotationId = None):
 	postData = None
-	print annotationId
+	#print annotationId
 	try:
 		postData = request.get_json(force=True)
 	except Exception, e:
@@ -281,15 +283,23 @@ def annotationAPI(annotationId = None):
 		postData,
 		annotationId
 	)
-	print resp
 	return Response(resp, mimetype='application/json')
 
 
-@app.route('/annotation-api/annotations/filter', methods=['GET'])
+@app.route('/annotation-api/annotations/filter', methods=['GET', 'POST'])
 @requires_auth
 def annotationSearchAPI():
-	resp = _workspace.searchAnnotations(getClientId(), getToken(), getParams(request))
-	print resp
+	print request.method
+	if request.method == 'GET':
+		resp = _workspace.searchAnnotationsOld(getClientId(), getToken(), getParams(request))
+	elif request.method == 'POST':
+		postData = None
+		try:
+			postData = request.get_json(force=True)
+		except Exception, e:
+			print e
+		resp = _workspace.searchAnnotations(postData)
+	#print resp
 	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------
