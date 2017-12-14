@@ -95,3 +95,16 @@ h1{
 		}
 	}
 }
+
+
+body.noHeader{
+	.header{
+		display: none;
+	}
+	.BreadCrumbs{
+		display: none;
+	}
+	.container{
+		margin-top: 0;		
+	}
+}
