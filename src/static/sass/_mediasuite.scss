@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
+
+html, body{
+	min-height: 100%;
+}
+
+
 h1{
 	font-size: 25px;
 }
@@ -96,7 +102,7 @@ h1{
 	}
 }
 
-
+/* ======================== Embedding pages in Iframe ======================== */
 body.noHeader{
 	.header{
 		display: none;
@@ -107,4 +113,24 @@ body.noHeader{
 	.container{
 		margin-top: 0;		
 	}
+}
+
+/* ======================== Explore tool ======================== */
+
+body.bg_tools-explore{
+	height: 100%;
+	.cl_help{
+		display: none;
+	}
+}
+
+#bg__tools-explore{
+	position: absolute;
+	left: 0;
+	top: 115px;
+	display: block;
+	width: 100%;
+	height: calc(100% - 115px);
+	border: 0;
+	border-top: 5px solid #fff;
 }

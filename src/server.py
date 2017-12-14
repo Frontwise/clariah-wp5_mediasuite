@@ -422,6 +422,27 @@ def logout():
 		return redirect(url_for('home'))
 	return Response(getErrorMessage('logout not implemented'))
 
+
+"""------------------------------------------------------------------------------
+EXPLORATORY SEARCH / DIVE+ WRAPPER
+------------------------------------------------------------------------------"""
+
+@app.route('/tool/exploratory-search')
+@requires_auth
+def diveWrapper():
+	return render_template('exploratory-search.html',
+		params=getParams(request),
+		# Need recipes here; strange dependency
+		recipes=app.config['RECIPES'], 
+		user=_authenticationHub.getUser(request),
+		userSpaceAPI=app.config['USER_SPACE_API'],
+		searchAPI=app.config['SEARCH_API'],
+		searchAPIPath=app.config['SEARCH_API_PATH'],
+		token=getToken(),
+		clientId=getClientId()
+	)
+
+
 """------------------------------------------------------------------------------
 ERROR HANDLERS
 ------------------------------------------------------------------------------"""
