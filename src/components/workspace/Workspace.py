@@ -88,12 +88,21 @@ class Workspace():
 			return self.__getAnnotation(clientId, token, annotationId)
 		return {'error' : 'Bad request'}, 400
 
-	def searchAnnotations(self, clientId, token, params):
+	def searchAnnotationsOld(self, clientId, token, params):
 		temp = []
 		for k in params.keys():
 			temp.append(k + '=' + params[k]);
 		url =  '%s/annotations/filter?%s' % (self.config['ANNOTATION_API'], '&'.join(temp))
 		resp = requests.get(url)
+		if resp.status_code == 200:
+			return resp.text
+		return {'error' : resp.text}, resp.status_code
+
+	def searchAnnotations(self, postData):
+		print 'searching annotations the new way'
+		url =  '%s/annotations/filter' % self.config['ANNOTATION_API']
+		print url
+		resp = requests.post(url, json=postData)
 		if resp.status_code == 200:
 			return resp.text
 		return {'error' : resp.text}, resp.status_code

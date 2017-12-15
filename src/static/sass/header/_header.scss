@@ -248,6 +248,8 @@ $dropdownWidth: $accountWidth;
 
   .account {
     background-image: $arrowRightUrl;
+
+    // active border will cause 'center' background image to move, so absolute pixels
     background-position: top 52px right 20px;
     background-repeat: no-repeat;
     box-sizing: border-box;
@@ -260,8 +262,8 @@ $dropdownWidth: $accountWidth;
     box-sizing: border-box;
     background-image: $arrowRightUrl;
     background-repeat: no-repeat;
+    position:relative;
 
-    // active border will cause 'center' background image to move, so absolute pixels
     width: $accountWidth;
 
     a{
@@ -351,8 +353,10 @@ $dropdownWidth: $accountWidth;
     list-style: none;
     margin: 0;
     padding: 0;
-    width: $dropdownWidth;
+    width: $dropdownWidth;    
     z-index: 1112; // ?
+    position: absolute;
+    top: $headerHeight;
 
     .new-project{
       padding: 0;

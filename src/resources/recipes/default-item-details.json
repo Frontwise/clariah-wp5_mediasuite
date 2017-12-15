@@ -21,7 +21,8 @@
 			"link" : {
 				"apis" : [
 					{"name" : "wikidata"},
-					{"name" : "europeana"}
+					{"name" : "europeana"},
+					{"name" : "custom"}
 				]
 			},
 			"metadata" : {
