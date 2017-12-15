@@ -5,7 +5,7 @@
     {% endwith %}
 </head>
 
-<body>
+<body class="{% if params.bodyClass %}{{ params.bodyClass }}{% endif %}">
 
 {% with page='tool' %}
 {% include '%s/nav.html' % navbarDir %}
