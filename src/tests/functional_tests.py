@@ -49,7 +49,6 @@ class SearchAPITest(unittest.TestCase):
     def setUp(self):
         from settings import config
         self.searchAPIBase = config['SEARCH_API']
-        self.searchAPIUrl = '%s%s' % (self.searchAPIBase, config['SEARCH_API_PATH'])
 
     def test_search_api_response_and_content(self):
         response = requests.get(self.searchAPIBase)

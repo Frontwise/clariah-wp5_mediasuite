@@ -225,7 +225,6 @@ def wsProjects(path):
 		user=_authenticationHub.getUser(request),
 		userSpaceAPI=app.config['USER_SPACE_API'],
 		searchAPI=app.config['SEARCH_API'],
-		searchAPIPath=app.config['SEARCH_API_PATH'],
 		token=getToken(),
 		clientId=getClientId()
 	)
@@ -318,7 +317,6 @@ def recipe(recipeId):
 				params=getParams(request),
 				instanceId='clariah',
 				searchAPI=app.config['SEARCH_API'],
-				searchAPIPath=app.config['SEARCH_API_PATH'],
 				user=_authenticationHub.getUser(request),
 				version=app.config['APP_VERSION'],
 				annotationAPI=app.config['ANNOTATION_API'],
@@ -337,7 +335,6 @@ def components():
 		version=app.config['APP_VERSION'],
 		instanceId='clariah',
 		searchAPI=app.config['SEARCH_API'],
-		searchAPIPath=app.config['SEARCH_API_PATH'],
 		annotationAPI=app.config['ANNOTATION_API']
 	)
 
@@ -433,11 +430,10 @@ def diveWrapper():
 	return render_template('exploratory-search.html',
 		params=getParams(request),
 		# Need recipes here; strange dependency
-		recipes=app.config['RECIPES'], 
+		recipes=app.config['RECIPES'],
 		user=_authenticationHub.getUser(request),
 		userSpaceAPI=app.config['USER_SPACE_API'],
 		searchAPI=app.config['SEARCH_API'],
-		searchAPIPath=app.config['SEARCH_API_PATH'],
 		token=getToken(),
 		clientId=getClientId()
 	)
