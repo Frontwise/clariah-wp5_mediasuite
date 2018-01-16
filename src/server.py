@@ -51,7 +51,7 @@ _workspace = Workspace(app.config)
 def requires_auth(f):
 	@wraps(f)
 	def decorated(*args, **kwargs):
-		session['requestedURL'] = str(request.path)
+		session['requestedURL'] = str(request.path.encode('utf-8'))
 		auth = _authenticationHub.isAuthenticated(request)
 		#if not logged in redirect the user depending on the authentication method
 		if not auth:
