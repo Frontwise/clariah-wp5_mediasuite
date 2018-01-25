@@ -245,7 +245,6 @@ NEWLY INTEGRATED PROJECT API
 @requires_auth
 def projectAPI(userId, projectId=None):
 	postData = None
-	print request
 	try:
 		postData = request.get_json(force=True)
 	except Exception, e:
@@ -258,7 +257,6 @@ def projectAPI(userId, projectId=None):
 		postData,
 		projectId
 	)
-	print resp
 	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------
@@ -288,7 +286,6 @@ def annotationAPI(annotationId = None):
 @app.route('/annotation-api/annotations/filter', methods=['GET', 'POST'])
 @requires_auth
 def annotationSearchAPI():
-	print request.method
 	if request.method == 'GET':
 		resp = _workspace.searchAnnotationsOld(getClientId(), getToken(), getParams(request))
 	elif request.method == 'POST':
@@ -298,7 +295,6 @@ def annotationSearchAPI():
 		except Exception, e:
 			print e
 		resp = _workspace.searchAnnotations(postData)
-	#print resp
 	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------

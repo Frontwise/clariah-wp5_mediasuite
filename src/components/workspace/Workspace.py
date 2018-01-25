@@ -29,10 +29,10 @@ class Workspace():
 		resp = requests.get(url)
 		if resp.status_code == 200:
 			return resp.text
-		return {'error' : resp.text}, resp.status_code
+		#return {'error' : resp.text}, resp.status_code
+		return self.__formatAPIErrorResponse(resp)
 
 	def __listProjects(self, clientId, token, userId):
-		print 'getting projects'
 		url = '%s/%s/projects?cid=%s&at=%s' % (
 			self.config['USER_SPACE_API'], userId, clientId, token
 		)
@@ -96,16 +96,14 @@ class Workspace():
 		resp = requests.get(url)
 		if resp.status_code == 200:
 			return resp.text
-		return {'error' : resp.text}, resp.status_code
+		return self.__formatAPIErrorResponse(resp)
 
 	def searchAnnotations(self, postData):
-		print 'searching annotations the new way'
 		url =  '%s/annotations/filter' % self.config['ANNOTATION_API']
-		print url
 		resp = requests.post(url, json=postData)
 		if resp.status_code == 200:
 			return resp.text
-		return {'error' : resp.text}, resp.status_code
+		return self.__formatAPIErrorResponse(resp)
 
 	def __getAnnotation(self, clientId, token, annotationId):
 		url = '%s/annotation/%s?cid=%s&at=%s' % (
@@ -114,7 +112,7 @@ class Workspace():
 		resp = requests.get(url)
 		if resp.status_code == 200:
 			return resp.text
-		return {'error' : resp.text}, resp.status_code
+		return self.__formatAPIErrorResponse(resp)
 
 	def __saveAnnotation(self, clientId, token, annotation, annotationId=None):
 		url = '%s/annotation' % self.config['ANNOTATION_API']
