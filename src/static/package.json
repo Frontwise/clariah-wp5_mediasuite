@@ -32,7 +32,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "jquery": "^3.2.1",
-    "labo-components": "^1.4.3",
+    "labo-components": "^1.4.4",
     "nouislider": "^10.1.0",
     "openseadragon": "^2.3.0"
   },
