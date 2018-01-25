@@ -7,5 +7,5 @@
     }
   },
   "help_header":"Data info",
-  "documentation_question-mark_data_page":"<p>This is an information page. The \"Visit CKAN\" link will redirect you to an external service, which is the CLARIAH Media Suite's instance of CKAN, built using the CKAN registration software. For more information, you can read the (<a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-data\">Media Suite Data Documentation</a>).</p>"
+  "documentation_question-mark_data_page":"<p>This is an information page. The \"Visit CKAN\" link will redirect you to an external service, which is the CLARIAH Media Suite's instance of CKAN, built using the CKAN registration software. For more information, you can read the (<a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/pages/data.html\">Media Suite Data Documentation</a>).</p>"
 }
