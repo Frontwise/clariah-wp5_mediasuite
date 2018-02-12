@@ -297,6 +297,86 @@ def annotationSearchAPI():
 		resp = _workspace.searchAnnotations(postData)
 	return Response(resp, mimetype='application/json')
 
+
+"""------------------------------------------------------------------------------
+NEWLY INTEGRATED SEARCH API
+------------------------------------------------------------------------------"""
+
+#forwards requests to the layered_search endpoint of the search API (/layered_search)
+@app.route('/search-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def searchAPI(operation, collectionId):
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'layered_search':
+		resp = _workspace.layeredSearch(getClientId(), getToken(), collectionId, postData)
+	return Response(resp, mimetype='application/json')
+
+
+#'/collections/show_timeline'
+#'/collections/analyse_field'
+#"/collections/show_stats?collectionId="
+
+#forwards requests to the collection endpoint of the search API (/collections)
+@app.route('/collection-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def collectionAPI(operation, collectionId):
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'show_stats':
+		resp = _workspace.getCollectionStats(getClientId(), getToken(), collectionId)
+	elif operation == 'show_timeline':
+		resp = _workspace.getCollectionTimeLine(getClientId(), getToken(), collectionId, postData)
+	elif operation == 'analyse_field':
+		resp = _workspace.analyseField(getClientId(), getToken(), collectionId, postData)
+	print '>' * 100
+	print resp
+	print '%' * 100
+	return Response(resp, mimetype='application/json')
+
+
+#'/ckan/list_collections'
+#'/ckan/collection_info/'
+
+#forwards requests to the ckan endpoint of the search API (/ckan)
+@app.route('/ckan-api/<operation>', methods=['POST'])
+@app.route('/ckan-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def ckanAPI(operation, collectionId=None):
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'list_collections':
+		resp = _workspace.listCollections(getClientId(), getToken())
+	elif operation == 'collection_info' and collectionId:
+		resp = _workspace.getCollectionInfo(getClientId(), getToken(), collectionId)
+	return Response(resp, mimetype='application/json')
+
+#/document/get_doc/
+#/document/get_docs/
+
+#forwards requests to the document endpoint of the search API (/document)
+@app.route('/document-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def documentAPI(operation, collectionId):
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'get_doc':
+		resp = _workspace.getDoc(getClientId(), getToken(), collectionId, postData)
+	elif operation == 'get_docs':
+		resp = _workspace.getDocs(getClientId(), getToken(), collectionId, postData)
+	return Response(resp, mimetype='application/json')
+
 """------------------------------------------------------------------------------
 PAGES THAT DO USE THE COMPONENT LIBRARY
 ------------------------------------------------------------------------------"""

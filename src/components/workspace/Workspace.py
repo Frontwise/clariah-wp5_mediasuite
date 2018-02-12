@@ -139,3 +139,128 @@ class Workspace():
 		return self.__formatAPIErrorResponse(resp)
 
 
+
+	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	<><><><><><><><><><> SEARCH API REQUESTS <><><><><><><><><><><>
+	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
+
+	def layeredSearch(self, clientId, token, collectionId, params):
+		url = '%s/layered_search/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionId,
+			clientId,
+			token
+		)
+		print url
+		if params:
+			resp = requests.post(url, json=params)
+			if resp.status_code == 200:
+				return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	<><><><><><><><><><> DOCUMENT API REQUESTS <><><><><><><><><><>
+	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
+
+	#params => {id : ''}
+	def getDoc(self, clientId, token, collectionId, params):
+		url = '%s/document/get_doc/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionId,
+			clientId,
+			token
+		)
+		if params:
+			resp = requests.post(url, json=params)
+			if resp.status_code == 200:
+				return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	#params => {ids : ['', '']}
+	def getDocs(self, clientId, token, collectionId, params):
+		url = '%s/document/get_docs/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionId,
+			clientId,
+			token
+		)
+		if params:
+			resp = requests.post(url, json=params)
+			if resp.status_code == 200:
+				return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+
+	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	<><><><><><><><><><> COLLECTION API REQUESTS <><><><><><><><><>
+	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
+
+
+	def getCollectionStats(self, clientId, token, collectionId):
+		url = '%s/collections/show_stats/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionId,
+			clientId,
+			token
+		)
+		resp = requests.post(url)
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	def getCollectionTimeLine(self, clientId, token, collectionId, params):
+		url = '%s/collections/show_timeline/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionId,
+			clientId,
+			token
+		)
+		if params:
+			resp = requests.post(url, json=params)
+			if resp.status_code == 200:
+				return resp.text
+			return self.__formatAPIErrorResponse(resp)
+		return {'error' : 'Bad request: please provide the correct parameters'}, 400
+
+	def analyseField(self, clientId, token, collectionId, params):
+		url = '%s/collections/analyse_field/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionId,
+			clientId,
+			token
+		)
+		if params:
+			resp = requests.post(url, json=params)
+			if resp.status_code == 200:
+				return resp.text
+			return self.__formatAPIErrorResponse(resp)
+		return {'error' : 'Bad request: please provide the correct parameters'}, 400
+
+	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	<><><><><><><><><><> CKAN API REQUESTS <><><><><><><><><><><><>
+	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
+
+	def listCollections(self, clientId, token):
+		url = '%s/ckan/list_collections?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			clientId,
+			token
+		)
+		resp = requests.post(url)
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	def getCollectionInfo(self, clientId, token, collectionId):
+		url = '%s/ckan/collection_info/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionId,
+			clientId,
+			token
+		)
+		resp = requests.post(url)
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+
