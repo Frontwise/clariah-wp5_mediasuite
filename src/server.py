@@ -316,11 +316,6 @@ def searchAPI(operation, collectionId):
 		resp = _workspace.layeredSearch(getClientId(), getToken(), collectionId, postData)
 	return Response(resp, mimetype='application/json')
 
-
-#'/collections/show_timeline'
-#'/collections/analyse_field'
-#"/collections/show_stats?collectionId="
-
 #forwards requests to the collection endpoint of the search API (/collections)
 @app.route('/collection-api/<operation>/<collectionId>', methods=['POST'])
 @requires_auth
@@ -337,14 +332,7 @@ def collectionAPI(operation, collectionId):
 		resp = _workspace.getCollectionTimeLine(getClientId(), getToken(), collectionId, postData)
 	elif operation == 'analyse_field':
 		resp = _workspace.analyseField(getClientId(), getToken(), collectionId, postData)
-	print '>' * 100
-	print resp
-	print '%' * 100
 	return Response(resp, mimetype='application/json')
-
-
-#'/ckan/list_collections'
-#'/ckan/collection_info/'
 
 #forwards requests to the ckan endpoint of the search API (/ckan)
 @app.route('/ckan-api/<operation>', methods=['POST'])
@@ -357,9 +345,6 @@ def ckanAPI(operation, collectionId=None):
 	elif operation == 'collection_info' and collectionId:
 		resp = _workspace.getCollectionInfo(getClientId(), getToken(), collectionId)
 	return Response(resp, mimetype='application/json')
-
-#/document/get_doc/
-#/document/get_docs/
 
 #forwards requests to the document endpoint of the search API (/document)
 @app.route('/document-api/<operation>/<collectionId>', methods=['POST'])

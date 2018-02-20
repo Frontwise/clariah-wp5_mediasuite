@@ -39,6 +39,7 @@ class Workspace():
 		resp = requests.get(url)
 		if resp.status_code == 200:
 			return resp.text
+
 		return self.__formatAPIErrorResponse(resp)
 
 	def __saveProject(self, clientId, token, userId, project, projectId=None):
@@ -101,6 +102,7 @@ class Workspace():
 	def searchAnnotations(self, postData):
 		url =  '%s/annotations/filter' % self.config['ANNOTATION_API']
 		resp = requests.post(url, json=postData)
+
 		if resp.status_code == 200:
 			return resp.text
 		return self.__formatAPIErrorResponse(resp)
