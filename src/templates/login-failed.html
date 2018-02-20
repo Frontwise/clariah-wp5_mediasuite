@@ -1,11 +1,15 @@
+<!doctype HTML>
+<html>
+
 <head>
 	<title>CLARIAH media suite - Login failed</title>
-    {% include '%s/head.html' % headDir %}
+
+    {% include 'head.html' %}
 </head>
 
 <body>
 
-{% include '%s/nav.html' % navbarDir %}
+{% include 'nav.html' %}
 
 	<div class="container">
 
@@ -27,4 +31,8 @@
 		</div>
 	</div>
 
+	{% include 'site-tracking.html' ignore missing %}
+
 </body>
+
+</html>

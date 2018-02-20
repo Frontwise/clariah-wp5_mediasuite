@@ -1,87 +1,95 @@
 <!doctype HTML>
 <html>
+
 <head>
     <title>CLARIAH Media Suite - Tools</title>
-    {% include '%s/head.html' % headDir %}
+    {% include 'head.html' %}
 </head>
+
 <body class="cl_flex-main">
-{% with page='tools' %}
-{% include '%s/nav.html' % navbarDir %}
-{% endwith %}
+    {% with page='tools' %}
+    {% include 'nav.html' %}
+    {% endwith %}
 
-<div class="tools container cl_row cl_main-content cl_container-800">
+    <div class="tools container cl_row cl_main-content cl_container-800">
 
-    <div class="cl_col cl_col-span-4" style="text-align: center;">
-        <img style="max-width: 176px; display:inline-block;" src="../static/images/bigicon-tools.833a4532.png"
-             alt="Media Suite Tools">
-    </div>
-    <div class="cl_col cl_col-span-8">
-        <div class="info">
-            <div class="description">
-                <p>
-                    {{recipes['pages']['tools-page'].tools_intro.text|safe}}
-                </p>
+        <div class="cl_col cl_col-span-4" style="text-align: center;">
+            <img style="max-width: 176px; display:inline-block;" src="../static/images/bigicon-tools.833a4532.png"
+                 alt="Media Suite Tools">
+        </div>
+        <div class="cl_col cl_col-span-8">
+            <div class="info">
+                <div class="description">
+                    <p>
+                        {{recipes['pages']['tools-page'].tools_intro.text|safe}}
+                    </p>
+                </div>
+                <div class="actions cl_center">
+                    <!--<a class="btn blank">Hide</a>-->
+                    <a href="{{recipes['pages']['tools-page'].tools_intro.links.link_url}}" class="btn"
+                       rel="noopener noreferrer">
+                        {{recipes['pages']['tools-page'].tools_intro.links.link_value}}
+                    </a>
+                </div>
             </div>
-            <div class="actions cl_center">
-                <!--<a class="btn blank">Hide</a>-->
-                <a href="{{recipes['pages']['tools-page'].tools_intro.links.link_url}}" class="btn"
-                   rel="noopener noreferrer">
-                    {{recipes['pages']['tools-page'].tools_intro.links.link_value}}
-                </a>
+        </div>
+        <div class="cl_row cl_list">
+            <div class="tool cl_col cl_col-span-6 cl_no_padd_left cl_margin-botton">
+                <div class="image-wrap">
+                    <img src="../static/images/tools/collection-inspector-screenshot-min.png" alt="Collection inspector">
+                </div>
+                <h3>{{recipes['pages']['tools-page']['tools_collection-inspector'].header}}</h3>
+                <div class="actions">
+                    <a href="{{recipes['pages']['tools-page']['tools_collection-inspector'].links.link_details.link_url}}"
+                       class="btn blank">{{recipes['pages']['tools-page']['tools_collection-inspector'].links.link_details.link_value}}</a>
+                    <a href="{{recipes['collection-inspector'].url}}" class="btn">Open</a></div>
+            </div>
+            <div class="tool cl_col cl_col-span-6 cl_no_padd_right cl_margin-botton">
+                <div class="image-wrap">
+                    <img src="../static/images/tools/dive-screenshot-min.png" alt="Exploratory browser">
+                </div>
+                <h3>{{recipes['pages']['tools-page']['tools_lod-collection-browser'].header}}</h3>
+                <div class="actions">
+                    <a href="{{recipes['pages']['tools-page']['tools_lod-collection-browser'].links.link_details.link_url}}"
+                       class="btn blank">Details</a>
+                    <a href="{{recipes['pages']['tools-page']['tools_lod-collection-browser'].links.link_open.link_url}}"
+                       class="btn">{{recipes['pages']['tools-page']['tools_lod-collection-browser'].links.link_open.link_value}}</a>
+                </div>
+            </div>
+            <div class="tool cl_col cl_col-span-6 cl_no_padd_left">
+                <div class="image-wrap">
+                    <img src="../static/images/tools/single-query-screenshot-min.png" alt="Basic faceted search">
+                </div>
+                <h3>{{recipes['pages']['tools-page']['tools_single-search'].header}}</h3>
+                <div class="actions">
+                    <a href="{{recipes['pages']['tools-page']['tools_single-search'].links.link_details.link_url}}"
+                       class="btn blank">{{recipes['pages']['tools-page']['tools_single-search'].links.link_details.link_value}}</a>
+                    <a href="{{recipes['pages']['tools-page']['tools_single-search'].links.link_open.link_url}}"
+                       class="btn">{{recipes['pages']['tools-page']['tools_single-search'].links.link_open.link_value}}</a>
+                </div>
+            </div>
+            <div class="tool cl_col cl_col-span-6 cl_no_padd_right">
+                <div class="image-wrap">
+                    <img src="../static/images/tools/comparative-queries-screenshot-min.png" alt="Comparative search">
+                </div>
+                <h3>{{recipes['pages']['tools-page']['tools_comparative-search'].header}}</h3>
+                <div class="actions">
+                    <a href="{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_details.link_url}}"
+                       class="btn blank">{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_details.link_value}}</a>
+                    <a href="{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_open.link_url}}"
+                       class="btn">{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_open.link_value}}</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="cl_row cl_list">
-        <div class="tool cl_col cl_col-span-6 cl_no_padd_left cl_margin-botton">
-            <div class="image-wrap">
-                <img src="../static/images/tools/collection-inspector-screenshot-min.png" alt="Collection inspector">
-            </div>
-            <h3>{{recipes['pages']['tools-page']['tools_collection-inspector'].header}}</h3>
-            <div class="actions">
-                <a href="{{recipes['pages']['tools-page']['tools_collection-inspector'].links.link_details.link_url}}"
-                   class="btn blank">{{recipes['pages']['tools-page']['tools_collection-inspector'].links.link_details.link_value}}</a>
-                <a href="{{recipes['collection-inspector'].url}}" class="btn">Open</a></div>
-        </div>
-        <div class="tool cl_col cl_col-span-6 cl_no_padd_right cl_margin-botton">
-            <div class="image-wrap">
-                <img src="../static/images/tools/dive-screenshot-min.png" alt="Exploratory browser">
-            </div>
-            <h3>{{recipes['pages']['tools-page']['tools_lod-collection-browser'].header}}</h3>
-            <div class="actions">
-                <a href="{{recipes['pages']['tools-page']['tools_lod-collection-browser'].links.link_details.link_url}}"
-                   class="btn blank">Details</a>
-                <a href="{{recipes['pages']['tools-page']['tools_lod-collection-browser'].links.link_open.link_url}}"
-                   class="btn">{{recipes['pages']['tools-page']['tools_lod-collection-browser'].links.link_open.link_value}}</a>
-            </div>
-        </div>
-        <div class="tool cl_col cl_col-span-6 cl_no_padd_left">
-            <div class="image-wrap">
-                <img src="../static/images/tools/single-query-screenshot-min.png" alt="Basic faceted search">
-            </div>
-            <h3>{{recipes['pages']['tools-page']['tools_single-search'].header}}</h3>
-            <div class="actions">
-                <a href="{{recipes['pages']['tools-page']['tools_single-search'].links.link_details.link_url}}"
-                   class="btn blank">{{recipes['pages']['tools-page']['tools_single-search'].links.link_details.link_value}}</a>
-                <a href="{{recipes['pages']['tools-page']['tools_single-search'].links.link_open.link_url}}"
-                   class="btn">{{recipes['pages']['tools-page']['tools_single-search'].links.link_open.link_value}}</a>
-            </div>
-        </div>
-        <div class="tool cl_col cl_col-span-6 cl_no_padd_right">
-            <div class="image-wrap">
-                <img src="../static/images/tools/comparative-queries-screenshot-min.png" alt="Comparative search">
-            </div>
-            <h3>{{recipes['pages']['tools-page']['tools_comparative-search'].header}}</h3>
-            <div class="actions">
-                <a href="{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_details.link_url}}"
-                   class="btn blank">{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_details.link_value}}</a>
-                <a href="{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_open.link_url}}"
-                   class="btn">{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_open.link_value}}</a>
-            </div>
-        </div>
-    </div>
-</div>
-{% include '%s/footer.html' % footerDir %}
+
+    {% include 'footer.html'%}
+
+    {% include 'site-tracking.html' ignore missing %}
+
+</body>
+
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/static/js/common.js"></script>
-</body>
+
 </html>
