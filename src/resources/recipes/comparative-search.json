@@ -12,6 +12,7 @@
 		"output" : "lineChart",
 		"aggregationView" : "box",
 		"dateRangeSelector" : "date-picker",
-		"itemDetailsPath" : "tool/default-item-details"
+		"itemDetailsPath" : "tool/default-item-details",
+		"useProjects" : true
 	}
 }
