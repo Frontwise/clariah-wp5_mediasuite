@@ -206,6 +206,17 @@ def getParams(request):
 def getClientId():
 	return app.config['CLIENT_ID'] if 'CLIENT_ID' in app.config else None
 
+def verifyUserId(userId):
+	user = _authenticationHub.getUser(request)
+	if user and 'id' in user and user['id'] == userId:
+		return True
+	return False
+
+def verifyUserIsAllowedPersonalCollections(userId):
+	user = _authenticationHub.getUser(request)
+	if user and 'attributes' in user and 'allowPersonalCollections' in user['attributes']:
+		return user['attributes']['allowPersonalCollections']
+	return False
 
 """------------------------------------------------------------------------------
 WORKSPACE PAGES
@@ -229,6 +240,22 @@ def wsProjects(path):
 		clientId=getClientId()
 	)
 
+@app.route('/workspace/collections', defaults={'path': ''})
+@app.route('/workspace/collections/<path:path>')
+@requires_auth
+def wsCollections(path):
+	user = _authenticationHub.getUser(request)
+	if verifyUserIsAllowedPersonalCollections(user['id']):
+		return render_template('workspace/collections.html',
+			params=getParams(request),
+			recipe=app.config['RECIPES']['workspace-collections'],
+			user=_authenticationHub.getUser(request),
+			userSpaceAPI=app.config['USER_SPACE_API'],
+			searchAPI=app.config['SEARCH_API'],
+			token=getToken(),
+			clientId=getClientId()
+		)
+	return render_template('403.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION']), 403
 
 # Make Projects the default workspace recipe
 # In the future this may be an overview page for workspace related information
@@ -244,20 +271,56 @@ NEWLY INTEGRATED PROJECT API
 @app.route('/project-api/<userId>/projects/<projectId>', methods=['GET', 'PUT', 'DELETE'])
 @requires_auth
 def projectAPI(userId, projectId=None):
-	postData = None
-	try:
-		postData = request.get_json(force=True)
-	except Exception, e:
-		print e
-	resp = _workspace.processProjectAPIRequest(
-		getClientId(),
-		getToken(),
-		request.method,
-		userId,
-		postData,
-		projectId
-	)
-	return Response(resp, mimetype='application/json')
+	if verifyUserId(userId):
+		postData = None
+		try:
+			postData = request.get_json(force=True)
+		except Exception, e:
+			print e
+		resp = _workspace.processProjectAPIRequest(
+			getClientId(),
+			getToken(),
+			request.method,
+			userId,
+			postData,
+			projectId
+		)
+		return Response(resp, mimetype='application/json')
+	return Response(getErrorMessage('Access denied'), mimetype='application/json'), 403
+
+"""------------------------------------------------------------------------------
+NEWLY INTEGRATED COLLECTION API
+------------------------------------------------------------------------------"""
+
+@app.route('/personal-collection-api/<userId>/collections', methods=['GET', 'POST'])
+@app.route('/personal-collection-api/<userId>/collections/<collectionId>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/personal-collection-api/<userId>/collections/<collectionId>/entry', methods=['POST'])
+@app.route('/personal-collection-api/<userId>/collections/<collectionId>/entry/<entryId>', methods=['GET', 'POST', 'DELETE'])
+@requires_auth
+def personalCollectionAPI(userId, collectionId=None, entryId=None):
+	if verifyUserId(userId):
+		postData = None
+		entryEndpoint = False
+		print request
+		try:
+			if request.method in ["POST", "PUT", "DELETE"]:
+				postData = request.get_json(force=True)
+		except Exception, e:
+			print e
+		if 'entry' in request.path:
+			entryEndpoint = True
+		resp = _workspace.processPersonalCollectionAPIRequest(
+			getClientId(),
+			getToken(),
+			request.method,
+			userId,
+			postData,
+			collectionId,
+			entryId,
+			entryEndpoint
+		)
+		return Response(resp, mimetype='application/json')
+	return Response(getErrorMessage('Access denied'), mimetype='application/json'), 403
 
 """------------------------------------------------------------------------------
 NEWLY INTEGRATED ANNOTATION API
@@ -504,7 +567,11 @@ def diveWrapper():
 ERROR HANDLERS
 ------------------------------------------------------------------------------"""
 
-#TODO fix the underlying template
+#TODO fix the underlying templates
+@app.errorhandler(403)
+def page_not_found(e):
+	return render_template('403.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION']), 403
+
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION']), 404

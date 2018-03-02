@@ -36,6 +36,18 @@
 					<div class="btn primary plus">Create User Project</div>
 				</a>
 			</li>
+			<!-- new stuff for creating personal collections -->
+			{% if user.attributes.allowPersonalCollections %}
+				<li><a class="" href="/workspace/collections">User Collections<span id="collection_count" class="count">0</span>
+					</a>
+				</li>
+				<li class="new-project">
+					<p>Add user collection</p>
+					<a href="/workspace/collections/create" class="button-holder">
+						<div class="btn primary plus">Add user collection</div>
+					</a>
+				</li>
+			{% endif %}
 		</ul>
 	</div>
 	{% endif %}
@@ -83,3 +95,17 @@
 
 	}
 </script>
+
+{% if user.attributes.allowPersonalCollections %}
+<script>
+	try {
+		if('localStorage' in window && window['localStorage'] !== null) {
+			if('myCollections' in localStorage) {
+				document.getElementById('collection_count').innerHTML = JSON.parse(localStorage['myCollections']).length;
+			}
+		}
+	} catch (e) {
+
+	}
+</script>
+{% endif %}

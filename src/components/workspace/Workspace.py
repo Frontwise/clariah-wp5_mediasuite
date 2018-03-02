@@ -265,4 +265,105 @@ class Workspace():
 			return resp.text
 		return self.__formatAPIErrorResponse(resp)
 
+	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	<><><><><><><><><><> PERSONAL COLLECTION API REQUESTS <><><><><
+	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
+
+	def processPersonalCollectionAPIRequest(self, clientId, token, method, userId, data=None, collectionId=None, entryId=None, entryEndpoint=False):
+		if entryEndpoint:
+			if method == 'DELETE':
+				return self.__deleteDataEntry(clientId, token, userId, collectionId, entryId)
+			if method == 'POST' or method == 'PUT':
+				return self.__saveDataEntry(method, clientId, token, userId, data, collectionId)
+			if method == 'GET':
+				return self.__getDataEntry(clientId, token, userId, collectionId, entryId)
+		else:
+			#Personal Collection endpoint.
+			if method == 'DELETE':
+				return self.__deletePersonalCollection(clientId, token, userId, collectionId)
+			elif method in ['PUT', 'POST']:
+				return self.__savePersonalCollection(clientId, token, userId, data, collectionId)
+			elif method == 'GET':
+				if collectionId:
+					return self.__getPersonalCollection(clientId, token, userId, collectionId)
+				else:
+					return self.__listPersonalCollections(clientId, token, userId)
+		return {'error' : 'Bad request'}, 400
+
+	def __getPersonalCollection(self, clientId, token, userId, collectionId):
+		print('get')
+		url = '%s/%s/collections/%s?cid=%s&at=%s' % (
+			self.config['USER_SPACE_API'], userId, collectionId, clientId, token
+		)
+		resp = requests.get(url)
+		if resp.status_code == 200:
+			return resp.text
+		return {'error' : resp.text}, resp.status_code
+
+	def __getDataEntry(self, clientId, token, userId, collectionId, entryId):
+		url = '%s/%s/collections/%s/entry/%s?cid=%s&at=%s' % (
+			self.config['USER_SPACE_API'], userId, collectionId, entryId, clientId, token
+		)
+		resp = requests.get(url)
+		if resp.status_code == 200:
+			return resp.text
+		return {'error' : resp.text}, resp.status_code
+
+	def __listPersonalCollections(self, clientId, token, userId):
+		print('list')
+		url = '%s/%s/collections?cid=%s&at=%s' % (
+			self.config['USER_SPACE_API'], userId, clientId, token
+		)
+		resp = requests.get(url)
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	def __savePersonalCollection(self, clientId, token, userId, data, collectionId):
+		print('save')
+		url = '%s/%s/collections' % (self.config['USER_SPACE_API'], userId)
+		if collectionId:
+			url += '/%s' % collectionId
+		url += '?cid=%s&at=%s' % (clientId, token)
+		data['clientId'] = clientId
+		data['token'] = token
+		if collectionId:
+			resp = requests.put(url, json.dumps(data))
+		else:
+			resp = requests.post(url, json.dumps(data))
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	def __saveDataEntry(self, method, clientId, token, userId, data, collectionId):
+		print('save data entry')
+		url = '%s/%s/collections' % (self.config['USER_SPACE_API'], userId)
+		url += '/%s/entry' % collectionId
+		url += '?cid=%s&at=%s' % (clientId, token)
+		data['clientId'] = clientId
+		data['token'] = token
+
+		resp = requests.post(url, json.dumps(data))
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	def __deletePersonalCollection(self, clientId, token, userId, collectionId):
+		url = '%s/%s/collections/%s?cid=%s&at=%s' % (
+			self.config['USER_SPACE_API'], userId, collectionId, clientId, token
+		)
+		resp = requests.delete(url)
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	def __deleteDataEntry(self, clientId, token, userId, collectionId, entryId):
+		url = '%s/%s/collections/%s/entry/%s?cid=%s&at=%s' % (
+			self.config['USER_SPACE_API'], userId, collectionId, entryId, clientId, token
+		)
+		resp = requests.delete(url)
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
 

@@ -57,7 +57,9 @@ class AuthenticationHub(object):
 			return {
 				'id' : self.app.config['CLIENT_ID'],
 				'name' : self.app.config['CLIENT_ID'],
-				'attributes' : {}
+				'attributes' : {
+					'allowPersonalCollections' : False #only allow for phoney test user outside of Openconext
+				}
 			}
 		return None
 

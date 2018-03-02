@@ -1,0 +1,18 @@
+{% extends "./workspace/_layout.html" %}
+
+{% block subtitle %}Workspace | User Collections{% endblock %}
+
+{% block content %}
+  <div id="app" class="bg__ws-collections" />
+{% endblock %}
+
+{% block scripts %}
+
+  {% include "./workspace/_labo-scripts.html" %}
+  <script>
+    var _chickenStock = '{{token}}';
+    var _clientId = '{{clientId}}';
+    var _play = '{{play}}';
+    labo.cookRecipe({{ recipe|tojson|safe }}, {{ params|tojson|safe }}, {{user|tojson|safe}}, 'app');
+  </script>
+{% endblock %}
