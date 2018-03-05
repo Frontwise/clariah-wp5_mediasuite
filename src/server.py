@@ -395,6 +395,8 @@ def collectionAPI(operation, collectionId):
 		resp = _workspace.getCollectionTimeLine(getClientId(), getToken(), collectionId, postData)
 	elif operation == 'analyse_field':
 		resp = _workspace.analyseField(getClientId(), getToken(), collectionId, postData)
+	elif operation == 'list_collections':
+		resp = _workspace.listPersonalCollections(getClientId(), getToken(), collectionId)
 	return Response(resp, mimetype='application/json')
 
 #forwards requests to the ckan endpoint of the search API (/ckan)

@@ -238,6 +238,18 @@ class Workspace():
 			return self.__formatAPIErrorResponse(resp)
 		return {'error' : 'Bad request: please provide the correct parameters'}, 400
 
+	def listPersonalCollections(self, clientId, token, collectionPrefix):
+		url = '%s/collections/list_collections/%s?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			collectionPrefix,
+			clientId,
+			token
+		)
+		resp = requests.post(url)
+		if resp.status_code == 200:
+			return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
 	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 	<><><><><><><><><><> CKAN API REQUESTS <><><><><><><><><><><><>
 	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
