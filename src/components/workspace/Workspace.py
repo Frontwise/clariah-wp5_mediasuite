@@ -281,7 +281,8 @@ class Workspace():
 	<><><><><><><><><><> PERSONAL COLLECTION API REQUESTS <><><><><
 	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
 
-	def processPersonalCollectionAPIRequest(self, clientId, token, method, userId, data=None, collectionId=None, entryId=None, entryEndpoint=False):
+	def processPersonalCollectionAPIRequest(self, clientId, token, method, userId, data=None,
+		collectionId=None, entryId=None, entryEndpoint=False):
 		if entryEndpoint:
 			if method == 'DELETE':
 				return self.__deleteDataEntry(clientId, token, userId, collectionId, entryId)
