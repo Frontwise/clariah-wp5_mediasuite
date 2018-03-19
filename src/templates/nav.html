@@ -76,9 +76,14 @@
 		</div>
 		{% endif %}
 	</div>
-	{% if (page=='data-sources' or page=='tools' or page=='tool') %}
-	{% include '%s/help.html' % helpDir %}
+	{% if
+		(data_static and data_static['documentation_question-mark_data_page']) or
+		(recipes and recipes['pages']['tools-page']) or
+		(recipe and recipe.recipeDescription)
+	%}
+		{% include '%s/help.html' % helpDir %}
 	{% endif %}
+
 
 </div>
 <ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>
