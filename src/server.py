@@ -204,7 +204,7 @@ def getParams(request):
 
 # get the client id from the config
 def getClientId():
-	return app.config['CLIENT_ID'] if 'CLIENT_ID' in app.config else None
+	return app.config['CLIENT_ID']
 
 def verifyUserId(userId):
 	user = _authenticationHub.getUser(request)
@@ -377,6 +377,17 @@ def searchAPI(operation, collectionId):
 	resp = getErrorMessage('Invalid operation specified')
 	if operation == 'layered_search':
 		resp = _workspace.layeredSearch(getClientId(), getToken(), collectionId, postData)
+	return Response(resp, mimetype='application/json')
+
+@app.route('/search-api/sparql', methods=['POST'])
+@requires_auth
+def sparqlAPI():
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = _workspace.sparql(getClientId(), getToken(), postData)
 	return Response(resp, mimetype='application/json')
 
 #forwards requests to the collection endpoint of the search API (/collections)

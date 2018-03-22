@@ -153,7 +153,22 @@ class Workspace():
 			clientId,
 			token
 		)
-		print url
+		if params:
+			resp = requests.post(url, json=params)
+			if resp.status_code == 200:
+				return resp.text
+		return self.__formatAPIErrorResponse(resp)
+
+	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	<><><><><><><><><><> SPARQL API REQUESTS <><><><><><><><><><><
+	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"""
+
+	def sparql(self, clientId, token, params):
+		url = '%s/lod/sparql-direct?cid=%s&at=%s' % (
+			self.config['SEARCH_API'],
+			clientId,
+			token
+		)
 		if params:
 			resp = requests.post(url, json=params)
 			if resp.status_code == 200:
