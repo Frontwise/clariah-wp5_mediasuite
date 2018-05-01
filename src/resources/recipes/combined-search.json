@@ -39,7 +39,7 @@
 			"vrouwen-van-de-cpn"
 		],
 		"collectionSelector" : false,
-		"aggregationView" : "box",
+		"aggregationView" : "list",
 		"dateRangeSelector" : "date-picker",
 		"itemDetailsPath" : "tool/default-item-details",
 		"useProjects" : true

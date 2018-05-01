@@ -8,7 +8,7 @@
 	"inRecipeList" : true,
 	"ingredients" : {
 		"collectionSelector" : true,
-		"aggregationView" : "box",
+		"aggregationView" : "list",
 		"dateRangeSelector" : "date-picker",
 		"itemDetailsPath" : "tool/default-item-details",
 		"useProjects" : true
