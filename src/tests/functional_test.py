@@ -1,5 +1,5 @@
+from flask import Flask
 import requests
-import unittest
 import json
 import os
 import sys
@@ -20,44 +20,45 @@ on (integration) tests
 	- https://www.toptal.com/python/an-introduction-to-mocking-in-python
 """
 
-class SettingsTest(unittest.TestCase):
+class TestFunctionalities:
 
-    def setUp(self):
-        self.settings = os.path.join(myModules, 'settings.py')
+    """<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><
+    <><><><><><><><><><><><> SETUP & TEARDOWN <><><><><><><><><><><>
+    <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><"""
+
+    def setup(self):
+        self.strictMode = True
+        self.app = Flask(__name__)
+        self.app.config.from_object('settings.Config')
+
+        #TODO think of a way to dynamically obtain test data
+        self.collectionId = 'nisv-catalogue-aggr'
+        self.hostUrl = 'http://%s:%s' % (
+            self.app.config['APP_HOST'],
+            self.app.config['APP_PORT']
+        )
+        self.samlDir = os.path.join(myModules, 'components', 'security', 'resources')
+        self.staticDir = os.path.join(myModules, 'static')
+
+    def teardown(self):
+        pass
+
+    """----------------------------- TEST BASIC SETTINGS -------------------"""
 
     def test_settings_exist(self):
-        assert os.path.exists(self.settings)
+        assert os.path.exists(os.path.join(myModules, 'settings.py'))
 
-
-class ServerTest(unittest.TestCase):
-
-    def setUp(self):
-        from settings import config
-        self.hostUrl = 'http://%s:%s' % (config['APP_HOST'], config['APP_PORT'])
 
     def test_server_response_and_content_ok(self):
         response = requests.get(self.hostUrl)
         assert response.status_code == 200
-        assert "<html>" in response.content
+        assert "<html>" in response.text
 
     def test_invalid_urls(self):
         response = requests.get(self.hostUrl + "/doesnotexist/")
         assert response.status_code == 404
 
-class SearchAPITest(unittest.TestCase):
-
-    def setUp(self):
-        from settings import config
-        self.searchAPIBase = config['SEARCH_API']
-
-    def test_search_api_response_and_content(self):
-        response = requests.get(self.searchAPIBase)
-        assert response.status_code == 200
-
-class SAMLTest(unittest.TestCase):
-
-    def setUp(self):
-        self.samlDir = os.path.join(myModules, 'components', 'external', 'login', 'saml')
+    """----------------------------- TEST SAML DIRS -------------------"""
 
     def test_saml_dir_exists(self):
         assert os.path.exists(self.samlDir)
@@ -68,10 +69,7 @@ class SAMLTest(unittest.TestCase):
     def test_saml_advanced_settings_file_exists(self):
         assert os.path.exists(os.path.join(self.samlDir, 'advanced_settings.json'))
 
-class ClientTest(unittest.TestCase):
-
-    def setUp(self):
-        self.staticDir = os.path.join(myModules, 'static')
+    """----------------------------- TEST JAVASCRIPT & STATIC CONTENT -------------------"""
 
     def test_static_dir_exists(self):
         assert os.path.exists(self.staticDir)
@@ -82,12 +80,9 @@ class ClientTest(unittest.TestCase):
     def test_labo_components_installed(self):
         assert os.path.exists(os.path.join(self.staticDir, 'node_modules', 'labo-components'))
         assert os.path.exists(os.path.join(self.staticDir, 'node_modules', 'labo-components', 'dist', 'labo-components.js'))
-        assert os.path.exists(os.path.join(self.staticDir, 'node_modules', 'labo-components', 'dist', 'labo-components.css'))
+        #TODO change the webpack config in labo-components to change this stupid type and update all references to it
+        assert os.path.exists(os.path.join(self.staticDir, 'node_modules', 'labo-components', 'dist', 'labo-component.css'))
 
     def test_css_stylesheet_generated(self):
         assert os.path.exists(os.path.join(self.staticDir, 'css', 'main.css'))
 
-
-
-if __name__ == "__main__":
-    unittest.main()
