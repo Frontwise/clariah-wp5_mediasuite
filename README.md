@@ -1,7 +1,6 @@
 # MEDIA SUITE (CLARIAH)
 
-
-## How do I get set up?
+## Installation
 
 ### Dependencies
 
@@ -10,22 +9,21 @@ The CLARIAH media suite is roughly made up of these two main parts:
 * Server: Flask (Python) webserver
 * Client: The [component library](https://github.com/beeldengeluid/labo-components)
 
-
 To function properly the media suite requires access to running instances of each of the following APIs:
 
 * The [search API](https://github.com/beeldengeluid/labs-search-api) (private repo)
 * The [annotation API](https://github.com/beeldengeluid/labs-annotation-api) (private repo)
 
-**Note**: In order to get access to one of these, please contact the owner of this repository
+**Note**: In order to get access to one of these, please contact the owner of this repository.
 
 ### The webserver
 
 This project runs on Python 2.7 and uses [Flask](http://flask.pocoo.org/) to serve the web content
 
-The best practice is to create a virtualenv and subsequently run:
+The best practice is to create a virtualenv and then install the requirements. To make this easy we recommend `[pipenv](https://github.com/pypa/pipenv)`. `cd` into the master directory and try this:
 
-```
-pip install -r requirements.txt
+```bash
+pipenv install -r requirements.txt --two
 ```
 
 This way all the necessary Python packages (including Flask) will be installed.
@@ -36,13 +34,21 @@ Now the only thing to do is to create a settings.py by copying the settings-exam
 cp settings-example.py settings.py
 ```
 
+After that you can activate the virtualenv using:
+
+```bash
+pipenv shell
+```
+
 Following this it should already be possible to start the Flask webserver using
 
 ```
 python server.py
 ```
 
-**Note**: check the comments in settings-example.py on how to completely configure the media suite
+If you're seeing debug messages you can open up the mediasuite in your favourite browser by going to `[http://localhost:5304/](http://localhost:5304/)`. The styling will not be available, for that you need to install the Javascript packages. Read on!
+
+**Note**: check the comments in settings-example.py on how to completely configure the media suite.
 
 ### Client application
 
@@ -50,26 +56,27 @@ Now that the webserver is setup, it is necessary to obtain all of the required J
 
 Make sure [npm](https://www.npmjs.com/) is installed, then go into /src/static (containing package.json) and run:
 
-```
+```bash
 npm install
 ```
 
+<!-- Really? 
 **Note**: You might need to be sudo for this.
+-->
 
+After installation the styles will automatically be compiled.
 
 #### Styling the media suite
 
-Currently [SASS](http://sass-lang.com/) and [Compass](http://compass-style.org/) are used to generate the main stylesheet (/src/static/css/main.css).
+[SASS](http://sass-lang.com/) is used to generate the main stylesheet (/src/static/css/main.css).
 
-Whenever you want to change the overall styling: make sure that Compass is installed, then start the compass watcher by going into the /src/static folder and running:
+Whenever you want to change the overall styling you need to run the watcher using a `npm` command
 
+```bash
+npm run watch
 ```
-compass watch
-```
 
-While the watcher is running any changes to the *.scss files in the /static/sass folder will be compiled into /src/static/css/main.css
-
-You can change the Compass configuration by editing /src/static/config.rb
+While the watcher is running any changes to the `*.scss` files in the `/static/sass` folder will be compiled into `/src/static/css/main.css`
 
 ## Creating a new recipe
 

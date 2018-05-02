@@ -16,3 +16,6 @@ docs/*.json
 .pytest_cache
 results.xml
 .cache
+Pipfile
+Pipfile.lock
+package-lock.json
