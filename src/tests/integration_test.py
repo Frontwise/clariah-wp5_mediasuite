@@ -31,11 +31,22 @@ class TestSearchAPI:
 	def teardown(self):
 		pass
 
-	"""<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><
-	<><><><><><><><><><><><> ACTUAL TESTS <><><><><><><><><><><><><>
-	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><"""
+	"""----------------------------- TEST MEDIASUITE -------------------"""
 
-	#tests config related to the search API
+	"""
+    def test_server_response_and_content_ok(self):
+        response = requests.get(self.hostUrl)
+        assert response.status_code == 200
+        assert "<html>" in response.text
+
+    def test_invalid_urls(self):
+        response = requests.get(self.hostUrl + "/doesnotexist/")
+        assert response.status_code == 404
+    """
+
+
+	"""----------------------------- TEST SEARCH API -------------------"""
+
 	def test_search_api_config(self):
 		assert 'SEARCH_API' in self.app.config
 
@@ -70,4 +81,28 @@ class TestSearchAPI:
 			assert 'timestamp' in stats
 			assert 'service' in stats
 			assert 'query' in stats
+
+	"""----------------------------- TEST ANNOTATION API -------------------"""
+
+	def test_annotation_api_config(self):
+		assert 'ANNOTATION_API' in self.app.config
+
+	def test_annotation_api_isalive(self):
+		resp = requests.get(
+			'%s/ping' % (self.app.config['ANNOTATION_API'][0:len('/api') * -1])
+		)
+		assert resp.status_code == 200
+		assert resp.text == 'pong'
+
+	"""----------------------------- TEST WORKSPACE API -------------------"""
+
+	def test_workspace_api_config(self):
+		assert 'USER_SPACE_API' in self.app.config
+
+	def test_workspace_api_isalive(self):
+		resp = requests.get(
+			'%s/ping' % (self.app.config['USER_SPACE_API'][0:len('/api/v0.1') * -1])
+		)
+		assert resp.status_code == 200
+		assert resp.text == 'pong'
 

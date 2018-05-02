@@ -48,15 +48,25 @@ class TestFunctionalities:
     def test_settings_exist(self):
         assert os.path.exists(os.path.join(myModules, 'settings.py'))
 
-
-    def test_server_response_and_content_ok(self):
-        response = requests.get(self.hostUrl)
-        assert response.status_code == 200
-        assert "<html>" in response.text
-
-    def test_invalid_urls(self):
-        response = requests.get(self.hostUrl + "/doesnotexist/")
-        assert response.status_code == 404
+    def test_settings_valid(self):
+        assert 'APP_HOST' in self.app.config #'0.0.0.0'
+        assert 'APP_PORT' in self.app.config #5304
+        assert 'APP_VERSION' in self.app.config #v1.1
+        assert 'DEBUG' in self.app.config #True/False
+        assert 'SECRET_KEY' in self.app.config #str
+        assert 'AUTHENTICATION_METHOD' in self.app.config #basic or OpenConext
+        assert 'PW' in self.app.config #str
+        assert 'OAUTH_CLIENT_ID' in self.app.config #optional str
+        assert 'OAUTH_CLIENT_SECRET' in self.app.config #optional str
+        assert 'AUTHZ_SERVER' in self.app.config #optional URL 'https://authz.proxy.clariah.nl'
+        assert 'CLIENT_ID' in self.app.config #str 'clariah_test'
+        assert 'TOKEN' in self.app.config #str
+        assert 'ENCODE_KEY' in self.app.config #optional str
+        assert 'SEARCH_API' in self.app.config #URL 'http://localhost:5320/api/v1.1'
+        assert 'ANNOTATION_API' in self.app.config #URL 'http://annotation-test.rdlabs.beeldengeluid.nl/api'
+        assert 'USER_SPACE_API' in self.app.config #URL 'http://workspace-test.rdlabs.beeldengeluid.nl/api/v0.1'
+        assert 'PLAYOUT_API' in self.app.config #URL 'http://localhost:20999'
+        assert 'EXPORT_CONFIGS' in self.app.config #object {}
 
     """----------------------------- TEST SAML DIRS -------------------"""
 

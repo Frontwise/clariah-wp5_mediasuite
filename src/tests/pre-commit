@@ -1,4 +1,4 @@
 #!/bin/sh
 
 #copy this script to .git/hooks/pre-commit
-pytest src/tests
+pytest src/tests/functional_test.py
