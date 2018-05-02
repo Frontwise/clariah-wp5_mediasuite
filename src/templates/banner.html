@@ -1,10 +1,29 @@
 <div class="banner" style="background-image: url(../static/images/mediasuite-banner1.jpg);">
-    <div class="content">
-        <div class="intro">
-            <p>{{home_static.home_info.text}}</p>
-            <a href="{{home_static.home_info.links.link_url}}" class="btn primary">
-                {{home_static.home_info.links.link_value}}
-            </a>
+    <div class="csslider infinity slider">
+        <input type="radio" name="slides" id="slides_1" checked="checked" />
+        <input type="radio" name="slides" id="slides_2"/>
+        <input type="radio" name="slides" id="slides_3"/>
+        <ul>{% for slide in home_static.home_info.slides %}
+            <li class="scrollable">
+                <p>{{ slide.text }}</p>
+                <a href="{{slide.links.link_url}}" target="{{slide.links.link_target}}" class="btn primary">
+                    {{slide.links.link_value}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="arrows">
+            <label for="slides_1"></label>
+            <label for="slides_2"></label>
+            <label for="slides_3"></label>
+            <label for="slides_1"></label>
+        </div>
+        <div class="navigation">
+            <div>
+                <label for="slides_1"></label>
+                <label for="slides_2"></label>
+                <label for="slides_3"></label>
+            </div>
         </div>
     </div>
 </div>

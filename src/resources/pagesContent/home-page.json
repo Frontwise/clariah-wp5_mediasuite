@@ -1,10 +1,31 @@
 {
   "home_info": {
-    "text":"The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of scholars who use audiovisual media by providing access to audiovisual collections and their contextual data.",
-    "links": {
-      "link_value":"Read more",
-      "link_url":"/about"
-    }
+    "slides": [
+      {
+        "text": "The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of scholars who use audiovisual media by providing access to audiovisual collections and their contextual data.",
+        "links": {
+          "link_value": "Read more",
+          "link_url": "/about",
+          "link_target": "_self"
+        }
+      },
+      {
+        "text": "This one-week event, organized by CLARIAH (Media studies team) introduces scholars from different domains to the CLARIAH Media Suite and other tools which support the exploration, search and analysis of important Dutch audio-visual collections and their contextual data.",
+        "links": {
+          "link_value": "Read more",
+          "link_url": "https://clariah.github.io/mediasuite-blog/blog/2018/02/16/CLARIAH-summer-school",
+          "link_target": "_blank"
+        }
+      },
+      {
+        "text": "On April 12, 2018 the Centre for Digital Humanities of the University of Groningen and CLARIAH organized a workshop to explore the possibilities of video annotation for research in the Humanities.",
+        "links": {
+          "link_value": "Read more",
+          "link_url": "https://clariah.github.io/mediasuite-blog/blog/2018/04/12/Video-annotation-workshop-groningen",
+          "link_target": "_blank"
+        }
+      }
+    ]
   },
   "home_data":{
     "text":"All available collections and their data are registered in a common inventory.",
