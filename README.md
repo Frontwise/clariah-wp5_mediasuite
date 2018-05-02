@@ -20,7 +20,7 @@ To function properly the media suite requires access to running instances of eac
 
 This project runs on Python 2.7 and uses [Flask](http://flask.pocoo.org/) to serve the web content
 
-The best practice is to create a virtualenv and then install the requirements. To make this easy we recommend `[pipenv](https://github.com/pypa/pipenv)`. `cd` into the master directory and try this:
+The best practice is to create a virtualenv and then install the requirements. To make this easy we recommend [`pipenv`](https://github.com/pypa/pipenv). `cd` into the master directory and try this:
 
 ```bash
 pipenv install -r requirements.txt --two
@@ -46,7 +46,7 @@ Following this it should already be possible to start the Flask webserver using
 python server.py
 ```
 
-If you're seeing debug messages you can open up the mediasuite in your favourite browser by going to `[http://localhost:5304/](http://localhost:5304/)`. The styling will not be available, for that you need to install the Javascript packages. Read on!
+If you're seeing debug messages you can open up the mediasuite in your favourite browser by going to [`http://localhost:5304/`](http://localhost:5304/). The styling will not be available, for that you need to install the Javascript packages. Read on!
 
 **Note**: check the comments in settings-example.py on how to completely configure the media suite.
 
@@ -68,7 +68,7 @@ After installation the styles will automatically be compiled.
 
 #### Styling the media suite
 
-[SASS](http://sass-lang.com/) is used to generate the main stylesheet (/src/static/css/main.css).
+[SASS](http://sass-lang.com/) is used to generate the main stylesheet (`/src/static/css/main.css`).
 
 Whenever you want to change the overall styling you need to run the watcher using a `npm` command
 
