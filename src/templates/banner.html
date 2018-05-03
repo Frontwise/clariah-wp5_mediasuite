@@ -5,7 +5,7 @@
         <input type="radio" name="slides" id="slides_3"/>
         <ul>{% for slide in home_static.home_info.slides %}
             <li class="scrollable">
-                <p>{{ slide.text }}</p>
+                <p>{{ slide.text |safe }}</p>
                 <a href="{{slide.links.link_url}}" target="{{slide.links.link_target}}" class="btn primary">
                     {{slide.links.link_value}}
                 </a>
