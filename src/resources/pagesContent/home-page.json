@@ -21,11 +21,11 @@
     }
   },
   "home_workspace":{
-    "text":"Personal and collaborative workspace that stores user data such as bookmakrs, annotations, and search sessions. Use your (SURF) university account to login the Clariah Workspace and unlock the full potential of the Media Suite!",
+    "text":"Personal and collaborative workspace that stores user data such as bookmarks, annotations, and search sessions. Use your (SURF) university account to login the Clariah Workspace and unlock the full potential of the Media Suite!",
     "links": {
       "link_more_info":{
         "link_value":"More information",
-        "link_url":"https://clariah.github.io/mediasuite-info/#docs-workspace"
+        "link_url":"https://clariah.github.io/mediasuite-info/pages/workspace.html"
       },
       "link_login":{
         "link_value":"Login",

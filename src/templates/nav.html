@@ -36,6 +36,18 @@
 					<div class="btn primary plus">Create User Project</div>
 				</a>
 			</li>
+			<!-- new stuff for creating personal collections -->
+			{% if user and user.attributes and user.attributes.allowPersonalCollections %}
+				<li><a class="" href="/workspace/collections">User Collections<span id="collection_count" class="count">0</span>
+					</a>
+				</li>
+				<li class="new-project">
+					<p>Add user collection</p>
+					<a href="/workspace/collections/create" class="button-holder">
+						<div class="btn primary plus">Add user collection</div>
+					</a>
+				</li>
+			{% endif %}
 		</ul>
 	</div>
 	{% endif %}
@@ -64,9 +76,14 @@
 		</div>
 		{% endif %}
 	</div>
-	{% if (page=='data-sources' or page=='tools' or page=='tool') %}
-	{% include '%s/help.html' % helpDir %}
+	{% if
+		(data_static and data_static['documentation_question-mark_data_page']) or
+		(recipes and recipes['pages']['tools-page']) or
+		(recipe and recipe.recipeDescription)
+	%}
+		{% include '%s/help.html' % helpDir %}
 	{% endif %}
+
 
 </div>
 <ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>
@@ -83,3 +100,17 @@
 
 	}
 </script>
+
+{% if user and user.attributes and user.attributes.allowPersonalCollections %}
+<script>
+	try {
+		if('localStorage' in window && window['localStorage'] !== null) {
+			if('myCollections' in localStorage) {
+				document.getElementById('collection_count').innerHTML = JSON.parse(localStorage['myCollections']).length;
+			}
+		}
+	} catch (e) {
+
+	}
+</script>
+{% endif %}

@@ -1,62 +1,74 @@
 <!doctype HTML>
 <html>
+
 <head>
     <title>CLARIAH Media Suite - About </title>
-    {% include '%s/head.html' % headDir %}
+
+    {% include 'head.html' %}
+
 </head>
+
 <body class="cl_flex-main">
-{% with page='about' %}
-{% include '%s/nav.html' % navbarDir %}
-{% endwith %}
-<div class="cl_row cl_main-content">
-    <div class="page About">
-        <div class="content">
-            <img src="../static/images/bigicon-clariah.png" width="176" alt="Clariah"/>
-            <div class="info">
-                <div class="description">
-                    {{about_static.about_intro|safe}}
+
+    {% with page='about' %}
+    {% include 'nav.html' %}
+    {% endwith %}
+
+    <div class="cl_row cl_main-content">
+        <div class="page About">
+            <div class="content">
+                <img src="../static/images/bigicon-clariah.png" width="176" alt="Clariah"/>
+                <div class="info">
+                    <div class="description">
+                        {{about_static.about_intro|safe}}
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="{{about_static.links.showcases.url}}" class="btn" target="_blank"
+                       rel="noopener noreferrer">
+                        {{about_static.links.showcases.value}}
+                    </a>
+                    <a href="{{about_static.links.blog.url}}" class="btn" target="_blank">
+                        {{about_static.links.blog.value}}
+                    </a>
+                    <a href="{{about_static.links.documentation.url}}" class="btn" target="_blank">
+                        {{about_static.links.documentation.value}}
+                    </a>
                 </div>
             </div>
-            <div class="actions">
-                <a href="{{about_static.links.showcases.url}}" class="btn" target="_blank"
-                   rel="noopener noreferrer">
-                    {{about_static.links.showcases.value}}
-                </a>
-                <a href="{{about_static.links.blog.url}}" class="btn" target="_blank">
-                    {{about_static.links.blog.value}}
-                </a>
-                <a href="{{about_static.links.documentation.url}}" class="btn" target="_blank">
-                    {{about_static.links.documentation.value}}
-                </a>
+            <div class="text">
+                {{about_static.about_body1|safe}}
             </div>
-        </div>
-        <div class="text">
-            {{about_static.about_body1|safe}}
-        </div>
-        <div class="suite">
-            <h2>Media Suite</h2>
-            <div class="block">
-                <div>
-                    <img src="../static/images/bigicon-data.d7e8ae27.png" width="352" alt="Media Suite Data"/>
-                    <h3>Data</h3>
-                </div>
-                <div>
-                    <img src="../static/images/bigicon-tools.833a4532.png" alt="Media Suite Tools" width="352"/>
-                    <h3>Tools</h3>
-                </div>
-                <div>
-                    <img src="../static/images/bigicon-workspace.png" alt="Media Suite Workspace" width="352"/>
-                    <h3>Workspace</h3>
+            <div class="suite">
+                <h2>Media Suite</h2>
+                <div class="block">
+                    <div>
+                        <img src="../static/images/bigicon-data.d7e8ae27.png" width="352" alt="Media Suite Data"/>
+                        <h3>Data</h3>
+                    </div>
+                    <div>
+                        <img src="../static/images/bigicon-tools.833a4532.png" alt="Media Suite Tools" width="352"/>
+                        <h3>Tools</h3>
+                    </div>
+                    <div>
+                        <img src="../static/images/bigicon-workspace.png" alt="Media Suite Workspace" width="352"/>
+                        <h3>Workspace</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="text">
-            {{about_static.about_body2|safe}}
+            <div class="text">
+                {{about_static.about_body2|safe}}
+            </div>
         </div>
     </div>
-</div>
-{% include '%s/footer.html' % footerDir %}
+
+    {% include 'footer.html' %}
+
+    {% include 'site-tracking.html' ignore missing %}
+
+</body>
+
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/static/js/common.js"></script>
-</body>
+
 </html>

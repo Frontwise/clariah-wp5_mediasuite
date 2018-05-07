@@ -1,15 +1,19 @@
+<!doctype HTML>
+<html>
+
 <head>
 	<title>CLARIAH Media Suite - Tool: {{recipe.id}}</title>
+
 	{% with pageType='app' %}
-    {% include '%s/head.html' % headDir %}
+    {% include 'head.html' %}
     {% endwith %}
 </head>
 
 <body>
 
-{% with page='userspace' %}
-{% include '%s/nav.html' % navbarDir %}
-{% endwith %}
+	{% with page='userspace' %}
+	{% include 'nav.html' %}
+	{% endwith %}
 
 	<div class="container">
 		<div class="page-header">
@@ -20,31 +24,35 @@
 		<div id="app"/>
 	</div>
 
-	<!-- for the linechart & histogram component -->
-	<script type="text/javascript" src="/static/node_modules/d3/build/d3.min.js"></script>
-
-	<!-- for TimeSlider.jsx -->
-    <script type="text/javascript" src="/static/node_modules/nouislider/distribute/nouislider.min.js"></script>
-
-	<!-- for the player components-->
-	<script type="text/javascript" src="/static/node_modules/@vimeo/player/dist/player.min.js"></script>
-	<script type="text/javascript" src="/static/vendor/jwplayer-7.5.0/jwplayer.js"></script>
-
-	<!-- for the image viewer -->
-	<script type="text/javascript" src="/static/node_modules/openseadragon/build/openseadragon/openseadragon.min.js"></script>
-	<script type="text/javascript" src="/static/vendor/openseadragonselection-master/dist/openseadragonselection.js"></script>
-
-	<!-- React is required for the entire library-->
-	<script type="text/javascript" src="/static/node_modules/react/dist/react.min.js"></script>
-    <script type="text/javascript" src="/static/node_modules/react-dom/dist/react-dom.min.js"></script>
-
-	<!-- The component library -->
-	<script type="text/javascript" src="/static/node_modules/labo-components/dist/labo-components.js"></script>
-	<script>
-		labo.cookRecipe({{ recipe|tojson|safe }}, {{ params|tojson|safe }}, {{user|tojson|safe}}, 'app');
-	</script>
-
-	<script type="text/javascript" src="/static/node_modules/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="/static/node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+	{% include 'site-tracking.html' ignore missing %}
 
 </body>
+
+<!-- for the linechart & histogram component -->
+<script type="text/javascript" src="/static/node_modules/d3/build/d3.min.js"></script>
+
+<!-- for TimeSlider.jsx -->
+<script type="text/javascript" src="/static/node_modules/nouislider/distribute/nouislider.min.js"></script>
+
+<!-- for the player components-->
+<script type="text/javascript" src="/static/node_modules/@vimeo/player/dist/player.min.js"></script>
+<script type="text/javascript" src="/static/vendor/jwplayer-7.5.0/jwplayer.js"></script>
+
+<!-- for the image viewer -->
+<script type="text/javascript" src="/static/node_modules/openseadragon/build/openseadragon/openseadragon.min.js"></script>
+<script type="text/javascript" src="/static/vendor/openseadragonselection-master/dist/openseadragonselection.js"></script>
+
+<!-- React is required for the entire library-->
+<script type="text/javascript" src="/static/node_modules/react/dist/react.min.js"></script>
+<script type="text/javascript" src="/static/node_modules/react-dom/dist/react-dom.min.js"></script>
+
+<!-- The component library -->
+<script type="text/javascript" src="/static/node_modules/labo-components/dist/labo-components.js"></script>
+<script>
+	labo.cookRecipe({{ recipe|tojson|safe }}, {{ params|tojson|safe }}, {{user|tojson|safe}}, 'app');
+</script>
+
+<script type="text/javascript" src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/static/node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+
+</html>

@@ -1,45 +1,45 @@
 <!doctype HTML>
-
 <html>
 
 <head>
 	<title>CLARIAH Media Suite - APIs</title>
-	{% include '%s/head.html' % headDir %}
+	{% include 'head.html' %}
 </head>
 
 
 <body>
 
-{% with page='apis' %}
-{% include '%s/nav.html' % navbarDir %}
-{% endwith %}
+	{% with page='apis' %}
+	{% include 'nav.html' %}
+	{% endwith %}
 
-<div class="container">
+	<div class="container">
 
-	<div class="page-header">
-        <h1>APIs</h1>
-    </div>
+		<div class="page-header">
+	        <h1>APIs</h1>
+	    </div>
 
-    <p>The APIs design allows the integration of new data of different formats and data models.</p>
+	    <p>The APIs design allows the integration of new data of different formats and data models.</p>
 
-    <br>
+	    <br>
 
-	<dl class="dl-horizontal">
-		<dt>Collections API</dt>
-		<dd>high-level collection information (metadata: data format, size, etc.)</dd>
-		<dt><a href="{{searchAPI}}/#/default" target="_searchapi">Search API</a></dt>
-		<dd>searching for collection items.</dd>
-		<dt><a href="{{annotationAPI}}/#/default" target="_annotationapi">Annotation API</a></dt>
-		<dd>annotating existing data using W3C Web Annotation standard (mainly for manual annotations).</dd>
-		<dt>Data Enrichment API</dt>
-		<dd>collection enrichment through automatic mechanisms  or by human interaction.</dd>
-	</dl>
+		<dl class="dl-horizontal">
+			<dt>Collections API</dt>
+			<dd>high-level collection information (metadata: data format, size, etc.)</dd>
+			<dt><a href="{{searchAPI}}/#/default" target="_searchapi">Search API</a></dt>
+			<dd>searching for collection items.</dd>
+			<dt><a href="{{annotationAPI}}/#/default" target="_annotationapi">Annotation API</a></dt>
+			<dd>annotating existing data using W3C Web Annotation standard (mainly for manual annotations).</dd>
+			<dt>Data Enrichment API</dt>
+			<dd>collection enrichment through automatic mechanisms  or by human interaction.</dd>
+		</dl>
 
-    <br><br>
+	    <br><br>
 
-</div>
+	</div>
+
+	{% include 'site-tracking.html' ignore missing %}
 
 </body>
-
 
 </html>

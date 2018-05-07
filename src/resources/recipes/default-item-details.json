@@ -6,6 +6,7 @@
 	"description" : "Media play-out & annotation support. Inspect related metadata and annotations",
 	"inRecipeList" : false,
 	"ingredients" : {
+		"useProjects" : true,
 		"annotationSupport" : {
 			"mediaObject" : {
 				"modes" : ["classification", "comment", "link", "metadata"]
