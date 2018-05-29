@@ -207,12 +207,12 @@ $dropdownWidth: $accountWidth;
 
     .dropdown {
       width: $dropdownWidth * 1.2;
-      .projects {
+
+     .projects {
         margin: 0;
         padding: 0;
         background-color: $clWhite;
         background-image: none;
-
 
         input {
           width: 100%;
@@ -238,8 +238,9 @@ $dropdownWidth: $accountWidth;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            background-color: red;
             &:hover {
-              background-color: $clGreyTint;
+              background-color: $clGreyTint;              
             }
           }
         }
@@ -309,6 +310,9 @@ $dropdownWidth: $accountWidth;
       margin-top: -2px;
       vertical-align: top;
       width: 30px;
+      @media screen and (max-width: $break-medium) {
+        display: none;
+      }
     }
 
     &.loggedin {
@@ -327,11 +331,7 @@ $dropdownWidth: $accountWidth;
       }
 
       .icon-person {
-        height: 50px;
-
-        @media screen and (max-width: $break-medium) {
-          display: none;
-        }
+        height: 50px;        
       }
     }
 
@@ -358,6 +358,11 @@ $dropdownWidth: $accountWidth;
     z-index: 1112; // ?
     position: absolute;
     top: $headerHeight;
+
+    @media screen and (max-width: $break-medium) {
+      color: $clDark;
+    }
+
 
     .new-project{
       padding: 0;
@@ -474,12 +479,14 @@ $dropdownWidth: $accountWidth;
       background-repeat: no-repeat;
 
     }
+
     &:hover {
       .menu.main, .right, .menu.sub {
         display: block !important;
       }
-      .workspace, .right .account.loggedin {
-        display: table-cell;
+
+      .workspace, .right .account.loggedin, .account.login {
+        display: table-cell !important;
         vertical-align: middle;
       }
       .BreadCrumbs {
@@ -518,6 +525,7 @@ $dropdownWidth: $accountWidth;
             a {
               padding: 10px 15px 10px 3rem;
               line-height: 20px;
+              color: $clDark;
             }
           }
           .new-project {
@@ -555,8 +563,15 @@ $dropdownWidth: $accountWidth;
 
       .account {
         height: 50px;
-
-        &.loggedin {
+        &.login{
+          display: none;
+          padding-top: 0;
+          padding-left: 3rem;
+          font-size: 15px;
+          width: 100vh;
+        }
+        
+        &.loggedin{
           display: none;
           padding-top: 0;
           padding-left: 3rem;
