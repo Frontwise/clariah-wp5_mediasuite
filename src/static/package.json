@@ -1,6 +1,6 @@
 {
   "name": "clariah-media-suite",
-  "version": "1.0.0",
+  "version": "1.8.0",
   "description": "CMS for the Mind of the Universe project",
   "main": "webpack.config.js",
   "repository": {
