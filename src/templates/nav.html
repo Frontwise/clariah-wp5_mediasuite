@@ -31,7 +31,6 @@
 				<!--</div>-->
 			<!--</li>-->
 			<li class="new-project">
-				<p>Create a new project</p>
 				<a href="/workspace/projects/create" class="button-holder">
 					<div class="btn primary plus">Create User Project</div>
 				</a>
@@ -42,7 +41,6 @@
 					</a>
 				</li>
 				<li class="new-project">
-					<p>Add user collection</p>
 					<a href="/workspace/collections/create" class="button-holder">
 						<div class="btn primary plus">Add user collection</div>
 					</a>
@@ -54,21 +52,25 @@
 
 	<div class="right">
 		<ul class="menu sub">
-			{% if page=='contact' %}
-			<li><a href="/about">About</a></li><li><a  href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li class="active"><a href="/contact">Contact</a></li>
-			{% elif page=='about' %}
-			<li class="active"><a href="/about">About</a></li><li><a href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li><a href="/contact">Contact</a></li>
-			{% else %}
-			<li><a href="/about">About</a></li><li><a href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li><a href="/contact">Contact</a></li>
-			{% endif %}
+			<li class="{{ 'active' if page == 'about' }}">
+				<a href="/about">About</a>
+			</li>
+			<li class="{{ 'active' if page == 'documentation' }}">
+				<a href="https://clariah.github.io/mediasuite-info/">Documentation</a>
+			</li>
+			<li class="{{ 'active' if page == 'contact' }}">
+				<a href="/contact">Contact</a>
+			</li>			
 		</ul>
 
 		{% if user != None %}
-		<div class="account loggedin "><i class="icon-person"></i>Account <span class="username">{{user.name}}</span>
+		<div class="account loggedin ">
+			<i class="icon-person"></i>Account <span class="username">{{user.name}}</span>
+
 			<ul class="dropdown">
 				<li><a class="userLink" href="/workspace/projects">My profile</a></li>
 				<li><a class="userLink" href="/logout" title="Logout {{user.name}}">Logout</a></li>
-			</ul>
+			</ul>			
 		</div>
 		{% else %}
 		<div class="account login ">
@@ -86,8 +88,8 @@
 
 
 </div>
-<ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>
 
+<ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>
 
 <script>
 	try {
