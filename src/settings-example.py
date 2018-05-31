@@ -13,11 +13,9 @@ class Config(object):
 	AUTHZ_SERVER = 'https://yourauthzserver'
 	PW = '12345'
 
-	SEARCH_API = 'http://localhost:5320'
-	SEARCH_API_PATH = '/api/v1.1'
+	SEARCH_API = 'http://localhost:5320/api/v1.1'
 
-	ANNOTATION_API = 'http://localhost:5305'
-	ANNOTATION_API_PATH = '/api'
+	ANNOTATION_API = 'http://localhost:5300/api'
 
 	EXPORT_CONFIGS = {
 

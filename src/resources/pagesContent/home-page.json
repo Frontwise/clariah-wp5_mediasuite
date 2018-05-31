@@ -1,10 +1,31 @@
 {
   "home_info": {
-    "text":"The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of scholars who use audiovisual media by providing access to audiovisual collections and their contextual data.",
-    "links": {
-      "link_value":"Read more",
-      "link_url":"/about"
-    }
+    "slides": [
+      {
+        "text": "The Media Suite is a research environment of the Dutch infrastructure for digital humanities and social sciences (CLARIAH) which aims to serve the needs of scholars who use audiovisual media by providing access to audiovisual collections and their contextual data.",
+        "links": {
+          "link_value": "Read more",
+          "link_url": "/about",
+          "link_target": "_self"
+        }
+      },
+      {
+        "text": "Join us at the CLARIAH summer school! this one-week event organized by the Media studies team introduces scholars from different domains to the CLARIAH Media Suite and other tools which support the exploration, search and analysis of important Dutch audio-visual collections and their contextual data.",
+        "links": {
+          "link_value": "Read more",
+          "link_url": "https://clariah.github.io/mediasuite-blog/blog/2018/02/16/CLARIAH-summer-school",
+          "link_target": "_blank"
+        }
+      },
+      {
+        "text": "The Media Suite blog offers news and articles written by its users. You can find details about conferences and other academic events, experiences using the CLARIAH tools, and more at <a href='https://clariah.github.io/mediasuite-blog/' target='_blank'/>https://clariah.github.io/mediasuite-blog/</a>  You can also visit the CLARIAH blog and news at: <a href='http://clariah.nl/' target='_blank'/>http://clariah.nl/</a>",
+        "links": {
+          "link_value": "Read more",
+          "link_url": "https://clariah.github.io/mediasuite-blog/blog/2018/04/12/Video-annotation-workshop-groningen",
+          "link_target": "_blank"
+        }
+      }
+    ]
   },
   "home_data":{
     "text":"All available collections and their data are registered in a common inventory.",
@@ -21,11 +42,11 @@
     }
   },
   "home_workspace":{
-    "text":"Personal and collaborative workspace that stores user data such as bookmakrs, annotations, and search sessions. Use your (SURF) university account to login the Clariah Workspace and unlock the full potential of the Media Suite!",
+    "text":"Personal and collaborative workspace that stores user data such as bookmarks, annotations, and search sessions. Use your (SURF) university account to login the Clariah Workspace and unlock the full potential of the Media Suite!",
     "links": {
       "link_more_info":{
         "link_value":"More information",
-        "link_url":"https://clariah.github.io/mediasuite-info/#docs-workspace"
+        "link_url":"https://clariah.github.io/mediasuite-info/pages/workspace.html"
       },
       "link_login":{
         "link_value":"Login",

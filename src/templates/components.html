@@ -3,15 +3,17 @@
 
 <head>
     <title>CLARIAH Media Suite - Components</title>
+
     {% with pageType='components' %}
-    {% include '%s/head.html' % headDir %}
+    {% include 'head.html' %}
     {% endwith %}
+
 </head>
 
 <body>
 
     {% with page='components' %}
-    {% include '%s/nav.html' % navbarDir %}
+    {% include 'nav.html' %}
     {% endwith %}
 
     <div class="container">
@@ -130,6 +132,9 @@
         <br><br>
 
     </div>
+
+    {% include 'site-tracking.html' ignore missing %}
+
 </body>
 
 <!-- for the linechart and the API components -->

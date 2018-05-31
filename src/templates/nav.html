@@ -31,32 +31,46 @@
 				<!--</div>-->
 			<!--</li>-->
 			<li class="new-project">
-				<p>Create a new project</p>
 				<a href="/workspace/projects/create" class="button-holder">
 					<div class="btn primary plus">Create User Project</div>
 				</a>
 			</li>
+			<!-- new stuff for creating personal collections -->
+			{% if user and user.attributes and user.attributes.allowPersonalCollections %}
+				<li><a class="" href="/workspace/collections">User Collections<span id="collection_count" class="count">0</span>
+					</a>
+				</li>
+				<li class="new-project">
+					<a href="/workspace/collections/create" class="button-holder">
+						<div class="btn primary plus">Add user collection</div>
+					</a>
+				</li>
+			{% endif %}
 		</ul>
 	</div>
 	{% endif %}
 
 	<div class="right">
 		<ul class="menu sub">
-			{% if page=='contact' %}
-			<li><a href="/about">About</a></li><li><a  href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li class="active"><a href="/contact">Contact</a></li>
-			{% elif page=='about' %}
-			<li class="active"><a href="/about">About</a></li><li><a href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li><a href="/contact">Contact</a></li>
-			{% else %}
-			<li><a href="/about">About</a></li><li><a href="https://clariah.github.io/mediasuite-info/">Documentation</a></li><li><a href="/contact">Contact</a></li>
-			{% endif %}
+			<li class="{{ 'active' if page == 'about' }}">
+				<a href="/about">About</a>
+			</li>
+			<li class="{{ 'active' if page == 'documentation' }}">
+				<a href="https://clariah.github.io/mediasuite-info/">Documentation</a>
+			</li>
+			<li class="{{ 'active' if page == 'contact' }}">
+				<a href="/contact">Contact</a>
+			</li>			
 		</ul>
 
 		{% if user != None %}
-		<div class="account loggedin "><i class="icon-person"></i>Account <span class="username">{{user.name}}</span>
+		<div class="account loggedin ">
+			<i class="icon-person"></i>Account <span class="username">{{user.name}}</span>
+
 			<ul class="dropdown">
 				<li><a class="userLink" href="/workspace/projects">My profile</a></li>
 				<li><a class="userLink" href="/logout" title="Logout {{user.name}}">Logout</a></li>
-			</ul>
+			</ul>			
 		</div>
 		{% else %}
 		<div class="account login ">
@@ -64,13 +78,18 @@
 		</div>
 		{% endif %}
 	</div>
-	{% if (page=='data-sources' or page=='tools' or page=='tool') %}
-	{% include '%s/help.html' % helpDir %}
+	{% if
+		(data_static and data_static['documentation_question-mark_data_page']) or
+		(recipes and recipes['pages']['tools-page']) or
+		(recipe and recipe.recipeDescription)
+	%}
+		{% include '%s/help.html' % helpDir %}
 	{% endif %}
 
-</div>
-<ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>
 
+</div>
+
+<ul class="BreadCrumbs hidden" id="breadcrumbs"></ul>
 
 <script>
 	try {
@@ -83,3 +102,17 @@
 
 	}
 </script>
+
+{% if user and user.attributes and user.attributes.allowPersonalCollections %}
+<script>
+	try {
+		if('localStorage' in window && window['localStorage'] !== null) {
+			if('myCollections' in localStorage) {
+				document.getElementById('collection_count').innerHTML = JSON.parse(localStorage['myCollections']).length;
+			}
+		}
+	} catch (e) {
+
+	}
+</script>
+{% endif %}

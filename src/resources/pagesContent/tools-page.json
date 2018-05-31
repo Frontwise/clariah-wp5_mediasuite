@@ -5,7 +5,7 @@
     "text":"The Media Suite tools offer the core functionalities needed for performing scholarly research tasks with audio-visual media and contextual collections. Tools available in this version of the Media Suite enable metadata inspection, exploratory browsing, search, visualization, and analysis (annotation support).",
     "links": {
       "link_value":"View documentation",
-      "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools"
+      "link_url":"https://clariah.github.io/mediasuite-info/pages/tools.html"
     }
   },
   "tools_collection-inspector":{
@@ -14,7 +14,7 @@
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-inspect-metadata"
+        "link_url":"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-inspect-metadata"
       },
       "link_open":{
         "link_value":"Open",
@@ -28,7 +28,7 @@
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-browse-explore"
+        "link_url":"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-browse-explore"
       },
       "link_open":{
         "link_value":"Open",
@@ -42,7 +42,7 @@
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-compare"
+        "link_url":"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-compare"
       },
       "link_open":{
         "link_value":"Open",
@@ -56,7 +56,7 @@
     "links": {
       "link_details":{
         "link_value":"Details",
-        "link_url":"https://clariah.github.io/mediasuite-info/#docs-tools-search"
+        "link_url":"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-search"
       },
       "link_open":{
         "link_value":"Open",
@@ -66,7 +66,7 @@
   },
   "tools_tool-development":{
     "header":"Tool development",
-    "text":"QUITAR ESTE BLOQUE",
+    "text":"REMOVE THIS BLOCK",
     "links": {
       "link_value":"More informations",
       "link_url":"https://clariah.github.io/mediasuite-info/"

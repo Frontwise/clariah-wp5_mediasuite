@@ -1,21 +1,24 @@
 <!doctype html>
 <html>
 
-<head>  
-  <title>CLARIAH Media Suite - Exploratory Search</title>
+<head>
+	<title>CLARIAH Media Suite - Exploratory Search</title>
 
-  {% with pageType='app' %}
-    {% include '%s/head.html' % headDir %}
-  {% endwith %}
+	{% with pageType='app' %}
+	{% include 'head.html' %}
+	{% endwith %}
 </head>
 
 <body class="bg_tools-explore">
 
-  {% with page='tools' %}
-  {% include '%s/nav.html' % navbarDir %}
-  {% endwith %}
-  
-  <iframe id="bg__tools-explore" src="http://diveplus.frontwise.com{{params.path}}"/>  
-  
+	{% with page='tools' %}
+	{% include 'nav.html' %}
+	{% endwith %}
+
+	<iframe id="bg__tools-explore" src="http://diveplus.frontwise.com{{params.path}}"/>
+
+	{% include 'site-tracking.html' ignore missing %}
+
 </body>
+
 </html>

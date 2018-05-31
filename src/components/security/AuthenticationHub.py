@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import session, make_response, request, redirect, current_app, render_template, url_for
 from flask.views import View
 
@@ -54,9 +55,11 @@ class AuthenticationHub(object):
 				}
 		elif self.isAuthenticated(request): #basic auth
 			return {
-				'id' : 'clariah',
-				'name' :'clariah',
-				'attributes' : {}
+				'id' : self.app.config['CLIENT_ID'],
+				'name' : self.app.config['CLIENT_ID'],
+				'attributes' : {
+					'allowPersonalCollections' : True #only allow for phoney test user outside of Openconext
+				}
 			}
 		return None
 

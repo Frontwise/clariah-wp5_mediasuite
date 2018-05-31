@@ -2,14 +2,15 @@
 <html>
 
 <head>
-	<title>CLARIAH media suite - Login failed</title>
+	<title>CLARIAH media suite - Access denied</title>
 
     {% include 'head.html' %}
+
 </head>
 
 <body>
 
-{% include 'nav.html' %}
+	{% include 'nav.html' %}
 
 	<div class="container">
 
@@ -20,10 +21,7 @@
 
 					<div class="row text-center">
 						<div class="dashboard-header">
-							<h3>The login server failed to log you in</h3>
-							{% for error in errors %}
-								<span>{{error}}</span>
-							{% endfor %}
+							<h3>Access denied</h3>
 						</div>
 					</div>
 				</div>

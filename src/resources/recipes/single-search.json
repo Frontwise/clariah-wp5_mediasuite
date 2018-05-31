@@ -4,12 +4,13 @@
 	"type" : "single-search",
 	"phase" : "search",
 	"description" : "Dedicated recipe for searching/exploring through a single collection and all available annotation layers for that collection (e.g., automatically-generated, user-generated, archival generated).",
-	"recipeDescription" : "<p>Dedicated recipe for searching/exploring through a single collection of choice by using facets and other filters.</p> </br></br><a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-tools-search\">More info</a>",
+	"recipeDescription" : "<p>Dedicated recipe for searching/exploring through a single collection of choice by using facets and other filters.</p> </br></br><a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-search\">More info</a>",
 	"inRecipeList" : true,
 	"ingredients" : {
 		"collectionSelector" : true,
-		"aggregationView" : "box",
+		"aggregationView" : "list",
 		"dateRangeSelector" : "date-picker",
-		"itemDetailsPath" : "tool/default-item-details"
+		"itemDetailsPath" : "tool/default-item-details",
+		"useProjects" : true
 	}
 }

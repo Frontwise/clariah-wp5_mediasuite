@@ -1,0 +1,13 @@
+{
+	"id" : "workspace-collections",
+	"name" : "Workspace Collections",
+	"type" : "workspace-collections",
+	"phase" : "multiple",
+	"description" : "Manage personal collections in your workspace",
+	"recipeDescription" : "<p>Manage personal collections in your workspace</p>",
+	"inRecipeList" : false,
+	"useCustomTemplate" : true,
+	"ingredients" : {
+
+	}
+}

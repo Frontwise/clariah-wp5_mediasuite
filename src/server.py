@@ -51,7 +51,7 @@ _workspace = Workspace(app.config)
 def requires_auth(f):
 	@wraps(f)
 	def decorated(*args, **kwargs):
-		session['requestedURL'] = str(request.path)
+		session['requestedURL'] = str(request.path.encode('utf-8'))
 		auth = _authenticationHub.isAuthenticated(request)
 		#if not logged in redirect the user depending on the authentication method
 		if not auth:
@@ -204,8 +204,19 @@ def getParams(request):
 
 # get the client id from the config
 def getClientId():
-	return app.config['CLIENT_ID'] if 'CLIENT_ID' in app.config else None
+	return app.config['CLIENT_ID']
 
+def verifyUserId(userId):
+	user = _authenticationHub.getUser(request)
+	if user and 'id' in user and user['id'] == userId:
+		return True
+	return False
+
+def verifyUserIsAllowedPersonalCollections(userId):
+	user = _authenticationHub.getUser(request)
+	if user and 'attributes' in user and 'allowPersonalCollections' in user['attributes']:
+		return user['attributes']['allowPersonalCollections']
+	return False
 
 """------------------------------------------------------------------------------
 WORKSPACE PAGES
@@ -225,11 +236,26 @@ def wsProjects(path):
 		user=_authenticationHub.getUser(request),
 		userSpaceAPI=app.config['USER_SPACE_API'],
 		searchAPI=app.config['SEARCH_API'],
-		searchAPIPath=app.config['SEARCH_API_PATH'],
 		token=getToken(),
 		clientId=getClientId()
 	)
 
+@app.route('/workspace/collections', defaults={'path': ''})
+@app.route('/workspace/collections/<path:path>')
+@requires_auth
+def wsCollections(path):
+	user = _authenticationHub.getUser(request)
+	if verifyUserIsAllowedPersonalCollections(user['id']):
+		return render_template('workspace/collections.html',
+			params=getParams(request),
+			recipe=app.config['RECIPES']['workspace-collections'],
+			user=_authenticationHub.getUser(request),
+			userSpaceAPI=app.config['USER_SPACE_API'],
+			searchAPI=app.config['SEARCH_API'],
+			token=getToken(),
+			clientId=getClientId()
+		)
+	return render_template('403.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION']), 403
 
 # Make Projects the default workspace recipe
 # In the future this may be an overview page for workspace related information
@@ -245,22 +271,56 @@ NEWLY INTEGRATED PROJECT API
 @app.route('/project-api/<userId>/projects/<projectId>', methods=['GET', 'PUT', 'DELETE'])
 @requires_auth
 def projectAPI(userId, projectId=None):
-	postData = None
-	print request
-	try:
-		postData = request.get_json(force=True)
-	except Exception, e:
-		print e
-	resp = _workspace.processProjectAPIRequest(
-		getClientId(),
-		getToken(),
-		request.method,
-		userId,
-		postData,
-		projectId
-	)
-	print resp
-	return Response(resp, mimetype='application/json')
+	if verifyUserId(userId):
+		postData = None
+		try:
+			postData = request.get_json(force=True)
+		except Exception, e:
+			print e
+		resp = _workspace.processProjectAPIRequest(
+			getClientId(),
+			getToken(),
+			request.method,
+			userId,
+			postData,
+			projectId
+		)
+		return Response(resp, mimetype='application/json')
+	return Response(getErrorMessage('Access denied'), mimetype='application/json'), 403
+
+"""------------------------------------------------------------------------------
+NEWLY INTEGRATED COLLECTION API
+------------------------------------------------------------------------------"""
+
+@app.route('/personal-collection-api/<userId>/collections', methods=['GET', 'POST'])
+@app.route('/personal-collection-api/<userId>/collections/<collectionId>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/personal-collection-api/<userId>/collections/<collectionId>/entry', methods=['POST'])
+@app.route('/personal-collection-api/<userId>/collections/<collectionId>/entry/<entryId>', methods=['GET', 'POST', 'DELETE'])
+@requires_auth
+def personalCollectionAPI(userId, collectionId=None, entryId=None):
+	if verifyUserId(userId):
+		postData = None
+		entryEndpoint = False
+		print request
+		try:
+			if request.method in ["POST", "PUT", "DELETE"]:
+				postData = request.get_json(force=True)
+		except Exception, e:
+			print e
+		if 'entry' in request.path:
+			entryEndpoint = True
+		resp = _workspace.processPersonalCollectionAPIRequest(
+			getClientId(),
+			getToken(),
+			request.method,
+			userId,
+			postData,
+			collectionId,
+			entryId,
+			entryEndpoint
+		)
+		return Response(resp, mimetype='application/json')
+	return Response(getErrorMessage('Access denied'), mimetype='application/json'), 403
 
 """------------------------------------------------------------------------------
 NEWLY INTEGRATED ANNOTATION API
@@ -289,7 +349,6 @@ def annotationAPI(annotationId = None):
 @app.route('/annotation-api/annotations/filter', methods=['GET', 'POST'])
 @requires_auth
 def annotationSearchAPI():
-	print request.method
 	if request.method == 'GET':
 		resp = _workspace.searchAnnotationsOld(getClientId(), getToken(), getParams(request))
 	elif request.method == 'POST':
@@ -299,7 +358,84 @@ def annotationSearchAPI():
 		except Exception, e:
 			print e
 		resp = _workspace.searchAnnotations(postData)
-	#print resp
+	return Response(resp, mimetype='application/json')
+
+
+"""------------------------------------------------------------------------------
+NEWLY INTEGRATED SEARCH API
+------------------------------------------------------------------------------"""
+
+#forwards requests to the layered_search endpoint of the search API (/layered_search)
+@app.route('/search-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def searchAPI(operation, collectionId):
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'layered_search':
+		resp = _workspace.layeredSearch(getClientId(), getToken(), collectionId, postData)
+	return Response(resp, mimetype='application/json')
+
+@app.route('/search-api/sparql', methods=['POST'])
+@requires_auth
+def sparqlAPI():
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = _workspace.sparql(getClientId(), getToken(), postData)
+	return Response(resp, mimetype='application/json')
+
+#forwards requests to the collection endpoint of the search API (/collections)
+@app.route('/collection-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def collectionAPI(operation, collectionId):
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'show_stats':
+		resp = _workspace.getCollectionStats(getClientId(), getToken(), collectionId)
+	elif operation == 'show_timeline':
+		resp = _workspace.getCollectionTimeLine(getClientId(), getToken(), collectionId, postData)
+	elif operation == 'analyse_field':
+		resp = _workspace.analyseField(getClientId(), getToken(), collectionId, postData)
+	elif operation == 'list_collections':
+		resp = _workspace.listPersonalCollections(getClientId(), getToken(), collectionId)
+	return Response(resp, mimetype='application/json')
+
+#forwards requests to the ckan endpoint of the search API (/ckan)
+@app.route('/ckan-api/<operation>', methods=['POST'])
+@app.route('/ckan-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def ckanAPI(operation, collectionId=None):
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'list_collections':
+		resp = _workspace.listCollections(getClientId(), getToken())
+	elif operation == 'collection_info' and collectionId:
+		resp = _workspace.getCollectionInfo(getClientId(), getToken(), collectionId)
+	return Response(resp, mimetype='application/json')
+
+#forwards requests to the document endpoint of the search API (/document)
+@app.route('/document-api/<operation>/<collectionId>', methods=['POST'])
+@requires_auth
+def documentAPI(operation, collectionId):
+	postData = None
+	try:
+		postData = request.get_json(force=True)
+	except Exception, e:
+		print e
+	resp = getErrorMessage('Invalid operation specified')
+	if operation == 'get_doc':
+		resp = _workspace.getDoc(getClientId(), getToken(), collectionId, postData)
+	elif operation == 'get_docs':
+		resp = _workspace.getDocs(getClientId(), getToken(), collectionId, postData)
 	return Response(resp, mimetype='application/json')
 
 """------------------------------------------------------------------------------
@@ -318,7 +454,6 @@ def recipe(recipeId):
 				params=getParams(request),
 				instanceId='clariah',
 				searchAPI=app.config['SEARCH_API'],
-				searchAPIPath=app.config['SEARCH_API_PATH'],
 				user=_authenticationHub.getUser(request),
 				version=app.config['APP_VERSION'],
 				annotationAPI=app.config['ANNOTATION_API'],
@@ -337,7 +472,6 @@ def components():
 		version=app.config['APP_VERSION'],
 		instanceId='clariah',
 		searchAPI=app.config['SEARCH_API'],
-		searchAPIPath=app.config['SEARCH_API_PATH'],
 		annotationAPI=app.config['ANNOTATION_API']
 	)
 
@@ -433,11 +567,10 @@ def diveWrapper():
 	return render_template('exploratory-search.html',
 		params=getParams(request),
 		# Need recipes here; strange dependency
-		recipes=app.config['RECIPES'], 
+		recipes=app.config['RECIPES'],
 		user=_authenticationHub.getUser(request),
 		userSpaceAPI=app.config['USER_SPACE_API'],
 		searchAPI=app.config['SEARCH_API'],
-		searchAPIPath=app.config['SEARCH_API_PATH'],
 		token=getToken(),
 		clientId=getClientId()
 	)
@@ -447,7 +580,11 @@ def diveWrapper():
 ERROR HANDLERS
 ------------------------------------------------------------------------------"""
 
-#TODO fix the underlying template
+#TODO fix the underlying templates
+@app.errorhandler(403)
+def page_not_found(e):
+	return render_template('403.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION']), 403
+
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html', user=_authenticationHub.getUser(request), version=app.config['APP_VERSION']), 404

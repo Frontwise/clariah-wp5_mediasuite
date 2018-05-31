@@ -1,29 +1,32 @@
 <!doctype html>
 <html>
 
-<head>  
-  <title>CLARIAH Media Suite - {% block subtitle %}{% endblock %}</title>
+<head>
+	<title>CLARIAH Media Suite - {% block subtitle %}{% endblock %}</title>
 
-  {% with pageType='app' %}
-    {% include '%s/head.html' % headDir %}
-  {% endwith %}
-  
+	{% with pageType='app' %}
+	{% include 'head.html' %}
+	{% endwith %}
+
 </head>
 
 <body>
 
-  {% with page='workspace' %}
-  {% include '%s/nav.html' % navbarDir %}
-  {% endwith %}
+	{% with page='workspace' %}
+	{% include 'nav.html' %}
+	{% endwith %}
 
-  <div class="container">
-    <div class="bg__workpace">
-      {% block content %}{% endblock %}
-    </div>
-  </div>
+	<div class="container">
+		<div class="bg__no-bootstrap-custom-styling bg__workpace">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
 
-  {% block scripts %}
-  {% endblock %}
+	{% block scripts %}
+	{% endblock %}
+
+	{% include 'site-tracking.html' ignore missing %}
 
 </body>
+
 </html>

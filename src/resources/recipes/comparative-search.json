@@ -4,7 +4,7 @@
 	"type" : "comparative-search",
 	"phase" : "search",
 	"description" : "Supports comparative (re)search based on multiple queries on the same or different collections.",
-	"recipeDescription" : "<p>Supports comparative (re)search based on multiple queries on the same or different collections of choice. </p></br></br><a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/#docs-tools-compare\">More info</a>",
+	"recipeDescription" : "<p>Supports comparative (re)search based on multiple queries on the same or different collections of choice. </p></br></br><a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-compare\">More info</a>",
 	"inRecipeList" : true,
 	"useCustomTemplate" : false,
 	"ingredients" : {
@@ -12,6 +12,7 @@
 		"output" : "lineChart",
 		"aggregationView" : "box",
 		"dateRangeSelector" : "date-picker",
-		"itemDetailsPath" : "tool/default-item-details"
+		"itemDetailsPath" : "tool/default-item-details",
+		"useProjects" : true
 	}
 }

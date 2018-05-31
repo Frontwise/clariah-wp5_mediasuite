@@ -1,22 +1,34 @@
 <!doctype HTML>
 <html>
-<head>
-  <title>CLARIAH Media Suite - Contact</title>
-  {% include '%s/head.html' % headDir %}
-</head>
-<body class="cl_flex-main">
-{% with page='contact' %}
-{% include '%s/nav.html' % navbarDir %}
-{% endwith %}
-<div class="cl_row cl_main-content">
-  <div class="cl_container">
-    {{contact_static.header|safe}}
 
-    {{contact_static.contact_contactinfo|safe}}
-  </div>
-</div>
-{% include '%s/footer.html' % footerDir %}
+<head>
+	<title>CLARIAH Media Suite - Contact</title>
+
+	{% include 'head.html' %}
+
+</head>
+
+<body class="cl_flex-main">
+
+	{% with page='contact' %}
+	{% include '%s/nav.html' % navbarDir %}
+	{% endwith %}
+
+	<div class="cl_row cl_main-content">
+		<div class="cl_container">
+			{{contact_static.header|safe}}
+
+			{{contact_static.contact_contactinfo|safe}}
+		</div>
+	</div>
+
+	{% include 'footer.html' %}
+
+	{% include 'site-tracking.html' ignore missing %}
+
+</body>
+
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/static/js/common.js"></script>
-</body>
+
 </html>

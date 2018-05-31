@@ -1,85 +1,89 @@
 <!doctype HTML>
-
-
 <html>
 
 <head>
 	<title>CLARIAH Media Suite - Hulp &amp; Feedback</title>
-    {% include '%s/head.html' % headDir %}
-</head>
 
+    {% include 'head.html' %}
+
+</head>
 
 <body>
 
-{% with page='help-feedback' %}
-{% include '%s/nav.html' % navbarDir %}
-{% endwith %}
+	{% with page='help-feedback' %}
+	{% include 'nav.html' %}
+	{% endwith %}
 
-<div class="container">
+	<div class="container">
 
-	<div class="page-header">
-		<h1>Help &amp; Feedback</h1>
-	</div>
-
-	<div class="row">
-
-		<div class="col-md-8">
-			<h4>What is the Media Suite?</h4>
-
-			<p>The CLARIAH Media Suite is a (re)search environment created as part of the larger <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies" target="_focus">CLARIAH project, Media Studies focus</a>. It offers a group of specialized services for media scholars (and other scholars who make intensive use of audio-visual media) to enable them to conduct data-driven research. This environment has been built based on a series of digital humanities tools developed in prior projects, such as <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#avresearcherxl" target="_avxl">AVResearcherXL</a>, <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#comerda" target="_comerda">Comerda</a>, <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#dive-en-dive" target="_dive">DIVE</a>, <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#oht" target="_oht">Oral History Today (OHT)</a> and <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#trove" target="_trove">TROVE</a>. It aims to make these tools sustainable.</p>
-
-			<h4>How can I access the Media Suite?</h4>
-			<p>To access the MediaSuite services (from May, 2017) you must have a valid university account in The Netherlands. You will be prompted to fill-in the details via an Identity Provider discovery service. For security and research purposes, we additionally request you to fill in a small questionnaire before accessing.
-			NOTE: During April 2017 you will only be able to access the Media Suite through <a href="https://www.onegini.me/" target="_og">OneGini</a>. In order to receive an invitation please follow the instructions on this <a href="https://docs.google.com/document/d/1E_P5dZfWErYiritDCSdUBwdXVKf0vNsfru7DueO7O6w/edit?ts=58b6c7b7#heading=h.v0hnpa1y1ug" target="_docs">document</a>.</p>
-
-
-			<h4>How does the CLARIAH Media Suite work?</h4>
-
-			<p>The Media Suite is built based on a co-development approach based on the collaboration between scholars and software engineers. In its current version (See releases) is, and does not intend, to be a complete or finished product. The instruments built and offered in the Media Suite allows scholars to identify collection of interest, search, explore, select, visualize and analyze (annotate) these sources via pre-defined tools (see Recipes) or by building their own tools (see Components), by using their own work or user space. Read more our <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/index.php/knowledgebase/" target="_kbase">Knowledge Base</a>.</p>
-
-			<h4>How has the Media Suite been built?</h4>
-
-			<p>A generic infrastructure is required to cater for the general needs of every user group. The infrastructure provided by the CLARIAH Media Suite incorporates flexible functionality capable of addressing very specialized research questions. Media scholars expressed their desire to use the collections and tools which were previously "locked" together in the individual prototypes. CLARIAH MS has been designed in a modular way (separating data and functionalities from the original tools) each module (or component) performs a single, well-defined task. Modules can interoperate to construct more sophisticated functionality when they are combined in "recipes".</p>
-
-			<h4>Where is the Media Suite hosted?</h4>
-
-			<p>Prototypes are currently hosted on a new infrastructure at the The Netherlands Institute for Sound and Vision (NISV) data centre (see the CLARIAH Lab). All tools and components developed within CLARIAH are open source, the Media Suite code is available in the GitHub repository.</p>
-
-			<br/>
-			<br/>
-			More questions? Read our <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/index.php/knowledgebase/" target="_kbase">Knowlege Base</a> or Contact us.
-
+		<div class="page-header">
+			<h1>Help &amp; Feedback</h1>
 		</div>
-		<div class="col-md-4">
 
-			<div class="well">
+		<div class="row">
 
-				<h4>To stay informed</h4>
+			<div class="col-md-8">
+				<h4>What is the Media Suite?</h4>
 
-				<p>Stay informed about the CLARIAH project and our activities via de CLARIAH <a href="http://www.clariah.nl/evenementen/agenda" target="_events">agenda</a>, <a href="http://www.clariah.nl/nieuw/nieuws" target="_news">nieuwspagina</a> and <a href="http://www.clariah.nl/nieuw/nieuwsbrieven" target="_newsletter">nieuwsbrief</a>. CLARIAH is also on <a href="https://twitter.com/CLARIAH2013" target="_tw">Twitter</a> and <a href="https://www.facebook.com/clariahinfra" target="_fb">Facebook</a>. Follow also the <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" target="_rdlabs">CLARIAH Media Studies blog</a>, where media scholars write about different research topics.</p>
+				<p>The CLARIAH Media Suite is a (re)search environment created as part of the larger <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies" target="_focus">CLARIAH project, Media Studies focus</a>. It offers a group of specialized services for media scholars (and other scholars who make intensive use of audio-visual media) to enable them to conduct data-driven research. This environment has been built based on a series of digital humanities tools developed in prior projects, such as <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#avresearcherxl" target="_avxl">AVResearcherXL</a>, <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#comerda" target="_comerda">Comerda</a>, <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#dive-en-dive" target="_dive">DIVE</a>, <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#oht" target="_oht">Oral History Today (OHT)</a> and <a href="http://www.clariah.nl/werkpakketten/focusgebieden/media-studies#trove" target="_trove">TROVE</a>. It aims to make these tools sustainable.</p>
 
-				<h4>Feedback &amp; issue tracker</h4>
+				<h4>How can I access the Media Suite?</h4>
+				<p>To access the MediaSuite services (from May, 2017) you must have a valid university account in The Netherlands. You will be prompted to fill-in the details via an Identity Provider discovery service. For security and research purposes, we additionally request you to fill in a small questionnaire before accessing.
+				NOTE: During April 2017 you will only be able to access the Media Suite through <a href="https://www.onegini.me/" target="_og">OneGini</a>. In order to receive an invitation please follow the instructions on this <a href="https://docs.google.com/document/d/1E_P5dZfWErYiritDCSdUBwdXVKf0vNsfru7DueO7O6w/edit?ts=58b6c7b7#heading=h.v0hnpa1y1ug" target="_docs">document</a>.</p>
 
-				<p>If you have questions about the CLARIAH Media Suite or the services for media scholars, please find us in the <a href="https://gitter.im/CLARIAH-media-studies/Lobby" target="_gitter">Gitter lobby</a>. Anyone can use this lobby, and developers with a GitHub account can link to the <a href="https://github.com/CLARIAH/wp5-mediasuite" target="_gh">GitHub</a> issue tracker.</p>
 
-				<h4>Contact us</h4>
+				<h4>How does the CLARIAH Media Suite work?</h4>
 
-				<p>For specific questions about the CLARIAH Media Studies project you can contact us via e-mail: <a href="mailto:mediastudies@clariah.nl">mediastudies@clariah.nl</a>.
+				<p>The Media Suite is built based on a co-development approach based on the collaboration between scholars and software engineers. In its current version (See releases) is, and does not intend, to be a complete or finished product. The instruments built and offered in the Media Suite allows scholars to identify collection of interest, search, explore, select, visualize and analyze (annotate) these sources via pre-defined tools (see Recipes) or by building their own tools (see Components), by using their own work or user space. Read more our <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/index.php/knowledgebase/" target="_kbase">Knowledge Base</a>.</p>
+
+				<h4>How has the Media Suite been built?</h4>
+
+				<p>A generic infrastructure is required to cater for the general needs of every user group. The infrastructure provided by the CLARIAH Media Suite incorporates flexible functionality capable of addressing very specialized research questions. Media scholars expressed their desire to use the collections and tools which were previously "locked" together in the individual prototypes. CLARIAH MS has been designed in a modular way (separating data and functionalities from the original tools) each module (or component) performs a single, well-defined task. Modules can interoperate to construct more sophisticated functionality when they are combined in "recipes".</p>
+
+				<h4>Where is the Media Suite hosted?</h4>
+
+				<p>Prototypes are currently hosted on a new infrastructure at the The Netherlands Institute for Sound and Vision (NISV) data centre (see the CLARIAH Lab). All tools and components developed within CLARIAH are open source, the Media Suite code is available in the GitHub repository.</p>
+
 				<br/>
 				<br/>
-				For questions about the Media Suite, visit our Knowledge Base, or Use our Feedback and issue tracker pages
-				</p>
+				More questions? Read our <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/index.php/knowledgebase/" target="_kbase">Knowlege Base</a> or Contact us.
+
+			</div>
+			<div class="col-md-4">
+
+				<div class="well">
+
+					<h4>To stay informed</h4>
+
+					<p>Stay informed about the CLARIAH project and our activities via de CLARIAH <a href="http://www.clariah.nl/evenementen/agenda" target="_events">agenda</a>, <a href="http://www.clariah.nl/nieuw/nieuws" target="_news">nieuwspagina</a> and <a href="http://www.clariah.nl/nieuw/nieuwsbrieven" target="_newsletter">nieuwsbrief</a>. CLARIAH is also on <a href="https://twitter.com/CLARIAH2013" target="_tw">Twitter</a> and <a href="https://www.facebook.com/clariahinfra" target="_fb">Facebook</a>. Follow also the <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" target="_rdlabs">CLARIAH Media Studies blog</a>, where media scholars write about different research topics.</p>
+
+					<h4>Feedback &amp; issue tracker</h4>
+
+					<p>If you have questions about the CLARIAH Media Suite or the services for media scholars, please find us in the <a href="https://gitter.im/CLARIAH-media-studies/Lobby" target="_gitter">Gitter lobby</a>. Anyone can use this lobby, and developers with a GitHub account can link to the <a href="https://github.com/CLARIAH/wp5-mediasuite" target="_gh">GitHub</a> issue tracker.</p>
+
+					<h4>Contact us</h4>
+
+					<p>For specific questions about the CLARIAH Media Studies project you can contact us via e-mail: <a href="mailto:mediastudies@clariah.nl">mediastudies@clariah.nl</a>.
+					<br/>
+					<br/>
+					For questions about the Media Suite, visit our Knowledge Base, or Use our Feedback and issue tracker pages
+					</p>
+
+				</div>
 
 			</div>
 
 		</div>
 
-	</div>
+		<br><br>
 
-	<br><br>
+	</div> <!-- End container-->
 
-</div> <!-- End container-->
+	{% include 'site-tracking.html' ignore missing %}
+
+</body>
+
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/static/js/common.js"></script>
-</body>
+
 </html>

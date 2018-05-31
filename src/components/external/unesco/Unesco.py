@@ -4,7 +4,7 @@ import json
 class Unesco():
 
 	def __init__(self, config):
-		self.BASE_URL = '%s%s/search/vocab__unesco__autocomplete' % (config['SEARCH_API'], config['SEARCH_API_PATH'])
+		self.BASE_URL = '%s/search/vocab__unesco__autocomplete' % config['SEARCH_API']
 		self.MODE_MAPPING = ['prefLabel', 'altLabels', 'labels']
 
 	def autocomplete(self, prefix, mode=0, maxHits = 10):
