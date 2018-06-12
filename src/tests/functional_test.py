@@ -61,7 +61,6 @@ class TestFunctionalities:
         assert 'AUTHZ_SERVER' in self.app.config #optional URL 'https://authz.proxy.clariah.nl'
         assert 'CLIENT_ID' in self.app.config #str 'clariah_test'
         assert 'TOKEN' in self.app.config #str
-        assert 'ENCODE_KEY' in self.app.config #optional str
         assert 'SEARCH_API' in self.app.config #URL 'http://localhost:5320/api/v1.1'
         assert 'ANNOTATION_API' in self.app.config #URL 'http://annotation-test.rdlabs.beeldengeluid.nl/api'
         assert 'USER_SPACE_API' in self.app.config #URL 'http://workspace-test.rdlabs.beeldengeluid.nl/api/v0.1'
