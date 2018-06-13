@@ -2,24 +2,19 @@
 
   .cl_list {
     padding-top: 3rem;
-
-    .cl_no_padd_right {
-      padding-right: 0;
+    justify-content: center;
+    @media screen and (min-width: $break-medium) {
+      flex-wrap: nowrap;
     }
-    .cl_no_padd_left {
-      padding-left: 0;
-    }
-
-    .cl_margin-botton {
-      margin-bottom: 4rem;
-    }
-
+  
     .cl_col{
       padding-right: 25px;
       padding-left: 25px;
     }
     
     .tool {
+      flex-grow: 0;
+      
       h3 {
         font-size: 20px;
         text-align: center;
