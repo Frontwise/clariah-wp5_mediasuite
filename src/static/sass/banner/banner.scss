@@ -112,7 +112,7 @@
     white-space: normal;
   }
   .csslider > ul > li.scrollable {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .csslider > .navigation {
     position: absolute;
