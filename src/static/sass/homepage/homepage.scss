@@ -1,7 +1,12 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  
+  @media screen and (min-width: $break-medium) {
+    flex-wrap: nowrap;
+  }
+
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
