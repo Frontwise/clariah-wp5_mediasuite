@@ -43,16 +43,9 @@
   },
   "home_workspace":{
     "text":"Functional work space and experimental Jupyter notebooks to work with your corpus and user data (bookmarks, annotations, queries, search sessions, and user collections). ",
-    "links": {
-      "link_more_info":{
-        "link_value":"More information",
-        "link_url":"https://clariah.github.io/mediasuite-info/pages/workspace.html"
-      },
-      "link_login":{
-        "link_value":"Login",
-        "link_url":"/userspace"
-      }
-
+    "links": {      
+        "link_value":"Discover your workspace",
+        "link_url":"/workspace"
     }
   },
   "home_clariah":{
