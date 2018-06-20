@@ -11,12 +11,13 @@
     {% include 'nav.html' %}
     {% endwith %}
 
-    <div class="tools container cl_row cl_main-content cl_container-800">
+    <div class="tools cl_row cl_main-content">
 
         <div class="cl_col cl_col-span-4" style="text-align: center;">
             <img style="max-width: 176px; display:inline-block;" src="../static/images/bigicon-tools.833a4532.png"
                  alt="Media Suite Tools">
         </div>
+
         <div class="cl_col cl_col-span-8">
             <div class="info">
                 <div class="description">
@@ -33,8 +34,10 @@
                 </div>
             </div>
         </div>
-        <div class="cl_row cl_list">
-            <div class="tool cl_col cl_col-span-6 cl_no_padd_left cl_margin-botton">
+
+        <div class="tool-list cl_row cl_list">
+
+            <div class="tool cl_col cl_col-span-3">
                 <div class="image-wrap">
                     <img src="../static/images/tools/collection-inspector-screenshot-min.png" alt="Collection inspector">
                 </div>
@@ -44,7 +47,8 @@
                        class="btn blank">{{recipes['pages']['tools-page']['tools_collection-inspector'].links.link_details.link_value}}</a>
                     <a href="{{recipes['collection-inspector'].url}}" class="btn">Open</a></div>
             </div>
-            <div class="tool cl_col cl_col-span-6 cl_no_padd_right cl_margin-botton">
+
+            <div class="tool cl_col cl_col-span-3">
                 <div class="image-wrap">
                     <img src="../static/images/tools/dive-screenshot-min.png" alt="Exploratory browser">
                 </div>
@@ -56,7 +60,8 @@
                        class="btn">{{recipes['pages']['tools-page']['tools_lod-collection-browser'].links.link_open.link_value}}</a>
                 </div>
             </div>
-            <div class="tool cl_col cl_col-span-6 cl_no_padd_left">
+
+            <div class="tool cl_col cl_col-span-3">
                 <div class="image-wrap">
                     <img src="../static/images/tools/single-query-screenshot-min.png" alt="Basic faceted search">
                 </div>
@@ -68,7 +73,8 @@
                        class="btn">{{recipes['pages']['tools-page']['tools_single-search'].links.link_open.link_value}}</a>
                 </div>
             </div>
-            <div class="tool cl_col cl_col-span-6 cl_no_padd_right">
+
+            <div class="tool cl_col cl_col-span-3">
                 <div class="image-wrap">
                     <img src="../static/images/tools/comparative-queries-screenshot-min.png" alt="Comparative search">
                 </div>
@@ -80,6 +86,7 @@
                        class="btn">{{recipes['pages']['tools-page']['tools_comparative-search'].links.link_open.link_value}}</a>
                 </div>
             </div>
+
         </div>
     </div>
 
