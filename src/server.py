@@ -438,6 +438,7 @@ def documentAPI(operation, collectionId):
 		resp = _workspace.getDocs(getClientId(), getToken(), collectionId, postData)
 	return Response(resp, mimetype='application/json')
 
+
 """------------------------------------------------------------------------------
 PAGES THAT DO USE THE COMPONENT LIBRARY
 ------------------------------------------------------------------------------"""

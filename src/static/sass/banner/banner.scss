@@ -2,7 +2,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 530px;
   position: relative;
   top: 0;
   width: 100%;
@@ -112,7 +112,7 @@
     white-space: normal;
   }
   .csslider > ul > li.scrollable {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .csslider > .navigation {
     position: absolute;

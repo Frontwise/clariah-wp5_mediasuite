@@ -28,31 +28,24 @@
     ]
   },
   "home_data":{
-    "text":"All available collections and their data are registered in a common inventory.",
+    "text":"Access important Dutch audio-visual collections (radio, television, films, oral history interviews) and contextual material. All available collections and their data are registered in a common inventory.",
     "links": {
       "link_value":"Checkout the data",
       "link_url":"/data"
     }
   },
   "home_tools":{
-    "text":"Tools allow researchers to perform tasks with the available data.",
+    "text":"Use some of the CLARIAH open source tools that allow researchers to perform search, annotation, automatic speech recognition, and other analysis tasks with the available data.",
     "links": {
       "link_value":"Use the tools",
       "link_url":"/tools"
     }
   },
   "home_workspace":{
-    "text":"Personal and collaborative workspace that stores user data such as bookmarks, annotations, and search sessions. Use your (SURF) university account to login the Clariah Workspace and unlock the full potential of the Media Suite!",
-    "links": {
-      "link_more_info":{
-        "link_value":"More information",
-        "link_url":"https://clariah.github.io/mediasuite-info/pages/workspace.html"
-      },
-      "link_login":{
-        "link_value":"Login",
-        "link_url":"/userspace"
-      }
-
+    "text":"Functional work space and experimental Jupyter notebooks to work with your corpus and user data (bookmarks, annotations, queries, search sessions, and user collections). ",
+    "links": {      
+        "link_value":"Discover your workspace",
+        "link_url":"/workspace"
     }
   },
   "home_clariah":{
