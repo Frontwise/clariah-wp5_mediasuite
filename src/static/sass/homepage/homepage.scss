@@ -19,6 +19,17 @@
     img {
       width: 176px;
     }
+
+    a{
+      img{
+        border-radius: 50%;
+        transition: transform 1s ease-out,box-shadow 1s ease-out;
+        &:hover{
+            transform: scale(1.05);
+            box-shadow: 3px 5px 10px rgba(0,0,0,0.3);
+        }
+      }
+    }
     @media screen and (max-width: $break-small) {
       width: 100%;
       margin-bottom: 30px;
@@ -29,19 +40,6 @@
     padding: 50px 0;
     @media screen and (max-width: $break-small) {
       justify-content: center;
-    }
-  }
-
-  &.workspace {
-    background-color: $clGrey;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: center;
-    padding: 120px 0;
-    img {
-      border-radius: 176px;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     }
   }
 
