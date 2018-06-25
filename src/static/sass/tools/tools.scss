@@ -25,8 +25,15 @@
         justify-content: center;
         margin-top: 10px;
       }
-      .image-wrap {
+      .image-wrap {        
         position: relative;
+
+        &.hover{
+          transition: transform 1s ease-out;
+          &:hover{
+            transform: scale(1.05);
+          }
+        }
   
         // Shadow
         &::before {
