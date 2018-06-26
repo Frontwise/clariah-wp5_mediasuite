@@ -64,6 +64,20 @@
       }
     }
   },
+  "tools_query-comparison":{
+    "header":"Compare",
+    "text":"This tool supports comparative analyses",
+    "links": {
+      "link_details":{
+        "link_value":"Details",
+        "link_url":"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-compare"
+      },
+      "link_open":{
+        "link_value":"Open",
+        "link_url":"/tool/query-comparison"
+      }
+    }
+  },
   "tools_tool-development":{
     "header":"Tool development",
     "text":"REMOVE THIS BLOCK",

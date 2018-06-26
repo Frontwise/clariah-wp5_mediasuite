@@ -18,6 +18,8 @@ on (integration) tests
 	- http://docs.python-soco.com/en/latest/unittests.html#running-the-unit-tests
 	- https://hypothesis.readthedocs.org/en/latest/index.html
 	- https://www.toptal.com/python/an-introduction-to-mocking-in-python
+
+TEST WITH POLLY: https://netflix.github.io/pollyjs/#/README?id=features
 """
 
 class TestFunctionalities:

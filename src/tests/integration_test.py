@@ -3,7 +3,7 @@ import sys
 from flask import Flask
 import requests
 import json
-
+from slacker import Slacker
 """
 uses pytest
 """
@@ -20,7 +20,7 @@ class TestSearchAPI:
 	<><><><><><><><><><><><> SETUP & TEARDOWN <><><><><><><><><><><>
 	<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><"""
 
-	def setup(self):
+	def setup_class(self):
 		self.strictMode = True
 		self.app = Flask(__name__)
 		self.app.config.from_object('settings.Config')
@@ -28,7 +28,7 @@ class TestSearchAPI:
 		#TODO think of a way to dynamically obtain test data
 		self.collectionId = 'nisv-catalogue-aggr'
 
-	def teardown(self):
+	def teardown_class(self):
 		pass
 
 	"""----------------------------- TEST MEDIASUITE -------------------"""

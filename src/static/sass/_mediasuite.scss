@@ -119,18 +119,15 @@ body.noHeader{
 
 body.bg_tools-explore{
 	height: 100%;
-	.cl_help{
-		display: none;
-	}
 }
 
 #bg__tools-explore{
 	position: absolute;
 	left: 0;
-	top: 115px;
+	top: 95px;
 	display: block;
 	width: 100%;
-	height: calc(100% - 115px);
+	height: calc(100% - 95px);
 	border: 0;
 	border-top: 5px solid #fff;
 }

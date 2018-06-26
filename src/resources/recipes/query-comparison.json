@@ -1,0 +1,18 @@
+{
+  "id" : "query-comparison",
+  "name" : "Compare your saved queries",
+  "type" : "query-comparison",
+  "phase" : "search",
+  "description" : "Compare saved queries.",
+  "recipeDescription" : "<p>Compare saved queries based on multiple queries on the same or different collections of choice. </p></br></br><a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-compare\">More info</a>",
+  "inRecipeList" : true,
+  "useCustomTemplate" : false,
+  "ingredients" : {
+    "collectionSelector" : true,
+    "output" : "lineChart",
+    "aggregationView" : "box",
+    "dateRangeSelector" : "date-picker",
+    "itemDetailsPath" : "tool/default-item-details",
+    "useProjects" : true
+  }
+}
