@@ -11,7 +11,7 @@
 <body class="cl_flex-main">
 
     {% with page='home', extraClass='transparent' %}
-    {% include 'nav.html' %}
+        {% include 'nav.html' %}
     {% endwith %}
 
     {% include 'banner.html' %}
@@ -20,23 +20,29 @@
         <div class="row">
             <ul class="cards offer">
                 <li>
-                    <img src="../static/images/bigicon-data.png" alt="Media Suite Data">
+                    <a href="{{home_static.home_data.links.link_url }}">
+                        <img src="../static/images/bigicon-data.png" alt="Media Suite Data">
+                    </a>
                     <h1>Data</h1>
                     <p>{{home_static.home_data.text }}</p>
                     <a href="{{home_static.home_data.links.link_url }}" class="btn primary">{{home_static.home_data.links.link_value
                         }}</a>
                 </li>
                 <li>
-                    <img src="../static/images/bigicon-tools.png" alt="Media Suite Tools">
+                    <a href="{{home_static.home_tools.links.link_url }}">
+                        <img src="../static/images/bigicon-tools.png" alt="Media Suite Tools">
+                    </a>
                     <h1>Tools</h1>
                     <p>
                         {{home_static.home_tools.text }}
                     </p>
-                    <a href="{{home_static.home_tools.links.link_url }}" class="btn primary">   {{home_static.home_tools.links.link_value}}
+                    <a href="{{home_static.home_tools.links.link_url }}" class="btn primary">{{home_static.home_tools.links.link_value}}
                     </a>
                 </li>
                 <li>
-                    <img src="../static/images/bigicon-workspace.png" alt="Media Suite Workspace">
+                    <a href="{{home_static.home_workspace.links.link_url }}">
+                        <img src="../static/images/bigicon-workspace.png" alt="Media Suite Workspace">
+                    </a>
                     <h1>Workspace</h1>
                     <p>
                         {{home_static.home_workspace.text }}
