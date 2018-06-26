@@ -48,10 +48,14 @@ class AuthenticationHub(object):
 	def getUser(self, request):
 		if self.app.config['AUTHENTICATION_METHOD'] == 'OpenConext':
 			if len(session)>0 and 'samlUserdata' in session:
+				attributes = {}
+				if type(session['samlUserdata']) == dict:
+					attributes = session['samlUserdata']
+					attributes['allowPersonalCollections'] = True
 				return {
 					'id' : session['samlUserdata']['urn:mace:dir:attribute-def:uid'][0], #TODO is there a real ID?
 					'name' : session['samlUserdata']['urn:mace:dir:attribute-def:uid'][0],
-					'attributes' : session['samlUserdata']
+					'attributes' : attributes
 				}
 		elif self.isAuthenticated(request): #basic auth
 			return {
