@@ -374,10 +374,14 @@ def searchAPI(operation, collectionId):
 		postData = request.get_json(force=True)
 	except Exception, e:
 		print e
-	resp = getErrorMessage('Invalid operation specified')
+	errorResp = getErrorMessage('Invalid operation specified')
 	if operation == 'layered_search':
 		resp = _workspace.layeredSearch(getClientId(), getToken(), collectionId, postData)
-	return Response(resp, mimetype='application/json')
+		if resp:
+			return Response(resp, mimetype='application/json')
+		else:
+			errorResp = getErrorMessage('Nothing found')
+	return Response(errorResp, mimetype='application/json')
 
 @app.route('/search-api/sparql', methods=['POST'])
 @requires_auth
@@ -557,6 +561,12 @@ def logout():
 		return redirect(url_for('home'))
 	return Response(getErrorMessage('logout not implemented'))
 
+
+@app.route('/fielddescriptions/<jsonFile>')
+def fielddescriptions(jsonFile):
+	if 'FIELD_DESCRIPTION_BASE_URL' in app.config:
+		return redirect("%s/%s" % (app.config['FIELD_DESCRIPTION_BASE_URL'], jsonFile), code=302)
+	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
 
 """------------------------------------------------------------------------------
 EXPLORATORY SEARCH / DIVE+ WRAPPER

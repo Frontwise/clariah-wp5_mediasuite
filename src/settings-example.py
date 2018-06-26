@@ -17,6 +17,12 @@ class Config(object):
 
 	ANNOTATION_API = 'http://localhost:5300/api'
 
+	USER_SPACE_API = 'http://localhost:5306/api/v0.1'
+
+	PLAYOUT_API = 'http://localhost:99999'
+
+	FIELD_DESCRIPTION_BASE_URL = 'http://localhost'
+
 	EXPORT_CONFIGS = {
 
 	}
