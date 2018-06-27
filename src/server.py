@@ -568,6 +568,14 @@ def fielddescriptions(jsonFile):
 		return redirect("%s/%s" % (app.config['FIELD_DESCRIPTION_BASE_URL'], jsonFile), code=302)
 	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
 
+
+# Load help pages from external source
+@app.route('/help/<path:path>')
+def help(path):
+	if 'HELP_BASE_URL' in app.config:
+		return redirect("%s/%s" % (app.config['HELP_BASE_URL'], path), code=302)
+	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
+
 """------------------------------------------------------------------------------
 EXPLORATORY SEARCH / DIVE+ WRAPPER
 ------------------------------------------------------------------------------"""
