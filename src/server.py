@@ -8,6 +8,7 @@ from functools import wraps
 # handling help pages
 import markdown
 import requests
+from werkzeug.contrib.cache import SimpleCache
 
 #for authentication
 from components.security.AuthenticationHub import AuthenticationHub
@@ -42,6 +43,8 @@ app.debug = app.config['DEBUG']
 app.config['RECIPES'] = None #loaded once when a recipe is requested for the first time
 app.config['COLLECTION_DATA'] = None #loaded once on startup
 
+#cache initialized for documentation pages
+cache = SimpleCache()
 
 """------------------------------------------------------------------------------
 AUTHENTICATION FUNCTIONS
@@ -573,22 +576,33 @@ def fielddescriptions(jsonFile):
 	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
 
 
+# Get cached documentation from url. This way we prevent heavy server load
+# Caching time is 5 minutes
+# http://flask.pocoo.org/docs/1.0/patterns/caching/
+def getCachedDocumentation(url):
+	key = 'documentation-'+url
+
+	# check cache for data
+	content = cache.get(key)
+	if content is None:
+		print "loading documentation from url: " + url
+		resp = requests.get(url)
+		content = markdown.markdown(resp.text)
+
+		# cache the results for 5 minutes
+		cache.set(key, content, timeout=5 * 60)
+	return content
+
 # Documentation for a specific feature, shown in the container behind the question mark button.
 # Data is loaded from CLARIAH/mediasuite-info repository.
-# In case of high traffic; this function could be optimized by temporarily caching
-# the markdown results. See: http://flask.pocoo.org/docs/1.0/patterns/caching/
 @app.route('/feature-doc/<path:path>')
-def help(path):
-	if 'DOCUMENTATION_BASE_URL' in app.config:
-		resp = requests.get("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))
-		html = markdown.markdown(resp.text)
-		return Response(html)
+def featuredoc(path):
+	if 'DOCUMENTATION_BASE_URL' in app.config:		
+		return Response(getCachedDocumentation("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path)))
 	else:
 		return Response("Error: Please setup DOCUMENTATION_BASE_URL in your settings.py")
 
 # Documentation, loaded from CLARIAH/mediasuite-info repository
-# In case of high traffic; this function could be optimized by temporarily caching
-# the markdown results. See: http://flask.pocoo.org/docs/1.0/patterns/caching/
 @app.route('/documentation', defaults={'path': ''} )
 @app.route('/documentation/<path:path>')
 def documentation(path):
@@ -596,16 +610,20 @@ def documentation(path):
 	content=""
 	if 'DOCUMENTATION_BASE_URL' in app.config:
 		# retrieve toc
-		resp = requests.get("%s/%s" % (app.config['DOCUMENTATION_BASE_URL'], "content.json"))
-		toc=resp.json()
+		key = 'documentation-toc'
+		# check cache for data
+		toc = cache.get(key)
+		if toc is None:
+			resp = requests.get("%s/%s" % (app.config['DOCUMENTATION_BASE_URL'], "content.json"))
+			toc=resp.json()
+			cache.set(key, toc, timeout=5 * 60)
 		
 		# default to first item
 		if not path:
 			path = toc[0]['content']
 		
 		# retrieve document from documentation repository
-		resp = requests.get("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))
-		content = markdown.markdown(resp.text)
+		content = getCachedDocumentation("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))						
 	else:
 		content = "Error: Please setup DOCUMENTATION_BASE_URL in your settings.py"
 	
