@@ -5,6 +5,10 @@ from flask import request, Response, send_from_directory
 from jinja2.exceptions import TemplateNotFound
 from functools import wraps
 
+# handling help pages
+import markdown
+import requests
+
 #for authentication
 from components.security.AuthenticationHub import AuthenticationHub
 
@@ -569,12 +573,43 @@ def fielddescriptions(jsonFile):
 	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
 
 
-# Load help pages from external source
+# Documentation snippet for help fields, loaded from CLARIAH/mediasuite-info repository
 @app.route('/help/<path:path>')
 def help(path):
 	if 'HELP_BASE_URL' in app.config:
-		return redirect("%s/%s" % (app.config['HELP_BASE_URL'], path), code=302)
+		resp = requests.get("%s/docs/%s.md" % (app.config['HELP_BASE_URL'], path))
+		html = markdown.markdown(resp.text)
+		return Response(html)
+	
 	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
+
+# Documentation, loaded from CLARIAH/mediasuite-info repository
+@app.route('/documentation', defaults={'path': ''} )
+@app.route('/documentation/<path:path>')
+def documentation(path):
+	toc=""
+	content=""
+	if 'HELP_BASE_URL' in app.config:
+		# retrieve toc
+		resp = requests.get("%s/%s" % (app.config['HELP_BASE_URL'], "content.json"))
+		toc=resp.json()
+		
+		# default to first item
+		if not path:
+			path = toc[0]['content']
+		
+		# retrieve document from documentation repository
+		resp = requests.get("%s/docs/%s.md" % (app.config['HELP_BASE_URL'], path))
+		content = markdown.markdown(resp.text)
+	
+	return render_template('documentation.html', 
+						path=path,
+						toc=toc, 
+						content=content, 
+						user=_authenticationHub.getUser(request), 
+						version=app.config['APP_VERSION'])
+
+	
 
 """------------------------------------------------------------------------------
 EXPLORATORY SEARCH / DIVE+ WRAPPER
