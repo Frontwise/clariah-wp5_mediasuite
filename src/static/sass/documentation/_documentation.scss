@@ -2,7 +2,7 @@
     .container{
         width: 1024px;
         max-width: 100%;
-        min-height: calc(100vh - 310px);
+        min-height: calc(100vh - 332px);
 
         ul{
             margin:0;
@@ -12,24 +12,34 @@
                 position: fixed;
                 top: 140px;
                 width: 200px;
+
+                @media screen and (max-width: $break-medium) {
+                    width: 100%;
+                    position: relative;
+                    top: 0;
+                }
+
                 &>li{
                     font-weight: bold;
                 }
             }
             li{
                 font-weight: normal;
-                margin-left: 0;  
+                margin: 2px 0;
                 padding-left: 10px;              
                 a{
                     display: block;
                     padding: 3px 0 3px 15px;
                     border-left: 0;
                     color: black;
-                    &:hover{
-                        text-decoration: none;
+                    text-decoration: none;
+                    &:hover{                        
+                        padding-left: 10px;
+                        font-weight: bold;
+                        border-left: 5px solid $clSecondary;
                     }
                 }
-                &.active, &:hover{
+                &.active{
                     &>a{
                         padding-left: 10px;
                         font-weight: bold;
@@ -42,6 +52,9 @@
 
         .documentation-content{
             margin-left: 225px;
+            @media screen and (max-width: $break-medium) {
+                margin-left: 0;
+            }
         }
     }
 }
