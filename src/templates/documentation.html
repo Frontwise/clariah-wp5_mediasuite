@@ -16,37 +16,39 @@
 
     <div class="container">
         {# TOC #}
-        <ul class="toc">
-        {% for item in toc %}   
-            {# level 1 #}     
-            <li {% if item.content == path %}class="active"{% endif %}>
-                <a href="/documentation/{{item.content}}">{{ item.title }}</a>
-                {# level 2 #}
-                {% if item.children and path.startswith(item.content) %}
-                    <ul>
-                        {% for subItem in item.children %}
-                            <li {% if subItem.content == path %}class="active"{% endif %}>
-                                <a href="/documentation/{{subItem.content}}">{{ subItem.title }}</a>
+        <div class="toc">
+        <ul class="root">
+            {% for item in toc %}   
+                {# level 1 #}     
+                <li {% if item.content == path %}class="active"{% endif %}>
+                    <a href="/documentation/{{item.content}}">{{ item.title }}</a>
+                    {# level 2 #}
+                    {% if item.children and path.startswith(item.content) %}
+                        <ul>
+                            {% for subItem in item.children %}
+                                <li {% if subItem.content == path %}class="active"{% endif %}>
+                                    <a href="/documentation/{{subItem.content}}">{{ subItem.title }}</a>
 
-                                {# level 3 #}
-                                {% if subItem.children %}
-                                    <ul>
-                                        {% for subSubItem in subItem.children %}
-                                            <li {% if subSubItem.content == path %}class="active"{% endif %}>
-                                                <a href="/documentation/{{subSubItem.content}}">{{ subSubItem.title }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endif %}
+                                    {# level 3 #}
+                                    {% if subItem.children %}
+                                        <ul>
+                                            {% for subSubItem in subItem.children %}
+                                                <li {% if subSubItem.content == path %}class="active"{% endif %}>
+                                                    <a href="/documentation/{{subSubItem.content}}">{{ subSubItem.title }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
 
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
-            </li>
-        {% endfor %}
-        </ul>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
 
         {# Content #}
         <div class="documentation-content">
