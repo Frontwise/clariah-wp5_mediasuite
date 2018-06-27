@@ -4,7 +4,7 @@
 	"type" : "collection-analysis",
 	"phase" : "collection-exploration",
 	"description" : "With this recipe it is possible to: 1) select collections, 2) inspect their metadata, 3) perform data analytics tasks on their metadata (e.g., detect incomplete data, observe value distributions along date fields), and 4) send them to the other browsing and search recipes.",
-	"recipeDescription" : "<p>This recipe is made to support “data critique”. With this recipe it is possible to:</p><br /> 1) Select collections <br />2) Inspect their metadata <br />3) Perform data analytics tasks on their metadata (e.g., detect incomplete data, observe value distributions along date fields) <br /> 4) Send them to the other browsing and search recipes</br></br><a target=\"_blank\" href=\"https://clariah.github.io/mediasuite-info/pages/tools.html#docs-tools-inspect-metadata\">More info</a>",
+	"recipeDescription" : "<p>This recipe is made to support “data critique”. With this recipe it is possible to:</p><br /> 1) Select collections <br />2) Inspect their metadata <br />3) Perform data analytics tasks on their metadata (e.g., detect incomplete data, observe value distributions along date fields) <br /> 4) Send them to the other browsing and search recipes</br></br><a target=\"_blank\" href=\"/documentation/tools/collection-inspector\">More info</a>",
 	"inRecipeList" : true,
 	"ingredients" : {
 		"useProjects" : true,
