@@ -28,8 +28,3 @@ function breadcrumb() {
 
   $('.BreadCrumbs').removeClass('hidden').html(breadcrumb);
 }
-
-// Info/help popup window.
-$('.cl_button, .cl_close').on('click', function () {
-  $('.cl_container-help').toggleClass('cl_active');
-});

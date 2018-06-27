@@ -2,25 +2,9 @@
     <div class="cl_button" id="help_button"></div>
     <div class="cl_container-help" id="help_container">
         <div class="cl_header">
-            <span id="help_title">
-                {% if page=='data-sources' %}
-                    {{data_static['help_header']}}
-                {% elif page=='tools' %}
-                    {{recipes['pages']['tools-page'].help_header}}
-                {% elif page=='tool' %}
-                    {{recipe.name | safe}}
-            {% endif %}
-            </span>
+            <span id="help_title"></span>
             <div class="cl_close" id="help_close"></div>
         </div>
-        <div class="cl_scroll" id="help_content">
-            {% if page=='data-sources' %}
-                {{data_static['documentation_question-mark_data_page'] | safe}}
-            {% elif page=='tools' %}
-                {{recipes['pages']['tools-page']['documentation_question-mark_tools_page']|safe}}
-            {% elif page=='tool' %}
-                {{recipe.recipeDescription | safe}}
-            {% endif %}
-        </div>
+        <div class="cl_scroll" id="help_content"></div>
     </div>
 </div>

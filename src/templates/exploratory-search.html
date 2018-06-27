@@ -15,10 +15,15 @@
 	{% include 'nav.html' %}
 	{% endwith %}
 
-	<iframe id="bg__tools-explore" src="http://diveplus.frontwise.com{{params.path}}"/>
+    
+    <iframe id="bg__tools-explore" src="http://diveplus.frontwise.com{{params.path}}"></iframe>
 
-	{% include 'site-tracking.html' ignore missing %}
 
 </body>
+
+<script src="/static/js/help.js"></script>
+<script>initHelp("Explore", "/feature-doc/tools/exploratory-search");</script>
+
+{% include 'site-tracking.html' ignore missing %}
 
 </html>
