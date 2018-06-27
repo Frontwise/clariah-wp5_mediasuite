@@ -574,6 +574,8 @@ def fielddescriptions(jsonFile):
 
 
 # Documentation snippet for help fields, loaded from CLARIAH/mediasuite-info repository
+# In case of high traffic; this function could be optimized by temporarily caching
+# the markdown results. See: http://flask.pocoo.org/docs/1.0/patterns/caching/
 @app.route('/help/<path:path>')
 def help(path):
 	if 'DOCUMENTATION_BASE_URL' in app.config:
@@ -584,6 +586,8 @@ def help(path):
 		return Response("Error: Please setup DOCUMENTATION_BASE_URL in your settings.py")
 
 # Documentation, loaded from CLARIAH/mediasuite-info repository
+# In case of high traffic; this function could be optimized by temporarily caching
+# the markdown results. See: http://flask.pocoo.org/docs/1.0/patterns/caching/
 @app.route('/documentation', defaults={'path': ''} )
 @app.route('/documentation/<path:path>')
 def documentation(path):
