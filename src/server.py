@@ -576,8 +576,8 @@ def fielddescriptions(jsonFile):
 # Documentation snippet for help fields, loaded from CLARIAH/mediasuite-info repository
 @app.route('/help/<path:path>')
 def help(path):
-	if 'HELP_BASE_URL' in app.config:
-		resp = requests.get("%s/docs/%s.md" % (app.config['HELP_BASE_URL'], path))
+	if 'DOCUMENTATION_BASE_URL' in app.config:
+		resp = requests.get("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))
 		html = markdown.markdown(resp.text)
 		return Response(html)
 	
@@ -589,9 +589,9 @@ def help(path):
 def documentation(path):
 	toc=""
 	content=""
-	if 'HELP_BASE_URL' in app.config:
+	if 'DOCUMENTATION_BASE_URL' in app.config:
 		# retrieve toc
-		resp = requests.get("%s/%s" % (app.config['HELP_BASE_URL'], "content.json"))
+		resp = requests.get("%s/%s" % (app.config['DOCUMENTATION_BASE_URL'], "content.json"))
 		toc=resp.json()
 		
 		# default to first item
@@ -599,7 +599,7 @@ def documentation(path):
 			path = toc[0]['content']
 		
 		# retrieve document from documentation repository
-		resp = requests.get("%s/docs/%s.md" % (app.config['HELP_BASE_URL'], path))
+		resp = requests.get("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))
 		content = markdown.markdown(resp.text)
 	
 	return render_template('documentation.html', 
