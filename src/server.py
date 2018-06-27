@@ -580,8 +580,8 @@ def help(path):
 		resp = requests.get("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))
 		html = markdown.markdown(resp.text)
 		return Response(html)
-	
-	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
+	else:
+		return Response("Error: Please setup DOCUMENTATION_BASE_URL in your settings.py")
 
 # Documentation, loaded from CLARIAH/mediasuite-info repository
 @app.route('/documentation', defaults={'path': ''} )
@@ -601,6 +601,8 @@ def documentation(path):
 		# retrieve document from documentation repository
 		resp = requests.get("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))
 		content = markdown.markdown(resp.text)
+	else:
+		content = "Error: Please setup DOCUMENTATION_BASE_URL in your settings.py"
 	
 	return render_template('documentation.html', 
 						path=path,
