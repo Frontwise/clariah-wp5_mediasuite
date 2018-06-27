@@ -23,6 +23,8 @@ class Config(object):
 
 	FIELD_DESCRIPTION_BASE_URL = 'http://localhost'
 
+	DOCUMENTATION_BASE_URL = 'https://raw.githubusercontent.com/CLARIAH/mediasuite-info/master'
+
 	EXPORT_CONFIGS = {
 
 	}

@@ -573,10 +573,11 @@ def fielddescriptions(jsonFile):
 	return Response(getErrorMessage('Not configured for this instance'), mimetype='application/json')
 
 
-# Documentation snippet for help fields, loaded from CLARIAH/mediasuite-info repository
+# Documentation for a specific feature, shown in the container behind the question mark button.
+# Data is loaded from CLARIAH/mediasuite-info repository.
 # In case of high traffic; this function could be optimized by temporarily caching
 # the markdown results. See: http://flask.pocoo.org/docs/1.0/patterns/caching/
-@app.route('/help/<path:path>')
+@app.route('/feature-doc/<path:path>')
 def help(path):
 	if 'DOCUMENTATION_BASE_URL' in app.config:
 		resp = requests.get("%s/docs/%s.md" % (app.config['DOCUMENTATION_BASE_URL'], path))
