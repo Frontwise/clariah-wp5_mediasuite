@@ -78,7 +78,7 @@ var tocRoot = document.getElementById('toc-root');
  */
 
 function handleScroll() {
-    // due to responsive layout, skip < 800px width
+    // due to responsive layout, skip
     if(window.innerWidth < 940){ return; }
 
     // get scroll height
@@ -102,11 +102,13 @@ function handleScroll() {
 window.addEventListener('scroll', handleScroll);
 
 window.addEventListener('load', function(){ 
+    // due to responsive layout, skip
+    if(window.innerWidth < 940){ return; }
+
     // grow content to at least the menu size
     if (tocRoot.offsetHeight){
-        content.style.minHeight = tocRoot.offsetHeight + "px";
+        content.style.minHeight = Math.max(window.innerHeight - 355, tocRoot.offsetHeight) + "px";
     }
-
     handleScroll();
 } );
 
