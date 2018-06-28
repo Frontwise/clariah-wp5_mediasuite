@@ -2,22 +2,28 @@
     .container{
         width: 1024px;
         max-width: 100%;
-        min-height: calc(100vh - 332px);
-
+        // set a min-height so the menu won't ever run into the footer
+        min-height: 750px;        
+        
         .toc{
+    
             ul{
-                margin:0;
                 padding: 0;
                 list-style: none;
+                margin:0;
                 &.root{
+                    overflow-y: auto;
                     position: fixed;
                     top: 140px;
-                    width: 200px;
+                    width: 250px;
 
-                    @media screen and (max-width: $break-medium) {
+                    @media screen and (max-width: $break-small) {
                         width: 100%;
                         position: relative;
-                        top: 0;
+                        top: 0;       
+                        margin-top: 50px;  
+                        border-bottom: 1px solid #eee;
+                        padding-bottom: 20px;               
                     }
 
                     &>li{
@@ -36,7 +42,6 @@
                         text-decoration: none;
                         &:hover{                        
                             padding-left: 10px;
-                            font-weight: bold;
                             border-left: 5px solid $clSecondary;
                         }
                     }
@@ -53,8 +58,9 @@
         }
 
         .documentation-content{
-            margin-left: 225px;
-            @media screen and (max-width: $break-medium) {
+            margin-left: 290px;
+            padding-bottom: 60px;
+            @media screen and (max-width: $break-small) {
                 margin-left: 0;
             }
         }
