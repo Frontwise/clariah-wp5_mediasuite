@@ -17,7 +17,7 @@
     <div class="container">
         {# TOC #}
         <div class="toc">
-        <ul class="root">
+        <ul class="root" id="toc-root">
             {% for item in toc %}   
                 {# level 1 #}     
                 <li {% if item.content == path %}class="active"{% endif %}>
@@ -64,5 +64,39 @@
 
 <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/static/js/common.js"></script>
+
+
+<script>
+
+/*
+ * On the bottom of the page, the TOC should move up
+ * to prevent overlap with the footer.
+ */
+
+var tocRoot = document.getElementById('toc-root');
+function handleScroll() {
+    // due to responsive layout, skip < 800px width
+    if(window.innerWidth < 940){ return; }
+
+    // get scroll height
+    var body = document.body,
+    html = document.documentElement;
+
+    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                           html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+    var diff = height - window.scrollY - window.innerHeight;
+    var max = 245;
+    if (diff < max){
+        tocRoot.style.marginTop = (diff-max) + 'px';
+    } else{
+        tocRoot.style.marginTop = 0;
+    }
+};
+
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('load', handleScroll);
+
+</script>
 
 </html>
