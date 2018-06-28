@@ -51,7 +51,7 @@
         </div>
 
         {# Content #}
-        <div class="documentation-content">
+        <div class="documentation-content" id="documentation-content">
             {{ content | safe}}
         </div>
     </div>
@@ -68,12 +68,15 @@
 
 <script>
 
+var content = document.getElementById('documentation-content');
+var tocRoot = document.getElementById('toc-root');
+
+
 /*
  * On the bottom of the page, the TOC should move up
  * to prevent overlap with the footer.
  */
 
-var tocRoot = document.getElementById('toc-root');
 function handleScroll() {
     // due to responsive layout, skip < 800px width
     if(window.innerWidth < 940){ return; }
@@ -84,8 +87,10 @@ function handleScroll() {
 
     var height = Math.max( body.scrollHeight, body.offsetHeight, 
                            html.clientHeight, html.scrollHeight, html.offsetHeight );
+    
+    var diff = height - window.scrollY - tocRoot.offsetHeight - 115;//window.innerHeight;
 
-    var diff = height - window.scrollY - window.innerHeight;
+    // max is: footer + header + padding
     var max = 245;
     if (diff < max){
         tocRoot.style.marginTop = (diff-max) + 'px';
@@ -95,7 +100,15 @@ function handleScroll() {
 };
 
 window.addEventListener('scroll', handleScroll);
-window.addEventListener('load', handleScroll);
+
+window.addEventListener('load', function(){ 
+    // grow content to at least the menu size
+    if (tocRoot.offsetHeight){
+        content.style.minHeight = tocRoot.offsetHeight + "px";
+    }
+
+    handleScroll();
+} );
 
 </script>
 
