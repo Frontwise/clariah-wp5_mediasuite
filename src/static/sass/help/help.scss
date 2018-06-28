@@ -1,5 +1,22 @@
 .cl_help {
   color: $clDark;
+
+
+  // limit heading size for readability
+  h1{
+    font-size: 1.5em;
+  }
+  h2{
+    font-size: 1.3em;
+  }
+  h3{
+    font-size: 1.2em;
+  }
+
+  // prevent large gap on top of help container
+  h1:first-child, h2:first-child,h3:first-child{
+    margin-top: 0px;
+  }
 }
 
 @media all and (max-width: 960px) {
