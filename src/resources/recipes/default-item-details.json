@@ -17,7 +17,7 @@
 		},
 		"annotationModes" : {
 			"classification" : {
-				"vocabularies" : ["GTAA", "DBpedia", "UNESCO"]
+				"vocabularies" : ["GTAA", "UNESCO"]
 			},
 			"link" : {
 				"apis" : [
