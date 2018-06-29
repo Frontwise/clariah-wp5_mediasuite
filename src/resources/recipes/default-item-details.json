@@ -4,6 +4,7 @@
 	"type" : "item-details",
 	"phase" : "close-reading",
 	"description" : "Media play-out & annotation support. Inspect related metadata and annotations",
+	"recipeDescription": "<p></p>",
 	"inRecipeList" : false,
 	"ingredients" : {
 		"useProjects" : true,
