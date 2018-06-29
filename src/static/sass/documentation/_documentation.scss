@@ -1,10 +1,10 @@
 .documentation{
+    overflow-y: scroll;
     .container{
         width: 1024px;
         max-width: 100%;
-        
+
         .toc{
-    
             ul{
                 padding: 0;
                 list-style: none;
@@ -13,8 +13,8 @@
                     overflow-y: auto;
                     position: fixed;
                     top: 140px;
-                    width: 250px;
-
+                    width: 250px;                    
+                    
                     @media screen and (max-width: $break-small) {
                         width: 100%;
                         position: relative;
@@ -56,6 +56,7 @@
         }
 
         .documentation-content{
+            min-height: 100vh;
             margin-left: 290px;
             padding-bottom: 60px;
             @media screen and (max-width: $break-small) {

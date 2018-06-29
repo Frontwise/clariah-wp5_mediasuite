@@ -58,13 +58,8 @@
 
     {% include 'footer.html' %}
 
-    {% include 'site-tracking.html' ignore missing %}
 
 </body>
-
-<script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
-<script src="/static/js/common.js"></script>
-
 
 <script>
 
@@ -113,5 +108,11 @@ window.addEventListener('load', function(){
 } );
 
 </script>
+
+<script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/static/js/common.js"></script>
+
+{% include 'site-tracking.html' ignore missing %}
+
 
 </html>
